@@ -1,0 +1,182 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Grizzly Rapids, a grade-adjustable educational typing arcade game for the Naches Learning Hub."><title>Grizzly Rapids · Naches Learning Hub</title><style>
+:root{--bg:#0b172b;--panel:#122943;--panel2:#183551;--ink:#eff9fd;--muted:#b6ccdd;--brand:#ffca77;--cool:#77efe3;--line:#456077;--bad:#ffa3a3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0,#234563 0,transparent 36%),linear-gradient(#0b1c31,#070e1e);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}body.river{--brand:#ffe0a2;--cool:#8ce9c5}button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--brand);outline-offset:3px}button:disabled{opacity:.4;cursor:not-allowed}[hidden]{display:none!important}
+a{color:#d4fafa}header,.shell,footer{max-width:1250px;margin:0 auto;padding:22px 24px}.eyebrow{text-transform:uppercase;letter-spacing:.19em;font-size:12px;font-weight:900;color:var(--cool)}header{display:flex;align-items:center;justify-content:space-between;gap:18px}header h1{margin:0;font-size:clamp(26px,3vw,42px);line-height:1.1;letter-spacing:-.04em}header p{color:var(--muted);margin:7px 0 0}header .mark{background:rgba(255,255,255,.08);padding:12px;border:1px solid #66849c;border-radius:18px;min-width:60px;text-align:center;font-size:30px}
+.shell{padding-top:10px}.card{background:rgba(19,41,66,.96);border:1px solid #48647d;border-radius:22px;box-shadow:0 12px 34px rgba(0,0,0,.15)}.hero{display:grid;grid-template-columns:1.4fr 1fr;align-items:center;gap:20px;padding:26px 30px;margin-bottom:18px}.hero h2{font-size:clamp(24px,2.5vw,36px);line-height:1.16;margin:7px 0 12px}.hero p{color:var(--muted);max-width:65ch}.hero-art{max-height:180px;text-align:center;font-size:85px;filter:drop-shadow(0 4px 15px #1f7196);user-select:none}.switch{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.switch select{background:#153b58;color:white;border:1px solid #91b5c3;border-radius:10px;padding:10px}.hint{font-size:13px;color:var(--muted)}
+.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:22px 0 12px}.section-title h2{margin:0}.section-title p{margin:0;color:var(--muted)}.level-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.level{width:100%;border:1px solid #4d758c;border-radius:15px;background:linear-gradient(145deg,#1d4862,#13334e);color:#fff;text-align:left;padding:16px;display:flex;gap:12px;align-items:center;min-height:93px;transition:transform .12s,border-color .12s}.level:hover{transform:translateY(-2px);border-color:var(--cool)}.level small{display:block;color:#c1dce9;margin-top:2px;font-size:12px}.level .num{font-size:24px;font-weight:800;color:var(--brand)}.level .arrow{margin-left:auto;font-size:26px;color:var(--cool)}
+.stats-rail{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:15px 0}.stat{padding:12px;background:#18324e;border-radius:12px;border:1px solid #45647d}.stat>span{color:#bcd1dc;font-size:12px;display:block}.stat strong{font-size:24px;font-variant-numeric:tabular-nums}
+.play-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:16px}.battle{padding:12px;overflow:hidden}.game-bar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:0 3px 10px}.game-bar h2{margin:0;font-size:17px}.buttonbar{display:flex;gap:8px}.small-btn,.action-btn{border:1px solid #678ba2;color:white;background:#244764;border-radius:9px;padding:9px 14px}.action-btn{background:var(--brand);color:#202a35;font-weight:900;border:0}.buttonbar button:hover{filter:brightness(1.12)}.arena{height:480px;position:relative;overflow:hidden;border-radius:17px;background:linear-gradient(180deg,#0e375c,#114770 42%,#123b60);border:3px solid #49677d}.arena::before{content:'';position:absolute;inset:0;opacity:.4;pointer-events:none;background-image:radial-gradient(circle at 15% 23%,#caffff 0 2px,transparent 3px),radial-gradient(circle at 77% 19%,#caffff 0 1px,transparent 2px),radial-gradient(circle at 60% 50%,#ffffff 0 1px,transparent 2px);background-size:230px 190px}.river .arena{background:linear-gradient(180deg,#85b5b3 0,#166c8b 20%,#1d91a4 53%,#11657c 100%)}.river .arena::before{opacity:.3;background-image:repeating-linear-gradient(165deg,transparent 0 45px,#e4fcff 48px,transparent 52px,transparent 104px)}.arena[data-env="4"],.arena[data-env="5"],.arena[data-env="6"]{filter:saturate(1.1)}.bank{position:absolute;left:0;right:0;bottom:0;height:88px;background:linear-gradient(0deg,#153b44ee,#164457bb);border-top:3px solid #80bb9a;display:flex;align-items:center;justify-content:center;gap:18px}.space .bank{background:linear-gradient(#2d374f,#101726);border-top:3px solid #82ace8}.bank .hero-bear{width:75px;overflow:hidden;height:83px}.hero-bear svg{height:90px;width:82px}.station{font-size:40px;filter:drop-shadow(0 0 12px cyan)}.bank span{font-size:13px;color:#d8f5ec}.arena .target{position:absolute;min-width:76px;max-width:148px;transform:translateX(-50%);z-index:3;pointer-events:auto;text-align:center;user-select:none;filter:drop-shadow(0 3px 4px #11313b);padding:7px 9px;border-radius:13px;border:2px solid var(--item);background:#10324ee8;color:#fff;white-space:nowrap}.arena .target strong{font-size:17px;letter-spacing:.02em;display:block}.arena .target .target-symbol{font-size:22px;display:block;line-height:1}.target-cat{display:block;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--item);line-height:1.3}.arena .target.selected{border-color:#fff;outline:2px solid #fff;transform:translateX(-50%) scale(1.05)}.burst{position:absolute;z-index:7;transform:translateX(-50%);font-weight:900;color:#ffea9d;pointer-events:none;animation:rise .7s ease-out forwards}@keyframes rise{to{transform:translate(-50%,-25px);opacity:0}}
+.type-zone{padding:16px 4px 6px;display:flex;align-items:center;gap:12px}.type-zone label{font-weight:700;white-space:nowrap}.type-zone input{width:100%;background:#0d2137;border:2px solid #78b8ba;color:white;padding:13px 17px;border-radius:13px;letter-spacing:.04em;font-size:21px}.type-zone input.bad{border-color:#ff8787;background:#462a3b}.status{min-height:26px;color:#bbdce2;font-size:14px;margin:7px 2px}.progress{height:10px;background:#0c233b;border-radius:20px;overflow:hidden}.progress div{height:100%;width:0;background:linear-gradient(90deg,#6ed7a9,#ffe2a0);transition:width .2s}
+.sidebar{padding:16px}.sidebar h3{font-size:17px;margin:0 0 8px}.sidebar p{margin:6px 0;color:#c0d5e0;font-size:13px}.bear-list{display:grid;gap:8px}.bear{width:100%;display:flex;align-items:center;text-align:left;gap:7px;background:#224258;border:2px solid transparent;border-radius:13px;padding:6px 8px;color:#fff}.bear.active{border-color:#ffe08f;background:#38586c}.bear.locked{filter:grayscale(.7)}.bear-art{width:58px;flex:none}.bear-art svg{width:58px;height:58px}.bear small{display:block;color:#d2e1e9;font-size:10px;line-height:1.2}.bear b{font-size:13px}.bear kbd{margin-left:auto;border:1px solid #7896a5;color:#ffe3a5;padding:1px 5px;border-radius:4px;font-size:11px}
+.overlay{position:absolute;inset:0;background:#071d34ec;z-index:14;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}.overlay h2{font-size:clamp(24px,4vw,40px);margin:4px}.overlay p{max-width:500px;color:#c5d8e6}.overlay .results{display:grid;grid-template-columns:repeat(3,1fr);width:min(500px,100%);gap:8px;margin:12px 0 24px}.overlay .results strong{font-size:28px;display:block;color:#ffe2ad}.overlay .results span{font-size:13px;color:#bcd2e2}.overlay .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.pill{font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;color:#b0f3d5}.foot{font-size:13px;color:#acbfd4;text-align:center}.hidden{display:none!important}dialog{background:#112c47;color:white;border:1px solid #658598;border-radius:18px;padding:25px;max-width:500px}dialog::backdrop{background:#021425bb}dialog h2{margin-top:0}@media(max-width:850px){.level-grid{grid-template-columns:repeat(2,1fr)}.play-layout{grid-template-columns:1fr}.bear-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{display:none}.stats-rail{grid-template-columns:repeat(3,minmax(0,1fr))}.arena{height:410px}}@media(max-width:520px){header,.shell,footer{padding:14px}.level-grid{grid-template-columns:1fr}.type-zone{display:block}.type-zone label{display:block;margin-bottom:5px}.stats-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.arena{height:360px}.hero{padding:18px}.bear-list{grid-template-columns:repeat(2,1fr)}}
+</style></head>
+<body class="river"><header><div><div class="eyebrow">Naches Learning Hub · Typing Arcade</div><h1>Grizzly Rapids</h1><p>Catch the words. Feed your bears. Master the river.</p></div><div class="mark" aria-hidden="true">🐻</div></header>
+<main class="shell"><section class="hero card"><div><div class="eyebrow">A new way to practice keyboarding</div><h2>Catch a fish. Learn a word. Explore a new stream.</h2><p>Different bears catch different kinds of food. Switch bears with Shift+1–4 or click a bear. Practice with vocabulary selected for your grade band, and watch each level grow in difficulty.</p><div class="switch"><label for="gradeSelect"><b>My grade</b></label><select id="gradeSelect" aria-label="Grade level"></select><span class="hint">Grades 1–12 · Teacher-curated practice lists</span></div></div><div class="hero-art" aria-hidden="true">🐻 <span aria-hidden="true">🌊 🐟</span></div></section>
+<section class="section-title"><div><h2>Choose a stream</h2><p>More targets, higher speeds, and more vocabulary categories at later levels.</p></div><button type="button" class="small-btn" id="help">How to play</button></section><section class="level-grid" id="levelGrid" aria-label="Choose level"></section>
+<section class="section-title"><div><h2>Your arcade</h2><p>Progress is saved in this browser only.</p></div></section>
+<div class="stats-rail"><div class="stat"><span>Level</span><strong id="levelNow">1 / 6</strong></div><div class="stat"><span>Points</span><strong id="score">0</strong></div><div class="stat"><span>Words caught</span><strong id="collected">0 / 0</strong></div><div class="stat"><span>Missed</span><strong id="missed">0</strong></div><div class="stat"><span>Accuracy · WPM</span><strong><span id="accuracy">100%</span> · <span id="wpm">0</span></strong></div></div>
+<div class="play-layout"><section class="battle card"><div class="game-bar"><h2 id="riverNumber">Choose a level above</h2><div class="buttonbar"><button class="small-btn" id="pause" type="button">Pause</button><button class="small-btn" id="restart" type="button">Restart</button><button class="small-btn" id="back" type="button">Levels</button></div></div>
+<div class="arena" id="arena"><div id="objects"></div><div class="bank"><span class="hero-bear" id="activeBearArt"></span><span>Switch bears to match food categories as the river speeds up.</span></div>
+<div class="overlay" id="startScreen"><div class="eyebrow">Ready, typist?</div><h2>The river is calling</h2><p>Choose your grade and level above. You can replay any level to improve your score.</p><span class="pill">No account · No ads · Keyboard friendly</span></div>
+<div class="overlay" id="endScreen" hidden><div class="eyebrow">Round complete</div><h2 id="endTitle">Great work!</h2><p id="endDescription"></p><div class="results"><div><strong id="finalScore">0</strong><span>Points</span></div><div><strong id="finalAcc">100%</strong><span>Accuracy</span></div><div><strong id="finalWpm">0</strong><span>Net WPM</span></div></div><div class="actions"><button class="action-btn" type="button" id="retry">Try again</button><button class="action-btn" type="button" id="nextLevel">Next level →</button><button class="small-btn" type="button" id="homeEnd">Level list</button></div></div></div>
+<div class="type-zone"><label for="typeInput">Type here</label><input id="typeInput" aria-label="Type approaching word" type="text" autocapitalize="none" spellcheck="false" autocomplete="off" autocorrect="off" placeholder="Watch for approaching words..." maxlength="35"></div><div class="progress"><div id="progressFill"></div></div><div class="status" id="status" role="status" aria-live="polite">Choose a level to begin.</div></section>
+<aside class="sidebar card"><h3>Choose your bear</h3><p>Click a bear or press Shift+1 through Shift+4.</p><div class="bear-list" id="bearCards"></div><hr style="border-color:#4d6475;margin:20px 0"><h3>Personal best</h3><p><strong id="bestScore">0</strong> high score</p><p><strong id="bestLevel">0 / 6</strong> highest cleared</p><p><strong id="totalWords">0</strong> total collected words</p><p class="hint">Scores remain on this device and browser. This prototype is not a formal spelling assessment.</p></aside></div>
+</main><footer class="foot">Original browser-based game · Grizzly Rapids · Sample vocabulary supports spelling and academic language practice, not an official state-issued word list.</footer>
+<dialog id="helpDialog"><h2>How to play</h2><p>Pick the bear for the category of food, then type its word to catch it. Press Backspace to correct. Collect the required number of words before six targets escape. Higher levels are faster and require more words.</p><p>Bears unlock gradually: Cedar at Level 1, Salmon at Level 2, Ranger at Level 3, Professor at Level 4.</p><p>Accuracy and speed are practice indicators. Words are teacher-curated by broad grade band, not an official list required by Washington state.</p><button class="action-btn" id="closeHelp">Got it</button></dialog>
+<script>const CONFIG={"mode":"river","banks":{"1-2":{"daily":["apple","big","blue","book","brother","cat","chair","cold","cookie","dog","early","family","garden","green","happy","hop","jump","lunch","pencil","play","read","run","school","sister","small","smile","sun","table","warm","water","window","write"],"nature":["ant","bear","bee","bird","cloud","duck","field","fish","flower","fox","frog","grass","grow","leaf","moss","nest","owl","pond","rain","river","rock","salmon","seed","snow","stream","tree","trout","wolf"],"world":["beach","bridge","bus","city","farm","forest","hill","home","island","lake","map","mountain","ocean","park","river","road","shop","state","store","street","town","train"],"science":["air","cloud","color","earth","heat","ice","light","moon","number","plant","rain","robot","seed","shape","shell","soil","sound","space","star","stone","sun","water","wheel","wind"]},"3-5":{"daily":["accurate","adventure","balance","careful","collect","confident","curious","discover","discuss","explore","familiar","favorite","helpful","imagine","improve","interesting","library","measure","practice","surprise","tomorrow","unusual"],"nature":["beaver","canyon","cedar","current","ecosystem","evergreen","forest","grizzly","habitat","meadow","migration","mountain","otter","predator","prey","rainfall","salmon","shoreline","stream","valley","wildlife"],"world":["capital","climate","community","compass","continent","desert","harbor","hemisphere","journey","landmark","latitude","longitude","mountain","nation","ocean","peninsula","settlement","state","territory","washington"],"science":["adaptation","asteroid","circuit","climate","ecosystem","electricity","energy","evidence","experiment","gravity","habitat","magnet","mineral","molecule","orbit","organism","oxygen","planet","telescope","temperature","volcano"]},"6-8":{"daily":["analysis","collaborate","complex","consequence","context","credible","evaluate","evidence","inference","innovation","interpret","persistence","perspective","reliable","strategy","summarize","vocabulary"],"nature":["adaptation","biodiversity","camouflage","conservation","ecosystem","estuary","habitat","migration","nutrient","pollution","population","predator","salmonid","sediment","symbiosis","watershed","wildfire"],"world":["agriculture","archaeology","civilization","culture","democracy","expedition","geography","government","history","latitude","longitude","peninsula","resource","settlement","territory","trade","watershed"],"science":["atmosphere","biodiversity","chemical","compound","condensation","ecosystem","electrical","evaporation","gravity","hypothesis","kinetic","mechanical","observation","photosynthesis","radiation","variable"]},"9-10":{"daily":["ambiguity","analytical","articulate","comprehension","contextualize","determination","evaluation","hypothesis","interpretation","methodology","perspective","proficiency","rhetorical","sophisticated","synthesis"],"nature":["atmospheric","biodiversity","conservation","ecological","environmental","hydrology","interdependence","microbiome","population","resilience","restoration","sustainability","trophic"],"world":["agricultural","chronology","constitutional","demographic","diplomacy","geopolitics","globalization","historical","industrialization","infrastructure","sovereignty","urbanization"],"science":["biodiversity","cellular","electromagnetic","equilibrium","geologic","isotope","mechanism","oxidation","quantum","reaction","respiration","spectroscopy","thermodynamics"]},"11-12":{"daily":["connotation","corroboration","denotation","discernment","epistemology","extrapolation","interdisciplinary","juxtaposition","metacognition","persuasive","qualification","synthesis"],"nature":["anthropogenic","bioaccumulation","biogeochemical","bioregional","ecological","environmental","eutrophication","phenology","restoration","succession"],"world":["constitutional","democratization","demography","geopolitical","historiography","industrialization","interdependence","socioeconomic","sovereignty"],"science":["biochemistry","electrochemistry","equilibrium","homeostasis","phosphorylation","spectroscopy","stoichiometry","superconductivity","thermodynamics"]}}};
+'use strict';
+const $=id=>document.getElementById(id);
+const GAME=CONFIG.mode;
+const isRiver=GAME==='river';
+const banks=CONFIG.banks;
+const bearNames=[{id:'daily',title:'Cedar',role:'Everyday words',color:'#f2b770',shade:'#855137',icon:'●'},{id:'nature',title:'Salmon',role:'Animals & nature',color:'#8ccf91',shade:'#487a4b',icon:'◆'},{id:'world',title:'Ranger',role:'Places & history',color:'#e0ba8e',shade:'#96703d',icon:'▲'},{id:'science',title:'Professor',role:'Science & technology',color:'#94bfed',shade:'#4c759d',icon:'✦'}];
+const storedKey='nacheshub_typing_arcade_'+GAME+'_v1';
+function getSaved(){try{return JSON.parse(localStorage.getItem(storedKey))||{}}catch(e){return {}}}
+let saved=getSaved();
+function persist(){try{localStorage.setItem(storedKey,JSON.stringify(saved))}catch(e){}}
+let state=null,raf=0,lastFrame=0,nextSpawn=0,activeTarget=null,lastTyped='',running=false,paused=false,failures=0;
+let stars='';
+const LEVELS=isRiver?[
+ {name:'Creekside Beginnings',scene:'Creek',speed:27,spawn:4200,goal:7,cats:1},
+ {name:'Pine Bend',scene:'Pine river',speed:34,spawn:3550,goal:9,cats:2},
+ {name:'Salmon Crossing',scene:'Salmon run',speed:41,spawn:3200,goal:11,cats:3},
+ {name:'Boulder Rapids',scene:'Rocky rapids',speed:49,spawn:2750,goal:13,cats:4},
+ {name:'Mountain Run',scene:'High mountain stream',speed:57,spawn:2500,goal:15,cats:4},
+ {name:'Stormwater Gorge',scene:'Storm river',speed:67,spawn:2250,goal:18,cats:4}]:[
+ {name:'Academy Orbit',scene:'Low orbit',speed:30,spawn:3900,goal:8,cats:1},
+ {name:'Meteor Trail',scene:'Asteroid field',speed:38,spawn:3250,goal:10,cats:2},
+ {name:'Nebula Passage',scene:'Nebula',speed:47,spawn:2900,goal:12,cats:3},
+ {name:'Satellite Siege',scene:'Deep orbit',speed:55,spawn:2600,goal:14,cats:4},
+ {name:'Comet Run',scene:'Comet storm',speed:64,spawn:2300,goal:16,cats:4},
+ {name:'Final Frontier',scene:'Frontier',speed:73,spawn:2150,goal:19,cats:4}];
+const colorMap={daily:'#ffd180',nature:'#9aefb0',world:'#ffcd8c',science:'#90d9ff'};
+const catNames={daily:'Everyday',nature:'Nature',world:'Places',science:'Science'};
+function bandFor(grade){return grade<=2?'1-2':grade<=5?'3-5':grade<=8?'6-8':grade<=10?'9-10':'11-12'}
+function poolFor(grade,cat,level){let x=banks[bandFor(grade)][cat]||[];
+ const minLength=Math.min(5,2+Math.floor((level-1)/3));
+ const maxBase={1:4,2:6,3:7,4:9,5:11,6:12,7:14,8:16,9:18,10:20,11:25,12:28}[grade]||10;
+ let arr=x.filter(w=>w.length>=minLength&&w.length<=maxBase+Math.floor((level-1)/2));
+ if(arr.length<7)arr=x.filter(w=>w.length>=Math.min(4,minLength));
+ if(!arr.length)arr=x;
+ return arr;
+}
+function random(list){return list[Math.floor(Math.random()*list.length)]}
+function getGrade(){return Number($('gradeSelect').value)||5}
+function activeCats(level){return bearNames.slice(0,LEVELS[level-1].cats).map(x=>x.id)}
+function bearArtwork(index=0){let n=bearNames[index];let glasses=index===3?`<rect x="40" y="48" width="21" height="15" rx="7" stroke="#293344" stroke-width="4" fill="none"/><rect x="65" y="48" width="21" height="15" rx="7" stroke="#293344" stroke-width="4" fill="none"/><path d="M61 55h4" stroke="#293344" stroke-width="4"/>`:'';
+ const hat=index===2?`<path d="M25 39h73l-14-21H42Z" fill="#467a55" stroke="#273c3b" stroke-width="3"/><path d="M25 39h73" stroke="#d4cc79" stroke-width="6"/>`:'';
+ const fish=index===1?`<path d="M27 79q14-9 28 0-14 10-28 0m0 0-8-8v16Z" fill="#77add0" stroke="#33495f" stroke-width="2"/>`:'';
+ return `<svg viewBox="0 0 122 132" aria-hidden="true"><ellipse cx="60" cy="124" rx="42" ry="6" fill="#001c24" opacity=".17"/><ellipse cx="60" cy="87" rx="42" ry="36" fill="${n.shade}" stroke="#23353f" stroke-width="3"/><circle cx="34" cy="34" r="16" fill="${n.shade}" stroke="#23353f" stroke-width="3"/><circle cx="86" cy="34" r="16" fill="${n.shade}" stroke="#23353f" stroke-width="3"/><circle cx="60" cy="59" r="43" fill="${n.color}" stroke="#23353f" stroke-width="3"/><ellipse cx="60" cy="75" rx="24" ry="18" fill="#fff0d6"/><circle cx="48" cy="56" r="5" fill="#27333e"/><circle cx="76" cy="56" r="5" fill="#27333e"/><ellipse cx="62" cy="71" rx="7" ry="5" fill="#3e3f43"/><path d="M53 80q9 8 18 0" stroke="#513c36" stroke-width="3" fill="none" stroke-linecap="round"/>${glasses}${hat}${fish}</svg>`}
+function showBears(){const cats=activeCats(state?state.level:1);$('bearCards').innerHTML=bearNames.map((n,i)=>`<button class="bear ${state&&state.cat===n.id?'active':''} ${!cats.includes(n.id)?'locked':''}" data-bear="${n.id}" ${!cats.includes(n.id)?'disabled':''} aria-pressed="${state&&state.cat===n.id?'true':'false'}"><span class="bear-art">${bearArtwork(i)}</span><span><b>${n.title}</b><small>${n.role}</small></span><kbd>${i+1}</kbd></button>`).join('');
+ document.querySelectorAll('[data-bear]').forEach(b=>b.onclick=()=>switchBear(b.dataset.bear));
+}
+function switchBear(id){if(!state||!activeCats(state.level).includes(id))return;state.cat=id;activeTarget=null;lastTyped='';$('typeInput').value='';showBears();$('typeInput').focus();status(`Now using ${bearNames.find(b=>b.id===id).title}. Look for ${bearNames.find(b=>b.id===id).role.toLowerCase()}.`)}
+function status(s){$('status').textContent=s}
+function sessionStats(){return `${state?state.score:0} points · ${state?state.caught:0} / ${state?state.goal:0} collected`}
+function refreshHud(){if(!state)return;
+ $('score').textContent=state.score.toLocaleString();$('collected').textContent=state.caught+' / '+state.goal;$('missed').textContent=state.missed;
+ $('levelNow').textContent=state.level+' / '+LEVELS.length;
+ $('progressFill').style.width=Math.min(100,100*state.caught/state.goal)+'%';
+ $('accuracy').textContent=(state.attempts?Math.round(100*(state.attempts-state.errors)/state.attempts):100)+'%';
+ $('wpm').textContent=Math.round((state.correctChars/5)/(Math.max(1,state.activeSec)/60));
+}
+function startGame(level){cancelAnimationFrame(raf);const grade=getGrade();const l=LEVELS[level-1];state={grade,level,score:0,missed:0,caught:0,goal:l.goal,cat:'daily',targets:[],attempts:0,errors:0,correctChars:0,activeSec:0,lastKeyAt:0,seen:new Set(),spawned:0,ended:false};
+ activeTarget=null;lastTyped='';$('typeInput').value='';$('typeInput').disabled=false;$('startScreen').hidden=true;$('endScreen').hidden=true;
+ $('arena').classList.toggle('fast',level>=4);$('riverNumber').textContent=l.name;
+ $('arena').style.setProperty('--speedlines',String(level/6));
+ $('arena').dataset.env=String(level);
+ running=true;paused=false;lastFrame=performance.now();nextSpawn=performance.now()+650;
+ showBears();refreshHud();status(isRiver?'Type matching food words to feed the bears. Change bears with Shift+1–4.':'Type whole enemy words to defend your station. Backspace fixes mistakes.');
+ raf=requestAnimationFrame(tick);$('typeInput').focus();
+}
+function positionTarget(t){let el=t.el;if(!el)return;el.style.left=(t.x*100)+'%';el.style.top=t.y+'px'}
+function spawn(){if(!state||state.ended||state.spawned>=state.goal+3)return;
+ const cats=activeCats(state.level),cat=random(cats),words=poolFor(state.grade,cat,state.level);
+ const available=words.filter(w=>!state.targets.some(t=>t.word===w)&&!state.seen.has(cat+'|'+w));
+ if(available.length===0)state.seen.clear();
+ const choices=available.length?available:words.filter(w=>!state.targets.some(t=>t.word===w));
+ if(!choices.length)return;
+ const word=random(choices);state.seen.add(cat+'|'+word);const x=.16+Math.random()*.68;const t={id:Math.random().toString(36).slice(2),word,cat,x,y:-28,speed:LEVELS[state.level-1].speed*(.86+Math.random()*.23),el:null};
+ let el=document.createElement('div');el.className='target';el.style.setProperty('--item',colorMap[cat]);el.innerHTML=`<span class="target-symbol">${isRiver?'🐟':'✦'}</span><strong>${word}</strong><small class="target-cat">${catNames[cat]}</small>`;el.setAttribute('aria-label',word);
+ el.onclick=()=>{if(!isRiver||state.cat===cat){activeTarget=t;$('typeInput').focus()}};
+ t.el=el;state.targets.push(t);$('objects').appendChild(el);positionTarget(t);state.spawned++;
+}
+function removeTarget(t){let idx=state.targets.indexOf(t);if(idx>=0)state.targets.splice(idx,1);t.el?.remove();if(activeTarget===t){activeTarget=null;lastTyped='';$('typeInput').value=''}}
+function endGame(won){running=false;state.ended=true;cancelAnimationFrame(raf);$('typeInput').disabled=true;
+ for(const t of [...state.targets])removeTarget(t);
+ const duration=Math.max(1,state.activeSec),net=Math.round((state.correctChars/5)/(duration/60));
+ const acc=state.attempts?Math.round(100*(state.attempts-state.errors)/state.attempts):100;
+ const key=GAME+'|'+state.grade;const old=saved[key]||{bestScore:0,wins:0,totalWords:0,totalChars:0,topLevel:0};
+ old.bestScore=Math.max(old.bestScore,state.score);old.totalWords+=state.caught;old.totalChars+=state.correctChars;old.wins+=won?1:0;old.topLevel=Math.max(old.topLevel,won?state.level:state.level-1);
+ saved[key]=old;persist();
+ $('endTitle').textContent=won?(isRiver?'Stream cleared!':'Mission complete!'):(isRiver?'River run ended':'Station breached');
+ $('endDescription').textContent=won?'You collected enough words to complete this stage.':'Practice the same level again or select a gentler grade.';
+ $('finalScore').textContent=state.score.toLocaleString();$('finalAcc').textContent=acc+'%';$('finalWpm').textContent=net;
+ $('nextLevel').hidden=!won||state.level>=LEVELS.length;
+ $('endScreen').hidden=false;$('endScreen').classList.add('active');$('status').textContent=won?'Level complete!':'Keep practicing. You can replay any level.';
+ refreshProfile();
+}
+function tick(now){if(!running||!state)return;
+ let dt=Math.min(.07,(now-lastFrame)/1000);lastFrame=now;
+ if(!paused){
+  if(now>=nextSpawn && state.spawned<state.goal+3){spawn();nextSpawn=now+LEVELS[state.level-1].spawn}
+  const bound=$('arena').clientHeight-92;
+  for(const t of [...state.targets]){t.y+=t.speed*dt;positionTarget(t);if(t.y>bound){removeTarget(t);state.missed++;refreshHud();status(isRiver?'A fish swam away. Catch the next one!':'A meteor reached the station. Keep defending!')}}
+  if(state.missed>=6){endGame(false);return}
+  if(state.caught>=state.goal){endGame(true);return}
+  if(state.spawned>=state.goal+3 && state.targets.length===0 && state.caught<state.goal){endGame(false);return}
+ }
+ raf=requestAnimationFrame(tick);
+}
+function onTyped(event){if(!state||!running||paused)return;
+ const typed=$('typeInput').value.toLowerCase().trimStart();
+ const now=performance.now();if(state.lastKeyAt&&now-state.lastKeyAt<1600)state.activeSec+=(now-state.lastKeyAt)/1000;state.lastKeyAt=now;
+ if(event.inputType==='deleteContentBackward'){lastTyped=typed;status('Correction made. Keep going.');return}
+ if(typed.length>lastTyped.length){
+  const diff=typed.length-lastTyped.length;
+  state.attempts+=diff;
+ }
+ let targets=state.targets.filter(t=>!isRiver||t.cat===state.cat);
+ if(activeTarget&&!targets.includes(activeTarget))activeTarget=null;
+ if(!activeTarget&&typed.length){activeTarget=targets.filter(t=>t.word.startsWith(typed)).sort((a,b)=>b.y-a.y)[0]||null}
+ for(const t of state.targets){t.el.classList.toggle('selected',t===activeTarget)}
+ const valid=activeTarget&&activeTarget.word.startsWith(typed);
+ $('typeInput').classList.toggle('bad',Boolean(typed&&!valid));
+ if(typed && !valid){state.errors+=Math.max(0,typed.length-lastTyped.length);status(isRiver?'That word does not match this bear. Try Backspace or switch bears.':'That does not match an approaching word. Try Backspace.');}
+ else if(activeTarget){status(`Typing ${activeTarget.word}. ${isRiver?'Your '+bearNames.find(n=>n.id===state.cat).title+' bear is ready!':'Lock onto the target!'}`)}
+ if(valid&&typed===activeTarget.word){
+  const t=activeTarget;state.caught++;state.correctChars+=t.word.length;
+  state.score+=Math.max(50,100+state.level*15-Math.floor(t.y/16));
+  let burst=document.createElement('div');burst.className='burst';burst.textContent=isRiver?'★ +food':'✦ hit!';burst.style.top=t.y+'px';burst.style.left=(t.x*100)+'%';$('objects').appendChild(burst);setTimeout(()=>burst.remove(),700);
+  removeTarget(t);activeTarget=null;$('typeInput').value='';lastTyped='';$('typeInput').classList.remove('bad');
+  status(isRiver?'Great catch! You fed your bear.':'Target eliminated!');refreshHud();
+ }else lastTyped=typed;
+ refreshHud();
+}
+function refreshProfile(){const grade=getGrade();const rec=saved[GAME+'|'+grade]||{};
+ $('bestScore').textContent=(rec.bestScore||0).toLocaleString();$('bestLevel').textContent=(rec.topLevel||0)+' / '+LEVELS.length;
+ $('totalWords').textContent=(rec.totalWords||0).toLocaleString();
+}
+function loadLevels(){const grade=getGrade();let html=LEVELS.map((l,i)=>`<button type="button" class="level" data-level="${i+1}"><span class="num">${String(i+1).padStart(2,'0')}</span><span><strong>${l.name}</strong><small>${l.goal} words · ${l.cats} ${isRiver?'bear specialties':'word categories'}</small></span><span class="arrow">→</span></button>`).join('');$('levelGrid').innerHTML=html;document.querySelectorAll('[data-level]').forEach(b=>b.onclick=()=>startGame(Number(b.dataset.level)));refreshProfile();}
+function setUp(){for(let g=1;g<=12;g++)$('gradeSelect').add(new Option('Grade '+g,String(g)));$('gradeSelect').value='5';
+ $('gradeSelect').addEventListener('change',()=>{if(running)endGame(false);loadLevels()});
+ $('typeInput').addEventListener('input',onTyped);
+ document.addEventListener('keydown',e=>{if(!running)return;
+ if(isRiver && e.shiftKey && /^Digit[1-4]$/.test(e.code)){switchBear(bearNames[Number(e.code.slice(-1))-1].id);e.preventDefault();return}
+ if(e.key==='Escape'){togglePause();return}
+ if(document.activeElement!==$('typeInput')&&e.key.length===1&&!e.altKey&&!e.ctrlKey&&!e.metaKey){$('typeInput').focus();}
+ });
+ $('pause').onclick=togglePause;
+ $('restart').onclick=()=>{if(state)startGame(state.level)};
+ $('back').onclick=()=>{running=false;cancelAnimationFrame(raf);$('startScreen').hidden=false;$('endScreen').hidden=true;$('typeInput').disabled=true;state=null;showBears();loadLevels();};
+ $('retry').onclick=()=>startGame(state.level);
+ $('nextLevel').onclick=()=>startGame(Math.min(LEVELS.length,state.level+1));
+ $('homeEnd').onclick=()=>$('back').click();
+ $('help').onclick=()=>{$('helpDialog').showModal()};$('closeHelp').onclick=()=>$('helpDialog').close();
+ $('typeInput').disabled=true;showBears();loadLevels();
+}
+function togglePause(){if(!running)return;paused=!paused;lastFrame=performance.now();$('pause').textContent=paused?'Resume':'Pause';status(paused?'Paused. Your score is safe.':'Resumed. Keep typing!');if(!paused)$('typeInput').focus();}
+setUp();
+</script>
+<script>if(true){const bearCards=document.querySelector('#bearCards');const observer=new MutationObserver(()=>{if(state&&document.querySelector('#activeBearArt')){document.querySelector('#activeBearArt').innerHTML=bearArtwork(Math.max(0,bearNames.findIndex(n=>n.id===state.cat)))}});observer.observe(bearCards,{childList:true});}</script></body></html>
