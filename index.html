@@ -5,25 +5,71 @@ a{color:#d4fafa}header,.shell,footer{max-width:1250px;margin:0 auto;padding:22px
 .shell{padding-top:10px}.card{background:rgba(19,41,66,.96);border:1px solid #48647d;border-radius:22px;box-shadow:0 12px 34px rgba(0,0,0,.15)}.hero{display:grid;grid-template-columns:1.4fr 1fr;align-items:center;gap:20px;padding:26px 30px;margin-bottom:18px}.hero h2{font-size:clamp(24px,2.5vw,36px);line-height:1.16;margin:7px 0 12px}.hero p{color:var(--muted);max-width:65ch}.hero-art{max-height:180px;text-align:center;font-size:85px;filter:drop-shadow(0 4px 15px #1f7196);user-select:none}.switch{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.switch select{background:#153b58;color:white;border:1px solid #91b5c3;border-radius:10px;padding:10px}.hint{font-size:13px;color:var(--muted)}
 .section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:22px 0 12px}.section-title h2{margin:0}.section-title p{margin:0;color:var(--muted)}.level-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.level{width:100%;border:1px solid #4d758c;border-radius:15px;background:linear-gradient(145deg,#1d4862,#13334e);color:#fff;text-align:left;padding:16px;display:flex;gap:12px;align-items:center;min-height:93px;transition:transform .12s,border-color .12s}.level:hover{transform:translateY(-2px);border-color:var(--cool)}.level small{display:block;color:#c1dce9;margin-top:2px;font-size:12px}.level .num{font-size:24px;font-weight:800;color:var(--brand)}.level .arrow{margin-left:auto;font-size:26px;color:var(--cool)}
 .stats-rail{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:15px 0}.stat{padding:12px;background:#18324e;border-radius:12px;border:1px solid #45647d}.stat>span{color:#bcd1dc;font-size:12px;display:block}.stat strong{font-size:24px;font-variant-numeric:tabular-nums}
-.play-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:16px}.battle{padding:12px;overflow:hidden}.game-bar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:0 3px 10px}.game-bar h2{margin:0;font-size:17px}.buttonbar{display:flex;gap:8px}.small-btn,.action-btn{border:1px solid #678ba2;color:white;background:#244764;border-radius:9px;padding:9px 14px}.action-btn{background:var(--brand);color:#202a35;font-weight:900;border:0}.buttonbar button:hover{filter:brightness(1.12)}.arena{height:480px;position:relative;overflow:hidden;border-radius:17px;background:linear-gradient(180deg,#0e375c,#114770 42%,#123b60);border:3px solid #49677d}.arena::before{content:'';position:absolute;inset:0;opacity:.4;pointer-events:none;background-image:radial-gradient(circle at 15% 23%,#caffff 0 2px,transparent 3px),radial-gradient(circle at 77% 19%,#caffff 0 1px,transparent 2px),radial-gradient(circle at 60% 50%,#ffffff 0 1px,transparent 2px);background-size:230px 190px}.river .arena{background:linear-gradient(180deg,#85b5b3 0,#166c8b 20%,#1d91a4 53%,#11657c 100%)}.river .arena::before{opacity:.3;background-image:repeating-linear-gradient(165deg,transparent 0 45px,#e4fcff 48px,transparent 52px,transparent 104px)}.arena[data-env="4"],.arena[data-env="5"],.arena[data-env="6"]{filter:saturate(1.1)}.bank{position:absolute;left:0;right:0;bottom:0;height:88px;background:linear-gradient(0deg,#153b44ee,#164457bb);border-top:3px solid #80bb9a;display:flex;align-items:center;justify-content:center;gap:18px}.space .bank{background:linear-gradient(#2d374f,#101726);border-top:3px solid #82ace8}.bank .hero-bear{width:75px;overflow:hidden;height:83px}.hero-bear svg{height:90px;width:82px}.station{font-size:40px;filter:drop-shadow(0 0 12px cyan)}.bank span{font-size:13px;color:#d8f5ec}.arena .target{position:absolute;min-width:76px;max-width:190px;transform:translateX(-50%);z-index:3;pointer-events:auto;text-align:center;user-select:none;filter:drop-shadow(0 3px 4px #11313b);padding:7px 9px;border-radius:13px;border:2px solid var(--item);background:#10324ee8;color:#fff;white-space:nowrap}.arena .target strong{font-size:17px;letter-spacing:.02em;display:block}.arena .target .target-symbol{font-size:22px;display:block;line-height:1}.target-cat{display:block;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--item);line-height:1.3}.arena .target.selected{border-color:#fff;outline:2px solid #fff;transform:translateX(-50%) scale(1.05)}.burst{position:absolute;z-index:7;transform:translateX(-50%);font-weight:900;color:#ffea9d;pointer-events:none;animation:rise .7s ease-out forwards}@keyframes rise{to{transform:translate(-50%,-25px);opacity:0}}
+.play-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:16px}.battle{padding:12px;overflow:hidden}.game-bar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:0 3px 10px}.game-bar h2{margin:0;font-size:17px}.buttonbar{display:flex;gap:8px}.small-btn,.action-btn{border:1px solid #678ba2;color:white;background:#244764;border-radius:9px;padding:9px 14px}.action-btn{background:var(--brand);color:#202a35;font-weight:900;border:0}.buttonbar button:hover{filter:brightness(1.12)}.arena{height:480px;position:relative;overflow:hidden;border-radius:17px;background:linear-gradient(180deg,#0e375c,#114770 42%,#123b60);border:3px solid #49677d}.arena::before{content:'';position:absolute;inset:0;opacity:.4;pointer-events:none;background-image:radial-gradient(circle at 15% 23%,#caffff 0 2px,transparent 3px),radial-gradient(circle at 77% 19%,#caffff 0 1px,transparent 2px),radial-gradient(circle at 60% 50%,#ffffff 0 1px,transparent 2px);background-size:230px 190px}.river .arena{background:linear-gradient(180deg,#85b5b3 0,#166c8b 20%,#1d91a4 53%,#11657c 100%)}.river .arena::before{opacity:.3;background-image:repeating-linear-gradient(165deg,transparent 0 45px,#e4fcff 48px,transparent 52px,transparent 104px)}.arena[data-env="4"],.arena[data-env="5"],.arena[data-env="6"]{filter:saturate(1.1)}.bank{position:absolute;left:0;right:0;bottom:0;height:88px;background:linear-gradient(0deg,#153b44ee,#164457bb);border-top:3px solid #80bb9a;display:flex;align-items:center;justify-content:center;gap:18px}.space .bank{background:linear-gradient(#2d374f,#101726);border-top:3px solid #82ace8}.bank .hero-bear{width:75px;overflow:hidden;height:83px}.hero-bear svg{height:90px;width:82px}.station{font-size:40px;filter:drop-shadow(0 0 12px cyan)}.bank span{font-size:13px;color:#d8f5ec}.arena .target{position:absolute;min-width:76px;max-width:190px;transform:translateX(-50%);z-index:3;pointer-events:auto;text-align:center;user-select:none;filter:drop-shadow(0 3px 4px #11313b);padding:7px 9px;border-radius:13px;border:2px solid var(--item);background:#10324ee8;color:#fff;white-space:nowrap}.arena .target strong{font-size:17px;letter-spacing:.02em;display:block}.arena .target .target-symbol{font-size:22px;display:block;line-height:1}.arena .target.selected{border-color:#fff;outline:2px solid #fff;transform:translateX(-50%) scale(1.05)}.burst{position:absolute;z-index:7;transform:translateX(-50%);font-weight:900;color:#ffea9d;pointer-events:none;animation:rise .7s ease-out forwards}@keyframes rise{to{transform:translate(-50%,-25px);opacity:0}}
 .type-zone{padding:16px 4px 6px;display:flex;align-items:center;gap:12px}.type-zone label{font-weight:700;white-space:nowrap}.type-zone input{width:100%;background:#0d2137;border:2px solid #78b8ba;color:white;padding:13px 17px;border-radius:13px;letter-spacing:.04em;font-size:21px}.type-zone input.bad{border-color:#ff8787;background:#462a3b}.status{min-height:26px;color:#bbdce2;font-size:14px;margin:7px 2px}.progress{height:10px;background:#0c233b;border-radius:20px;overflow:hidden}.progress div{height:100%;width:0;background:linear-gradient(90deg,#6ed7a9,#ffe2a0);transition:width .2s}
 .sidebar{padding:16px}.sidebar h3{font-size:17px;margin:0 0 8px}.sidebar p{margin:6px 0;color:#c0d5e0;font-size:13px}.bear-list{display:grid;gap:8px}.bear{width:100%;display:flex;align-items:center;text-align:left;gap:7px;background:#224258;border:2px solid transparent;border-radius:13px;padding:6px 8px;color:#fff}.bear.active{border-color:#ffe08f;background:#38586c}.bear.locked{filter:grayscale(.7)}.bear-art{width:58px;flex:none}.bear-art svg{width:58px;height:58px}.bear small{display:block;color:#d2e1e9;font-size:10px;line-height:1.2}.bear b{font-size:13px}.bear kbd{margin-left:auto;border:1px solid #7896a5;color:#ffe3a5;padding:1px 5px;border-radius:4px;font-size:11px}
 .overlay{position:absolute;inset:0;background:#071d34ec;z-index:14;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}.overlay h2{font-size:clamp(24px,4vw,40px);margin:4px}.overlay p{max-width:500px;color:#c5d8e6}.overlay .results{display:grid;grid-template-columns:repeat(3,1fr);width:min(500px,100%);gap:8px;margin:12px 0 24px}.overlay .results strong{font-size:28px;display:block;color:#ffe2ad}.overlay .results span{font-size:13px;color:#bcd2e2}.overlay .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 .pill{font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;color:#b0f3d5}.foot{font-size:13px;color:#acbfd4;text-align:center}.hidden{display:none!important}dialog{background:#112c47;color:white;border:1px solid #658598;border-radius:18px;padding:25px;max-width:500px}dialog::backdrop{background:#021425bb}dialog h2{margin-top:0}@media(max-width:850px){.level-grid{grid-template-columns:repeat(2,1fr)}.play-layout{grid-template-columns:1fr}.bear-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{display:none}.stats-rail{grid-template-columns:repeat(3,minmax(0,1fr))}.arena{height:410px}}@media(max-width:520px){header,.shell,footer{padding:14px}.level-grid{grid-template-columns:1fr}.type-zone{display:block}.type-zone label{display:block;margin-bottom:5px}.stats-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.arena{height:360px}.hero{padding:18px}.bear-list{grid-template-columns:repeat(2,1fr)}}
+
+/* V4 — centered portrait playfield, illustrated wings and keyboard-focused fullscreen */
+.play-layout{grid-template-columns:minmax(0,1fr) 242px}
+.stage-frame{display:flex;align-items:stretch;gap:10px;justify-content:center;overflow:hidden;border-radius:18px;background:#0b263d;position:relative}
+.stage-frame .arena{width:min(100%,440px);flex:0 1 440px;min-width:0;height:clamp(580px,76vh,800px);border-radius:17px;isolation:isolate;box-shadow:0 0 22px #0b1d34a6}
+.scene-side{flex:1 1 95px;min-width:30px;overflow:hidden;position:relative;background:#122e45;pointer-events:none}
+.scene-side svg{display:block;width:100%;height:100%}.scene-right svg{transform:scaleX(-1)}
+.stage-frame[data-scene="3"] .scene-side{filter:hue-rotate(-13deg) saturate(1.15)}
+.stage-frame[data-scene="4"] .scene-side{filter:hue-rotate(12deg) saturate(1.25)}
+.stage-frame[data-scene="5"] .scene-side{filter:hue-rotate(25deg) brightness(1.15)}
+.stage-frame[data-scene="6"] .scene-side{filter:hue-rotate(35deg) brightness(.72)}
+.river .arena{background:linear-gradient(168deg,#61b5c9,#248eae 30%,#1a6e95 68%,#0a5779)}
+.river .arena:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background:repeating-linear-gradient(170deg,transparent 0 32px,#d4f8ff 33px 36px,transparent 40px 85px);animation:waterflow 8s linear infinite}
+.river .target{z-index:4}
+.river .target:before{content:"";position:absolute;left:-9px;right:-9px;top:50%;height:36px;border-radius:50%;border:2px solid #cafcfe61;pointer-events:none}
+@keyframes waterflow{to{background-position:0 180px}}
+.space .arena{background:radial-gradient(circle at 50% 10%,#1d4a84,#091b45 48%,#06172e)}
+.space .arena:before{opacity:.7;background-size:180px 215px,235px 285px,300px 220px;animation:stardrift 26s linear infinite}
+@keyframes stardrift{to{background-position:0 300px,0 400px,0 220px}}
+.arena .target.selected{box-shadow:0 0 16px #b6f3ffcc;outline-color:#90f3ff}
+.arena .target.selected strong{color:#bbffff}
+.space .bank{height:94px;display:flex;flex-direction:column;gap:0;justify-content:center;padding:3px}
+.space .bank span:not(.arcade-ship){font-size:11px;max-width:90%;text-align:center}
+.arcade-ship{width:100px;height:65px;display:block;animation:shipHover 2.4s ease-in-out infinite;filter:drop-shadow(0 0 10px #53d7ff)}
+.arcade-ship svg{width:100%;height:100%;display:block}
+@keyframes shipHover{50%{transform:translateY(-6px)}}
+.laser-beam{position:absolute;z-index:9;height:4px;transform-origin:0 50%;pointer-events:none;background:linear-gradient(90deg,#99e8ff,#fff,#7bffed);border-radius:10px;box-shadow:0 0 9px 3px #61dfff,0 0 17px #73f2ff;animation:laserFlash .25s ease-out forwards}
+@keyframes laserFlash{from{opacity:1;filter:brightness(1.7)}to{opacity:0;filter:brightness(.7)}}
+.impact-ring{position:absolute;z-index:9;width:24px;height:24px;border:2px solid #adfffb;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;animation:impactFlash .3s ease-out forwards}
+@keyframes impactFlash{to{opacity:0;scale:1.8}}
+.game-setup{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 12px;padding:11px 16px}
+.game-setup label{font-weight:700;font-size:14px}.game-setup select{color:#f5fcff;background:#173d59;border:1px solid #7baccb;border-radius:9px;padding:6px 9px}
+.game-setup small{color:#c7d8e8;flex:1;min-width:160px}
+.space .scene-side{background:#101637}
+.bear small{font-size:11px}
+.bear-ability{font-size:10px;font-weight:800;color:#ffe6a2;display:block;margin-top:3px}
+.battle:fullscreen{background:#081b32;display:flex;flex-direction:column;border:0;border-radius:0;height:100vh;max-height:100vh;width:100vw;padding:12px 16px;overflow:auto}
+.battle:fullscreen .stage-frame{flex:1 1 auto;min-height:220px}
+.battle:fullscreen .stage-frame .arena{height:100%;max-height:none;width:min(48vw,460px);flex:0 1 460px}
+.battle:fullscreen .scene-side{min-width:0}
+.battle:fullscreen .game-bar{flex:none}
+.battle:fullscreen .type-zone,.battle:fullscreen .status,.battle:fullscreen .progress{flex:none}
+@media(max-width:850px){.play-layout{grid-template-columns:1fr}.stage-frame .arena{height:clamp(560px,78vh,790px)}.scene-side{flex-basis:120px}}
+@media(max-width:620px){.scene-side{flex:0 0 0;display:none}.stage-frame{background:transparent}.stage-frame .arena{flex:1 1 100%;width:100%;height:clamp(520px,76vh,730px)}.battle:fullscreen .stage-frame .arena{width:100%;flex:1}.game-setup{align-items:flex-start}}
+@media(max-height:650px){.battle:fullscreen .stage-frame .arena{height:100%}.battle:fullscreen .type-zone{padding:6px}.battle:fullscreen .game-bar{padding-bottom:4px}}
+@media(prefers-reduced-motion:reduce){.arcade-ship,.river .arena:after,.space .arena:before{animation:none}}
 </style></head>
 <body class="river"><header><div><div class="eyebrow">Naches Learning Hub · Typing Arcade</div><h1>Grizzly Rapids</h1><p>Catch the words. Feed your bears. Master the river.</p></div><div class="mark" aria-hidden="true">🐻</div></header>
 <main class="shell"><section class="hero card"><div><div class="eyebrow">A new way to practice keyboarding</div><h2>Catch a fish. Learn a word. Explore a new stream.</h2><p>Different bears catch different kinds of food. Switch bears with Shift+1–4 or click a bear, or type any visible word to switch automatically. Practice with vocabulary selected for your grade band, and watch each level grow in difficulty.</p><div class="switch"><label for="gradeSelect"><b>My grade</b></label><select id="gradeSelect" aria-label="Grade level"></select><span class="hint">Grades 1–12 · Teacher-curated practice lists</span></div></div><div class="hero-art" aria-hidden="true">🐻 <span aria-hidden="true">🌊 🐟</span></div></section>
 <section class="section-title"><div><h2>Choose a stream</h2><p>More targets, higher speeds, and more vocabulary categories at later levels.</p></div><button type="button" class="small-btn" id="help">How to play</button></section><section class="level-grid" id="levelGrid" aria-label="Choose level"></section>
-<section class="section-title"><div><h2>Your arcade</h2><p>Progress is saved in this browser only.</p></div></section>
+<section class="game-setup card"><label for="modeSelect">Game mode</label><select id="modeSelect" aria-label="Choose game mode"><option value="arcade">Arcade · 3 lives</option><option value="relaxed">Relaxed · endless practice</option></select><small>Arcade: clear each level before three misses. Relaxed: type as long as you like, then choose Finish Run.</small></section><section class="section-title"><div><h2>Your arcade</h2><p>Progress is saved in this browser only.</p></div></section>
 <div class="stats-rail"><div class="stat"><span>Level</span><strong id="levelNow">1 / 6</strong></div><div class="stat"><span>Points</span><strong id="score">0</strong></div><div class="stat"><span>Words caught</span><strong id="collected">0 / 0</strong></div><div class="stat"><span>Missed</span><strong id="missed">0</strong></div><div class="stat"><span>Accuracy · WPM</span><strong><span id="accuracy">100%</span> · <span id="wpm">0</span></strong></div></div>
-<div class="play-layout"><section class="battle card"><div class="game-bar"><h2 id="riverNumber">Choose a level above</h2><div class="buttonbar"><button class="small-btn" id="pause" type="button">Pause</button><button class="small-btn" id="restart" type="button">Restart</button><button class="small-btn" id="back" type="button">Levels</button></div></div>
-<div class="arena" id="arena"><div id="objects"></div><div class="bank"><span class="hero-bear" id="activeBearArt"></span><span>Bears catch different foods. Type a visible word to choose the right catcher!</span></div>
+<div class="play-layout"><section class="battle card" id="battle"><div class="game-bar"><h2 id="riverNumber">Choose a level above</h2><div class="buttonbar"><button class="small-btn" id="pause" type="button">Pause</button><button class="small-btn" id="restart" type="button">Restart</button><button class="small-btn" id="back" type="button">Levels</button><button class="small-btn" id="finishRun" type="button" hidden>Finish Run</button><button class="small-btn" id="fullscreen" type="button" aria-label="Toggle fullscreen">Fullscreen ⛶</button></div></div>
+<div class="stage-frame" id="stageFrame"><div class="scene-side scene-left"><svg viewBox="0 0 180 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rsky" x2="0" y2="1"><stop stop-color="#153b6c"/><stop offset=".48" stop-color="#5a94a7"/><stop offset="1" stop-color="#194d57"/></linearGradient><linearGradient id="pine" x2="0" y2="1"><stop stop-color="#276f54"/><stop offset="1" stop-color="#103a38"/></linearGradient></defs><rect width="180" height="700" fill="url(#rsky)"/><circle cx="134" cy="115" r="45" fill="#f6d591" opacity=".85"/><path d="M-30 335 49 190l52 101 53-127 65 189" fill="#75999e"/><path d="M-10 340 54 227l31 64 73-106 63 158" fill="#d8e8d7" opacity=".82"/><path d="M0 365q90-85 180 0v340H0" fill="#2f704e"/><path d="M0 457q80-100 180 0v250H0" fill="#1a493d"/><g fill="url(#pine)" stroke="#103f34" stroke-width="3"><path d="M35 380 7 448h17L0 506h69l-20-58h16Z"/><path d="M113 336 84 422h21L73 495h88l-27-73h21Z"/><path d="M172 419 147 489h14l-19 60h52l-15-60h13Z"/></g><g fill="#c2c2a0"><ellipse cx="42" cy="603" rx="43" ry="19"/><ellipse cx="154" cy="552" rx="36" ry="17"/><ellipse cx="116" cy="650" rx="64" ry="24"/></g><g fill="#e3cc71"><circle cx="28" cy="529" r="5"/><circle cx="20" cy="536" r="3"/><circle cx="36" cy="536" r="3"/><circle cx="154" cy="614" r="5"/></g><g stroke="#8ec5ac" stroke-width="3"><path d="M14 590q16-41 21-48m114 88q-14-44-10-56"/></g></svg></div><div class="arena" id="arena"><div id="objects"></div><div class="bank"><span class="hero-bear" id="activeBearArt"></span><span>Bears catch different foods. Type a visible word to choose the right catcher!</span></div>
 <div class="overlay" id="startScreen"><div class="eyebrow">Ready, typist?</div><h2>The river is calling</h2><p>Choose your grade and level above. You can replay any level to improve your score.</p><span class="pill">No account · No ads · Keyboard friendly</span></div>
-<div class="overlay" id="endScreen" hidden><div class="eyebrow">Round complete</div><h2 id="endTitle">Great work!</h2><p id="endDescription"></p><div class="results"><div><strong id="finalScore">0</strong><span>Points</span></div><div><strong id="finalAcc">100%</strong><span>Accuracy</span></div><div><strong id="finalWpm">0</strong><span>Net WPM</span></div></div><div class="actions"><button class="action-btn" type="button" id="retry">Try again</button><button class="action-btn" type="button" id="nextLevel">Next level →</button><button class="small-btn" type="button" id="homeEnd">Level list</button></div></div></div>
+<div class="overlay" id="endScreen" hidden><div class="eyebrow">Round complete</div><h2 id="endTitle">Great work!</h2><p id="endDescription"></p><div class="results"><div><strong id="finalScore">0</strong><span>Points</span></div><div><strong id="finalAcc">100%</strong><span>Accuracy</span></div><div><strong id="finalWpm">0</strong><span>Net WPM</span></div></div><div class="actions"><button class="action-btn" type="button" id="retry">Try again</button><button class="action-btn" type="button" id="nextLevel">Next level →</button><button class="small-btn" type="button" id="homeEnd">Level list</button></div></div></div><div class="scene-side scene-right"><svg viewBox="0 0 180 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rsky" x2="0" y2="1"><stop stop-color="#153b6c"/><stop offset=".48" stop-color="#5a94a7"/><stop offset="1" stop-color="#194d57"/></linearGradient><linearGradient id="pine" x2="0" y2="1"><stop stop-color="#276f54"/><stop offset="1" stop-color="#103a38"/></linearGradient></defs><rect width="180" height="700" fill="url(#rsky)"/><circle cx="134" cy="115" r="45" fill="#f6d591" opacity=".85"/><path d="M-30 335 49 190l52 101 53-127 65 189" fill="#75999e"/><path d="M-10 340 54 227l31 64 73-106 63 158" fill="#d8e8d7" opacity=".82"/><path d="M0 365q90-85 180 0v340H0" fill="#2f704e"/><path d="M0 457q80-100 180 0v250H0" fill="#1a493d"/><g fill="url(#pine)" stroke="#103f34" stroke-width="3"><path d="M35 380 7 448h17L0 506h69l-20-58h16Z"/><path d="M113 336 84 422h21L73 495h88l-27-73h21Z"/><path d="M172 419 147 489h14l-19 60h52l-15-60h13Z"/></g><g fill="#c2c2a0"><ellipse cx="42" cy="603" rx="43" ry="19"/><ellipse cx="154" cy="552" rx="36" ry="17"/><ellipse cx="116" cy="650" rx="64" ry="24"/></g><g fill="#e3cc71"><circle cx="28" cy="529" r="5"/><circle cx="20" cy="536" r="3"/><circle cx="36" cy="536" r="3"/><circle cx="154" cy="614" r="5"/></g><g stroke="#8ec5ac" stroke-width="3"><path d="M14 590q16-41 21-48m114 88q-14-44-10-56"/></g></svg></div></div>
 <div class="type-zone"><label for="typeInput">Type here</label><input id="typeInput" aria-label="Type approaching word" type="text" autocapitalize="none" spellcheck="false" autocomplete="off" autocorrect="off" placeholder="Watch for approaching words..." maxlength="35"></div><div class="progress"><div id="progressFill"></div></div><div class="status" id="status" role="status" aria-live="polite">Choose a level to begin.</div></section>
-<aside class="sidebar card"><h3>Choose your bear</h3><p>Each bear catches a different food category. Switch manually or let typing select automatically.</p><div class="bear-list" id="bearCards"></div><hr style="border-color:#4d6475;margin:20px 0"><h3>Personal best</h3><p><strong id="bestScore">0</strong> high score</p><p><strong id="bestLevel">0 / 6</strong> highest cleared</p><p><strong id="totalWords">0</strong> total collected words</p><p class="hint">Scores remain on this device and browser. This prototype is not a formal spelling assessment.</p></aside></div>
+<aside class="sidebar card"><h3>Choose your bear</h3><p>Each bear has a different vocabulary specialty and gameplay bonus. Typing a word automatically calls the correct bear.</p><div class="bear-list" id="bearCards"></div><hr style="border-color:#4d6475;margin:20px 0"><h3>Personal best</h3><p><strong id="bestScore">0</strong> high score</p><p><strong id="bestLevel">0 / 6</strong> highest cleared</p><p><strong id="totalWords">0</strong> total collected words</p><p class="hint">Scores remain on this device and browser. This prototype is not a formal spelling assessment.</p></aside></div>
 </main><footer class="foot">Original browser-based game · Grizzly Rapids · Sample vocabulary supports spelling and academic language practice, not an official state-issued word list.</footer>
-<dialog id="helpDialog"><h2>How to play</h2><p>Type any visible food word to catch it. Bears specialize by category and will automatically take turns; you can also switch manually. Press Backspace to correct. No Space or Enter required. Collect the required number of words before six targets escape. Higher levels are faster and require more words.</p><p>Bears unlock gradually: Cedar at Level 1, Salmon at Level 2, Ranger at Level 3, Professor at Level 4.</p><p>Accuracy and speed are practice indicators. Words are teacher-curated by broad grade band, not an official list required by Washington state.</p><button class="action-btn" id="closeHelp">Got it</button></dialog>
+<dialog id="helpDialog"><h2>How to play</h2><p>Type any visible food word to catch it. Bears specialize by category and will automatically take turns; you can also switch manually. Press Backspace to correct. No Space or Enter required. Collect the required number of words before three missed fish. Arcade mode has three lives; Relaxed mode runs until you finish. Higher levels are faster and require more words.</p><p>Bears unlock gradually: Cedar at Level 1, Salmon at Level 2, Ranger at Level 3, Professor at Level 4.</p><p>Accuracy and speed are practice indicators. Words are teacher-curated by broad grade band, not an official list required by Washington state.</p><button class="action-btn" id="closeHelp">Got it</button></dialog>
 <script>const CONFIG={"mode":"river","banks":{"1-2":{"daily":["apple","big","blue","book","brother","cat","chair","cold","cookie","dog","early","family","garden","green","happy","hop","jump","lunch","pencil","play","read","run","school","sister","small","smile","sun","table","warm","water","window","write"],"nature":["ant","bear","bee","bird","cloud","duck","field","fish","flower","fox","frog","grass","grow","leaf","moss","nest","owl","pond","rain","river","rock","salmon","seed","snow","stream","tree","trout","wolf"],"world":["beach","bridge","bus","city","farm","forest","hill","home","island","lake","map","mountain","ocean","park","river","road","shop","state","store","street","town","train"],"science":["air","cloud","color","earth","heat","ice","light","moon","number","plant","rain","robot","seed","shape","shell","soil","sound","space","star","stone","sun","water","wheel","wind"]},"3-5":{"daily":["accurate","adventure","balance","careful","collect","confident","curious","discover","discuss","explore","familiar","favorite","helpful","imagine","improve","interesting","library","measure","practice","surprise","tomorrow","unusual"],"nature":["beaver","canyon","cedar","current","ecosystem","evergreen","forest","grizzly","habitat","meadow","migration","mountain","otter","predator","prey","rainfall","salmon","shoreline","stream","valley","wildlife"],"world":["capital","climate","community","compass","continent","desert","harbor","hemisphere","journey","landmark","latitude","longitude","mountain","nation","ocean","peninsula","settlement","state","territory","washington"],"science":["adaptation","asteroid","circuit","climate","ecosystem","electricity","energy","evidence","experiment","gravity","habitat","magnet","mineral","molecule","orbit","organism","oxygen","planet","telescope","temperature","volcano"]},"6-8":{"daily":["analysis","collaborate","complex","consequence","context","credible","evaluate","evidence","inference","innovation","interpret","persistence","perspective","reliable","strategy","summarize","vocabulary"],"nature":["adaptation","biodiversity","camouflage","conservation","ecosystem","estuary","habitat","migration","nutrient","pollution","population","predator","salmonid","sediment","symbiosis","watershed","wildfire"],"world":["agriculture","archaeology","civilization","culture","democracy","expedition","geography","government","history","latitude","longitude","peninsula","resource","settlement","territory","trade","watershed"],"science":["atmosphere","biodiversity","chemical","compound","condensation","ecosystem","electrical","evaporation","gravity","hypothesis","kinetic","mechanical","observation","photosynthesis","radiation","variable"]},"9-10":{"daily":["ambiguity","analytical","articulate","comprehension","contextualize","determination","evaluation","hypothesis","interpretation","methodology","perspective","proficiency","rhetorical","sophisticated","synthesis"],"nature":["atmospheric","biodiversity","conservation","ecological","environmental","hydrology","interdependence","microbiome","population","resilience","restoration","sustainability","trophic"],"world":["agricultural","chronology","constitutional","demographic","diplomacy","geopolitics","globalization","historical","industrialization","infrastructure","sovereignty","urbanization"],"science":["biodiversity","cellular","electromagnetic","equilibrium","geologic","isotope","mechanism","oxidation","quantum","reaction","respiration","spectroscopy","thermodynamics"]},"11-12":{"daily":["connotation","corroboration","denotation","discernment","epistemology","extrapolation","interdisciplinary","juxtaposition","metacognition","persuasive","qualification","synthesis"],"nature":["anthropogenic","bioaccumulation","biogeochemical","bioregional","ecological","environmental","eutrophication","phenology","restoration","succession"],"world":["constitutional","democratization","demography","geopolitical","historiography","industrialization","interdependence","socioeconomic","sovereignty"],"science":["biochemistry","electrochemistry","equilibrium","homeostasis","phosphorylation","spectroscopy","stoichiometry","superconductivity","thermodynamics"]}}};
 'use strict';
 const $=id=>document.getElementById(id);
@@ -69,6 +115,51 @@ function bearArtwork(index=0){let n=bearNames[index];let glasses=index===3?`<rec
  const fish=index===1?`<path d="M27 79q14-9 28 0-14 10-28 0m0 0-8-8v16Z" fill="#77add0" stroke="#33495f" stroke-width="2"/>`:'';
  return `<svg viewBox="0 0 122 132" aria-hidden="true"><ellipse cx="60" cy="124" rx="42" ry="6" fill="#001c24" opacity=".17"/><ellipse cx="60" cy="87" rx="42" ry="36" fill="${n.shade}" stroke="#23353f" stroke-width="3"/><circle cx="34" cy="34" r="16" fill="${n.shade}" stroke="#23353f" stroke-width="3"/><circle cx="86" cy="34" r="16" fill="${n.shade}" stroke="#23353f" stroke-width="3"/><circle cx="60" cy="59" r="43" fill="${n.color}" stroke="#23353f" stroke-width="3"/><ellipse cx="60" cy="75" rx="24" ry="18" fill="#fff0d6"/><circle cx="48" cy="56" r="5" fill="#27333e"/><circle cx="76" cy="56" r="5" fill="#27333e"/><ellipse cx="62" cy="71" rx="7" ry="5" fill="#3e3f43"/><path d="M53 80q9 8 18 0" stroke="#513c36" stroke-width="3" fill="none" stroke-linecap="round"/>${glasses}${hat}${fish}</svg>`}
 
+
+// V4 gameplay modes and grade-level word challenges are independent of KeyQuest.
+const BEAR_BONUSES={daily:'Everyday words · +20% points',nature:'Nature words · current slows 20%',world:'Places · +30 points',science:'Science · 3 catches recover one life'};
+function configureModeUI(){
+  const mode=$('modeSelect');if(!mode)return;
+  $('finishRun').hidden=!(state&&running&&!state.ended&&state.mode==='relaxed');
+  mode.disabled=Boolean(state&&running&&!state.ended);
+}
+function updateMissed(){
+  if(!state)return;
+  $('missed').textContent=state.mode==='arcade'?`${state.missed} / 3`:`${state.missed} · ∞`;
+}
+function pulseAt(target){
+  if(isRiver||!target||!target.el||!$('arena'))return;
+  const a=$('arena'), x0=a.clientWidth/2, y0=a.clientHeight-83, x1=target.x*a.clientWidth,y1=target.y+24;
+  const dx=x1-x0,dy=y1-y0;
+  const beam=document.createElement('div');beam.className='laser-beam';
+  beam.style.cssText=`left:${x0}px;top:${y0}px;width:${Math.hypot(dx,dy)}px;transform:rotate(${Math.atan2(dy,dx)}rad)`;
+  const flash=document.createElement('div');flash.className='impact-ring';flash.style.cssText=`left:${x1}px;top:${y1}px`;
+  a.append(beam,flash);
+  beam.addEventListener('animationend',()=>beam.remove(),{once:true});
+  flash.addEventListener('animationend',()=>flash.remove(),{once:true});
+}
+function applyCatchBonus(target,base){
+  if(!isRiver)return base;
+  if(target.cat==='daily')return Math.round(base*1.2);
+  if(target.cat==='world')return base+30;
+  if(target.cat==='science'){
+    state.scienceCatches=(state.scienceCatches||0)+1;
+    if(state.scienceCatches>=3){
+      state.scienceCatches=0;
+      if(state.mode==='arcade'&&state.missed>0){state.missed--;status('Professor recovered one missed-food allowance!');}
+    }
+  }
+  return base;
+}
+function setFullscreenLabel(){
+  $('fullscreen').textContent=document.fullscreenElement?'Exit fullscreen':'Fullscreen ⛶';
+}
+function toggleFullscreen(){
+  if(document.fullscreenElement){document.exitFullscreen?.().catch(()=>status('Could not exit fullscreen.'));return;}
+  const target=$('battle');
+  if(!target.requestFullscreen){status('Fullscreen is not supported in this browser.');return;}
+  target.requestFullscreen().then(()=>$('typeInput').focus()).catch(()=>status('Fullscreen was blocked by the browser.'));
+}
 function showBears(){
   const cats=activeCats(state?state.level:1);
   const holder=$('bearCards');
@@ -77,7 +168,7 @@ function showBears(){
     holder.innerHTML=bearNames.map(n=>`<div class="category-token ${cats.includes(n.id)?'':'locked'}"><span class="cat-icon" style="--cat:${colorMap[n.id]}">${icons[n.id]}</span><span><b>${catNames[n.id]}</b><small>${cats.includes(n.id)?'Words in this mission':'Unlocks in a later mission'}</small></span></div>`).join('');
     return;
   }
-  holder.innerHTML=bearNames.map((n,i)=>`<button type="button" class="bear ${state&&state.cat===n.id?'active':''} ${!cats.includes(n.id)?'locked':''}" data-bear="${n.id}" ${!cats.includes(n.id)?'disabled':''} aria-pressed="${state&&state.cat===n.id?'true':'false'}"><span class="bear-art">${bearArtwork(i)}</span><span><b>${n.title}</b><small>${n.role}</small></span><kbd>${i+1}</kbd></button>`).join('');
+  holder.innerHTML=bearNames.map((n,i)=>`<button type="button" class="bear ${state&&state.cat===n.id?'active':''} ${!cats.includes(n.id)?'locked':''}" data-bear="${n.id}" ${!cats.includes(n.id)?'disabled':''} aria-pressed="${state&&state.cat===n.id?'true':'false'}"><span class="bear-art">${bearArtwork(i)}</span><span><b>${n.title}</b><small>${n.role}</small><span class="bear-ability">${BEAR_BONUSES[n.id]}</span></span><kbd>${i+1}</kbd></button>`).join('');
   holder.querySelectorAll('[data-bear]').forEach(b=>b.addEventListener('click',()=>switchBear(b.dataset.bear)));
   updateActiveBearArt();
 }
@@ -97,10 +188,10 @@ function status(s){$('status').textContent=s}
 function refreshHud(){
   if(!state)return;
   $('score').textContent=state.score.toLocaleString();
-  $('collected').textContent=state.caught+' / '+state.goal;
-  $('missed').textContent=state.missed;
+  $('collected').textContent=state.caught+' / '+(state.mode==='relaxed'?'∞':state.goal);
+  updateMissed();
   $('levelNow').textContent=state.level+' / '+LEVELS.length;
-  $('progressFill').style.width=Math.min(100,100*state.caught/state.goal)+'%';
+  $('progressFill').style.width=Math.min(100,100*state.caught/(state.mode==='relaxed'?LEVELS[state.level-1].goal:state.goal))+'%';
   $('accuracy').textContent=(state.attempts?Math.max(0,Math.round(100*(state.attempts-state.errors)/state.attempts)):100)+'%';
   $('wpm').textContent=Math.round((state.correctChars/5)/(Math.max(1,state.activeSec)/60));
 }
@@ -108,22 +199,25 @@ function clearPlayfield(){
   cancelAnimationFrame(raf);raf=0;
   // Also remove stale targets and any temporarily animated hit effects.
   $('objects').replaceChildren();
+  $('arena').querySelectorAll('.laser-beam,.impact-ring').forEach(el=>el.remove());
   activeTarget=null;lastTyped='';
   $('typeInput').value='';$('typeInput').classList.remove('bad');
   $('endScreen').hidden=true;$('endScreen').classList.remove('active');
   $('pause').textContent='Pause';
+  $('finishRun').hidden=true;
 }
 function startGame(level){
   clearPlayfield();
   const grade=getGrade(),l=LEVELS[level-1];
   if(!l)return;
-  state={grade,level,score:0,missed:0,caught:0,goal:l.goal,cat:'daily',targets:[],attempts:0,errors:0,correctChars:0,activeSec:0,lastKeyAt:0,seen:new Set(),spawned:0,ended:false};
+  const mode=$('modeSelect').value;
+  state={grade,level,mode,score:0,missed:0,caught:0,goal:mode==='relaxed'?Infinity:l.goal,cat:'daily',targets:[],attempts:0,errors:0,correctChars:0,activeSec:0,lastKeyAt:0,seen:new Set(),spawned:0,ended:false,scienceCatches:0};
   running=true;paused=false;
   $('typeInput').disabled=false;
   $('startScreen').hidden=true;
   $('arena').classList.toggle('fast',level>=4);
   $('riverNumber').textContent=l.name;
-  $('arena').dataset.env=String(level);
+  $('arena').dataset.env=String(level);$('stageFrame').dataset.scene=String(level);configureModeUI();
   lastFrame=performance.now();nextSpawn=lastFrame+l.spawn;
   showBears();refreshHud();
   status(isRiver?'Type any visible food word to catch it. Choose bears with Shift+1–4 if you like.':'Type any visible enemy word to destroy it. No Space or Enter required.');
@@ -141,10 +235,10 @@ function spawn(){
   const word=random(choices);
   state.seen.add(cat+'|'+word);
   const x=.17+Math.random()*.66;
-  const t={id:state.spawned+1,word,cat,x,y:2,speed:LEVELS[state.level-1].speed*(.86+Math.random()*.23),el:null};
+  const t={id:state.spawned+1,word,cat,x,y:2,speed:LEVELS[state.level-1].speed*(.86+Math.random()*.23)*(isRiver&&cat==='nature'?.8:1),el:null};
   const el=document.createElement('div');
   el.className='target';el.style.setProperty('--item',colorMap[cat]);
-  el.innerHTML=`<span class="target-symbol">${isRiver?'🐟':'☄'}</span><strong>${word}</strong><small class="target-cat">${catNames[cat]}</small>`;
+  el.innerHTML=`<span class="target-symbol">${isRiver?'🐟':'☄'}</span><strong>${word}</strong>`;
   el.setAttribute('aria-label',word);
   el.addEventListener('click',()=>{activeTarget=t;$('typeInput').focus();markTarget();});
   t.el=el;state.targets.push(t);$('objects').appendChild(el);positionTarget(t);state.spawned++;
@@ -168,13 +262,14 @@ function endGame(won){
   const key=GAME+'|'+state.grade;
   const old=saved[key]||{bestScore:0,wins:0,totalWords:0,totalChars:0,topLevel:0};
   old.bestScore=Math.max(old.bestScore,state.score);old.totalWords+=state.caught;
-  old.totalChars+=state.correctChars;old.wins+=won?1:0;
-  old.topLevel=Math.max(old.topLevel,won?state.level:state.level-1);
+  old.totalChars+=state.correctChars;old.wins+=won&&state.mode==='arcade'?1:0;
+  old.topLevel=Math.max(old.topLevel,won&&state.mode==='arcade'?state.level:state.level-1);
   saved[key]=old;persist();
-  $('endTitle').textContent=won?(isRiver?'Stream cleared!':'Mission complete!'):(isRiver?'River run ended':'Station breached');
-  $('endDescription').textContent=won?'You collected enough words to complete this stage.':'Replay the level to practice again, or choose another grade.';
+  $('endTitle').textContent=state.mode==='relaxed'?'Practice run complete!':won?(isRiver?'Stream cleared!':'Mission complete!'):(isRiver?'River run ended':'Station breached');
+  $('endDescription').textContent=state.mode==='relaxed'?'Your practice words and score have been recorded on this device.':won?'You collected enough words to complete this stage.':'Replay the level to practice again, or choose another grade.';
   $('finalScore').textContent=state.score.toLocaleString();$('finalAcc').textContent=acc+'%';$('finalWpm').textContent=net;
-  $('nextLevel').hidden=!won||state.level>=LEVELS.length;
+  $('nextLevel').hidden=state.mode==='relaxed'||!won||state.level>=LEVELS.length;
+  configureModeUI();
   $('endScreen').hidden=false;$('endScreen').classList.add('active');
   status(won?'Level complete!':'Keep practicing. You can replay any level.');
   refreshHud();refreshProfile();
@@ -189,9 +284,9 @@ function tick(now){
       t.y+=t.speed*dt;positionTarget(t);
       if(t.y>bound){removeTarget(t);state.missed++;refreshHud();status(isRiver?'A fish swam away. Catch the next one!':'A meteor reached the station. Keep defending!');}
     }
-    if(state.missed>=6){endGame(false);return;}
+    if(state.mode==='arcade'&&state.missed>=3){endGame(false);return;}
     if(state.caught>=state.goal){endGame(true);return;}
-    if(state.spawned>=state.goal+3&&state.targets.length===0&&state.caught<state.goal){endGame(false);return;}
+    if(state.mode==='arcade'&&state.spawned>=state.goal+3&&state.targets.length===0&&state.caught<state.goal){endGame(false);return;}
   }
   raf=requestAnimationFrame(tick);
 }
@@ -223,10 +318,11 @@ function onTyped(event){
   inp.classList.toggle('bad',Boolean(typed&&!valid));
   if(change>0&&!valid)state.errors+=change;
   markTarget();
+  if(valid&&change>0&&typed.startsWith(lastTyped)&&!isRiver)pulseAt(activeTarget);
   if(valid&&typed===activeTarget.word){
     const t=activeTarget;
     state.caught++;state.correctChars+=t.word.length;
-    state.score+=Math.max(50,100+state.level*15-Math.floor(t.y/16));
+    state.score+=applyCatchBonus(t,Math.max(50,100+state.level*15-Math.floor(t.y/16)));
     if(isRiver&&state.cat!==t.cat){state.cat=t.cat;showBears();}
     const burst=document.createElement('div');
     burst.className='burst';burst.textContent=isRiver?'★ Food collected!':'✦ Target destroyed!';
@@ -263,9 +359,9 @@ function backToLevels(){
   $('startScreen').hidden=false;$('typeInput').disabled=true;
   state=null;
   $('riverNumber').textContent='Choose a '+(isRiver?'stream':'mission')+' above';
-  $('score').textContent='0';$('collected').textContent='0 / 0';$('missed').textContent='0';
+  $('score').textContent='0';$('collected').textContent='0 / 0';$('missed').textContent='0 / 3';
   $('accuracy').textContent='100%';$('wpm').textContent='0';$('progressFill').style.width='0%';
-  status('Choose a level to begin.');showBears();loadLevels();
+  status('Choose a level to begin.');configureModeUI();showBears();loadLevels();
 }
 function setUp(){
   for(let g=1;g<=12;g++)$('gradeSelect').add(new Option('Grade '+g,String(g)));
@@ -282,6 +378,9 @@ function setUp(){
     if(document.activeElement!==$('typeInput')&&e.key.length===1&&!e.altKey&&!e.ctrlKey&&!e.metaKey){$('typeInput').focus();}
   });
   $('pause').addEventListener('click',togglePause);
+  $('fullscreen').addEventListener('click',toggleFullscreen);document.addEventListener('fullscreenchange',setFullscreenLabel);
+  $('finishRun').addEventListener('click',()=>{if(state&&running&&state.mode==='relaxed')endGame(true);});
+  $('modeSelect').addEventListener('change',backToLevels);
   $('restart').addEventListener('click',()=>{if(state)startGame(state.level);});
   $('back').addEventListener('click',backToLevels);
   $('retry').addEventListener('click',()=>{if(state)startGame(state.level);});
@@ -289,7 +388,7 @@ function setUp(){
   $('homeEnd').addEventListener('click',backToLevels);
   $('help').addEventListener('click',()=>$('helpDialog').showModal());
   $('closeHelp').addEventListener('click',()=>$('helpDialog').close());
-  $('typeInput').disabled=true;showBears();loadLevels();
+  $('typeInput').disabled=true;configureModeUI();showBears();loadLevels();
 }
 function togglePause(){
   if(!running)return;
