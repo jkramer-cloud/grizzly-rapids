@@ -1,465 +1,66 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Grizzly Rapids, a grade-adjustable educational typing arcade game for the Naches Learning Hub."><title>Grizzly Rapids · Naches Learning Hub</title><style>
-:root{--bg:#0b172b;--panel:#122943;--panel2:#183551;--ink:#eff9fd;--muted:#b6ccdd;--brand:#ffca77;--cool:#77efe3;--line:#456077;--bad:#ffa3a3}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 15% 0,#234563 0,transparent 36%),linear-gradient(#0b1c31,#070e1e);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}body.space{--brand:#99d7ff;--cool:#7dd9ff}body.river{--brand:#ffe0a2;--cool:#8ce9c5}button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--brand);outline-offset:3px}button:disabled{opacity:.4;cursor:not-allowed}[hidden]{display:none!important}
-a{color:#d4fafa}header,.shell,footer{max-width:1250px;margin:0 auto;padding:22px 24px}.eyebrow{text-transform:uppercase;letter-spacing:.19em;font-size:12px;font-weight:900;color:var(--cool)}header{display:flex;align-items:center;justify-content:space-between;gap:18px}header h1{margin:0;font-size:clamp(26px,3vw,42px);line-height:1.1;letter-spacing:-.04em}header p{color:var(--muted);margin:7px 0 0}header .mark{background:rgba(255,255,255,.08);padding:12px;border:1px solid #66849c;border-radius:18px;min-width:60px;text-align:center;font-size:30px}
-.shell{padding-top:10px}.card{background:rgba(19,41,66,.96);border:1px solid #48647d;border-radius:22px;box-shadow:0 12px 34px rgba(0,0,0,.15)}.hero{display:grid;grid-template-columns:1.4fr 1fr;align-items:center;gap:20px;padding:26px 30px;margin-bottom:18px}.hero h2{font-size:clamp(24px,2.5vw,36px);line-height:1.16;margin:7px 0 12px}.hero p{color:var(--muted);max-width:65ch}.hero-art{max-height:180px;text-align:center;font-size:85px;filter:drop-shadow(0 4px 15px #1f7196);user-select:none}.switch{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.switch select{background:#153b58;color:white;border:1px solid #91b5c3;border-radius:10px;padding:10px}.hint{font-size:13px;color:var(--muted)}
-.section-title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:22px 0 12px}.section-title h2{margin:0}.section-title p{margin:0;color:var(--muted)}.level-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.level{width:100%;border:1px solid #4d758c;border-radius:15px;background:linear-gradient(145deg,#1d4862,#13334e);color:#fff;text-align:left;padding:16px;display:flex;gap:12px;align-items:center;min-height:93px;transition:transform .12s,border-color .12s}.level:hover{transform:translateY(-2px);border-color:var(--cool)}.level small{display:block;color:#c1dce9;margin-top:2px;font-size:12px}.level .num{font-size:24px;font-weight:800;color:var(--brand)}.level .arrow{margin-left:auto;font-size:26px;color:var(--cool)}
-.stats-rail{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:15px 0}.stat{padding:12px;background:#18324e;border-radius:12px;border:1px solid #45647d}.stat>span{color:#bcd1dc;font-size:12px;display:block}.stat strong{font-size:24px;font-variant-numeric:tabular-nums}
-.play-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:16px}.battle{padding:12px;overflow:hidden}.game-bar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:0 3px 10px}.game-bar h2{margin:0;font-size:17px}.buttonbar{display:flex;gap:8px}.small-btn,.action-btn{border:1px solid #678ba2;color:white;background:#244764;border-radius:9px;padding:9px 14px}.action-btn{background:var(--brand);color:#202a35;font-weight:900;border:0}.buttonbar button:hover{filter:brightness(1.12)}.arena{height:480px;position:relative;overflow:hidden;border-radius:17px;background:linear-gradient(180deg,#0e375c,#114770 42%,#123b60);border:3px solid #49677d}.arena::before{content:'';position:absolute;inset:0;opacity:.4;pointer-events:none;background-image:radial-gradient(circle at 15% 23%,#caffff 0 2px,transparent 3px),radial-gradient(circle at 77% 19%,#caffff 0 1px,transparent 2px),radial-gradient(circle at 60% 50%,#ffffff 0 1px,transparent 2px);background-size:230px 190px}.river .arena{background:linear-gradient(180deg,#85b5b3 0,#166c8b 20%,#1d91a4 53%,#11657c 100%)}.river .arena::before{opacity:.3;background-image:repeating-linear-gradient(165deg,transparent 0 45px,#e4fcff 48px,transparent 52px,transparent 104px)}.arena[data-env="4"],.arena[data-env="5"],.arena[data-env="6"]{filter:saturate(1.1)}.bank{position:absolute;left:0;right:0;bottom:0;height:88px;background:linear-gradient(0deg,#153b44ee,#164457bb);border-top:3px solid #80bb9a;display:flex;align-items:center;justify-content:center;gap:18px}.space .bank{background:linear-gradient(#2d374f,#101726);border-top:3px solid #82ace8}.bank .hero-bear{width:75px;overflow:hidden;height:83px}.hero-bear svg{height:90px;width:82px}.station{font-size:40px;filter:drop-shadow(0 0 12px cyan)}.bank span{font-size:13px;color:#d8f5ec}.arena .target{position:absolute;min-width:76px;max-width:190px;transform:translateX(-50%);z-index:3;pointer-events:auto;text-align:center;user-select:none;filter:drop-shadow(0 3px 4px #11313b);padding:7px 9px;border-radius:13px;border:2px solid var(--item);background:#10324ee8;color:#fff;white-space:nowrap}.arena .target strong{font-size:17px;letter-spacing:.02em;display:block}.arena .target .target-symbol{font-size:22px;display:block;line-height:1}.space .target{background:linear-gradient(155deg,#202f59,#11243f);border-radius:22px;box-shadow:0 2px 14px #132e61}.space .target-symbol{color:#e2b6ff;text-shadow:0 0 13px #cea3ff}.arena .target.selected{border-color:#fff;outline:2px solid #fff;transform:translateX(-50%) scale(1.05)}.burst{position:absolute;z-index:7;transform:translateX(-50%);font-weight:900;color:#ffea9d;pointer-events:none;animation:rise .7s ease-out forwards}@keyframes rise{to{transform:translate(-50%,-25px);opacity:0}}
-.type-zone{padding:16px 4px 6px;display:flex;align-items:center;gap:12px}.type-zone label{font-weight:700;white-space:nowrap}.type-zone input{width:100%;background:#0d2137;border:2px solid #78b8ba;color:white;padding:13px 17px;border-radius:13px;letter-spacing:.04em;font-size:21px}.type-zone input.bad{border-color:#ff8787;background:#462a3b}.status{min-height:26px;color:#bbdce2;font-size:14px;margin:7px 2px}.progress{height:10px;background:#0c233b;border-radius:20px;overflow:hidden}.progress div{height:100%;width:0;background:linear-gradient(90deg,#6ed7a9,#ffe2a0);transition:width .2s}
-.sidebar{padding:16px}.sidebar h3{font-size:17px;margin:0 0 8px}.sidebar p{margin:6px 0;color:#c0d5e0;font-size:13px}.bear-list{display:grid;gap:8px}.bear{width:100%;display:flex;align-items:center;text-align:left;gap:7px;background:#224258;border:2px solid transparent;border-radius:13px;padding:6px 8px;color:#fff}.bear.active{border-color:#ffe08f;background:#38586c}.bear.locked{filter:grayscale(.7)}.bear-art{width:58px;flex:none}.bear-art svg{width:58px;height:58px}.category-token{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid #56779c;background:#17354f;border-radius:12px}.category-token.locked{opacity:.48}.cat-icon{width:48px;height:44px;display:grid;place-items:center;border-radius:10px;background:#0c223a;color:var(--cat);font-size:20px;font-weight:900}.category-token b{display:block}.category-token small{display:block;font-size:11px;color:#c3d9e5}.bear small{display:block;color:#d2e1e9;font-size:10px;line-height:1.2}.bear b{font-size:13px}.bear kbd{margin-left:auto;border:1px solid #7896a5;color:#ffe3a5;padding:1px 5px;border-radius:4px;font-size:11px}
-.overlay{position:absolute;inset:0;background:#071d34ec;z-index:14;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}.overlay h2{font-size:clamp(24px,4vw,40px);margin:4px}.overlay p{max-width:500px;color:#c5d8e6}.overlay .results{display:grid;grid-template-columns:repeat(3,1fr);width:min(500px,100%);gap:8px;margin:12px 0 24px}.overlay .results strong{font-size:28px;display:block;color:#ffe2ad}.overlay .results span{font-size:13px;color:#bcd2e2}.overlay .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.pill{font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;color:#b0f3d5}.foot{font-size:13px;color:#acbfd4;text-align:center}.hidden{display:none!important}dialog{background:#112c47;color:white;border:1px solid #658598;border-radius:18px;padding:25px;max-width:500px}dialog::backdrop{background:#021425bb}dialog h2{margin-top:0}@media(max-width:850px){.level-grid{grid-template-columns:repeat(2,1fr)}.play-layout{grid-template-columns:1fr}.bear-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{display:none}.stats-rail{grid-template-columns:repeat(3,minmax(0,1fr))}.arena{height:410px}}@media(max-width:520px){header,.shell,footer{padding:14px}.level-grid{grid-template-columns:1fr}.type-zone{display:block}.type-zone label{display:block;margin-bottom:5px}.stats-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.arena{height:360px}.hero{padding:18px}.bear-list{grid-template-columns:repeat(2,1fr)}}
-
-
-/* V4 — centered portrait playfield, illustrated wings and keyboard-focused fullscreen */
-.play-layout{grid-template-columns:minmax(0,1fr) 242px}
-.stage-frame{display:flex;align-items:stretch;gap:10px;justify-content:center;overflow:hidden;border-radius:18px;background:#0b263d;position:relative}
-.stage-frame .arena{width:min(100%,440px);flex:0 1 440px;min-width:0;height:clamp(580px,76vh,800px);border-radius:17px;isolation:isolate;box-shadow:0 0 22px #0b1d34a6}
-.scene-side{flex:1 1 95px;min-width:30px;overflow:hidden;position:relative;background:#122e45;pointer-events:none}
-.scene-side svg{display:block;width:100%;height:100%}.scene-right svg{transform:scaleX(-1)}
-.stage-frame[data-scene="3"] .scene-side{filter:hue-rotate(-13deg) saturate(1.15)}
-.stage-frame[data-scene="4"] .scene-side{filter:hue-rotate(12deg) saturate(1.25)}
-.stage-frame[data-scene="5"] .scene-side{filter:hue-rotate(25deg) brightness(1.15)}
-.stage-frame[data-scene="6"] .scene-side{filter:hue-rotate(35deg) brightness(.72)}
-.river .arena{background:linear-gradient(168deg,#61b5c9,#248eae 30%,#1a6e95 68%,#0a5779)}
-.river .arena:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background:repeating-linear-gradient(170deg,transparent 0 32px,#d4f8ff 33px 36px,transparent 40px 85px);animation:waterflow 8s linear infinite}
-.river .target{z-index:4}
-.river .target:before{content:"";position:absolute;left:-9px;right:-9px;top:50%;height:36px;border-radius:50%;border:2px solid #cafcfe61;pointer-events:none}
-@keyframes waterflow{to{background-position:0 180px}}
-.space .arena{background:radial-gradient(circle at 50% 10%,#1d4a84,#091b45 48%,#06172e)}
-.space .arena:before{opacity:.7;background-size:180px 215px,235px 285px,300px 220px;animation:stardrift 26s linear infinite}
-@keyframes stardrift{to{background-position:0 300px,0 400px,0 220px}}
-.arena .target.selected{box-shadow:0 0 16px #b6f3ffcc;outline-color:#90f3ff}
-.arena .target.selected strong{color:#bbffff}
-.space .bank{height:94px;display:flex;flex-direction:column;gap:0;justify-content:center;padding:3px}
-.space .bank span:not(.arcade-ship){font-size:11px;max-width:90%;text-align:center}
-.arcade-ship{width:100px;height:65px;display:block;animation:shipHover 2.4s ease-in-out infinite;filter:drop-shadow(0 0 10px #53d7ff)}
-.arcade-ship svg{width:100%;height:100%;display:block}
-@keyframes shipHover{50%{transform:translateY(-6px)}}
-.laser-beam{position:absolute;z-index:9;height:4px;transform-origin:0 50%;pointer-events:none;background:linear-gradient(90deg,#99e8ff,#fff,#7bffed);border-radius:10px;box-shadow:0 0 9px 3px #61dfff,0 0 17px #73f2ff;animation:laserFlash .25s ease-out forwards}
-@keyframes laserFlash{from{opacity:1;filter:brightness(1.7)}to{opacity:0;filter:brightness(.7)}}
-.impact-ring{position:absolute;z-index:9;width:24px;height:24px;border:2px solid #adfffb;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;animation:impactFlash .3s ease-out forwards}
-@keyframes impactFlash{to{opacity:0;scale:1.8}}
-.game-setup{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 12px;padding:11px 16px}
-.game-setup label{font-weight:700;font-size:14px}.game-setup select{color:#f5fcff;background:#173d59;border:1px solid #7baccb;border-radius:9px;padding:6px 9px}
-.game-setup small{color:#c7d8e8;flex:1;min-width:160px}
-.space .scene-side{background:#101637}
-.bear small{font-size:11px}
-.bear-ability{font-size:10px;font-weight:800;color:#ffe6a2;display:block;margin-top:3px}
-.battle:fullscreen{background:#081b32;display:flex;flex-direction:column;border:0;border-radius:0;height:100vh;max-height:100vh;width:100vw;padding:12px 16px;overflow:auto}
-.battle:fullscreen .stage-frame{flex:1 1 auto;min-height:220px}
-.battle:fullscreen .stage-frame .arena{height:100%;max-height:none;width:min(48vw,460px);flex:0 1 460px}
-.battle:fullscreen .scene-side{min-width:0}
-.battle:fullscreen .game-bar{flex:none}
-.battle:fullscreen .type-zone,.battle:fullscreen .status,.battle:fullscreen .progress{flex:none}
-@media(max-width:850px){.play-layout{grid-template-columns:1fr}.stage-frame .arena{height:clamp(560px,78vh,790px)}.scene-side{flex-basis:120px}}
-@media(max-width:620px){.scene-side{flex:0 0 0;display:none}.stage-frame{background:transparent}.stage-frame .arena{flex:1 1 100%;width:100%;height:clamp(520px,76vh,730px)}.battle:fullscreen .stage-frame .arena{width:100%;flex:1}.game-setup{align-items:flex-start}}
-@media(max-height:650px){.battle:fullscreen .stage-frame .arena{height:100%}.battle:fullscreen .type-zone{padding:6px}.battle:fullscreen .game-bar{padding-bottom:4px}}
-@media(prefers-reduced-motion:reduce){.arcade-ship,.river .arena:after,.space .arena:before{animation:none}}
-
-/* V5 mission flow, cosmetics and hit effects */
-.mission-entry{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:22px 26px;margin:18px 0}.mission-entry h2{margin:5px 0}.mission-entry p{margin:0;color:var(--muted)}.mission-start{background:#fbc878;color:#17253a;border:0;border-radius:13px;padding:17px 25px;font-weight:900;font-size:19px;cursor:pointer;box-shadow:0 5px 24px #ffd77b33}.mission-start:hover{filter:brightness(1.12)}.mission-track{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}.mission-track span{border:1px solid #53738b;border-radius:7px;min-width:30px;padding:4px 7px;text-align:center;font-size:12px;color:#c9d9e6}.mission-track span.done{background:#245d53;color:#d6fff6}.mission-track span.current{background:#e6b464;color:#0c2131;font-weight:900}.customize{padding:15px 20px;margin-bottom:12px}.customize-grid{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:12px;margin:8px 0}.customize-grid label{display:flex;flex-direction:column;font-size:13px;font-weight:700;gap:5px}.customize-grid select{width:100%;background:#163b59;color:#fff;border:1px solid #739bb6;border-radius:9px;padding:9px}.customize small{color:#c1d4e6}.explosion{position:absolute;z-index:15;pointer-events:none;width:90px;height:90px;transform:translate(-50%,-50%);border-radius:50%;animation:boom .5s ease-out forwards;background:radial-gradient(circle,#fff 0 8%,#fff9ad 9% 17%,#ffbc53 18% 33%,#fc6a4a66 34% 52%,transparent 64%);box-shadow:0 0 25px #ffc55baa}.explosion:after{content:'✦ ✧ ✦ ✧';position:absolute;inset:-12px;display:grid;place-items:center;color:#fff5a8;font-size:23px;letter-spacing:5px;animation:boomParticles .5s ease-out forwards}@keyframes boom{0%{opacity:1;scale:.3}55%{opacity:1;scale:1.5}100%{opacity:0;scale:2}}@keyframes boomParticles{to{transform:rotate(60deg) scale(1.9);opacity:0}}.space .arcade-ship[data-ship="interceptor"]{filter:drop-shadow(0 0 12px #ffb35b) hue-rotate(155deg);transform:scale(1.08)}.space .arcade-ship[data-ship="guardian"]{filter:drop-shadow(0 0 14px #ca91ff) hue-rotate(75deg);transform:scale(1.13)}@media(max-width:750px){.customize-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mission-entry{align-items:stretch}.mission-start{width:100%}}@media(max-width:440px){.customize-grid{grid-template-columns:1fr}}
-
-/* v2 river environment polish */
-.river .scene-side{background:linear-gradient(#80a77a,#274e43)}
-.river .arena{background:repeating-linear-gradient(167deg,#227f99 0 46px,#2d9db1 48px,#23788c 72px,#12637b 115px);}
-.river .arena::after{opacity:.38}
-.river .bank{background:linear-gradient(0deg,#2a4f37,#477342);border-color:#a6c778}
-.river .target{background:#173c4be8}
-.river .target-symbol{filter:drop-shadow(0 2px 3px #062a28)}
-</style></head>
-<body class="river"><header><div><div class="eyebrow">Naches Learning Hub · Typing Arcade</div><h1>Grizzly Rapids</h1><p>Catch the food. Navigate the rapids. Build typing confidence.</p></div><div class="mark" aria-hidden="true">🚀</div></header>
-<main class="shell"><section class="hero card"><div><div class="eyebrow">A new way to practice keyboarding</div><h2>A winding river. A new challenge. Another word mastered.</h2><p>Begin with familiar words and unlock more vocabulary categories in later rivers. Practice with vocabulary selected for your grade band, and watch each level grow in difficulty.</p><div class="switch"><label for="gradeSelect"><b>My grade</b></label><select id="gradeSelect" aria-label="Grade level"></select><span class="hint">Grades 1–12 · Teacher-curated practice lists</span></div></div><div class="hero-art" aria-hidden="true">🐻 <span aria-hidden="true">🐟 🌲</span></div></section>
-<section class="mission-entry card" id="missionEntry"><div><div class="eyebrow">Your next mission</div><h2 id="entryTitle">Level 1 · First Contact</h2><p id="entryDescription">Begin with Level 1 and unlock each of the twelve missions in order.</p><div class="mission-track" id="missionTrack" aria-label="Mission progress"></div></div><button type="button" id="startMission" class="mission-start">▶ Start Level 1</button><button class="small-btn" type="button" id="help">How to play</button></section><section id="levelGrid" hidden></section>
-<section class="game-setup card"><label for="modeSelect">Game mode</label><select id="modeSelect" aria-label="Choose game mode"><option value="arcade">Arcade · 3 lives</option><option value="relaxed">Relaxed · endless practice</option></select><small>Arcade: clear each level before three misses. Relaxed: type as long as you like, then choose Finish Run.</small></section><section class="section-title"><div><h2>Your river adventure</h2><p>Progress is saved in this browser only.</p></div></section>
-<section class="customize card"><div class="eyebrow">River adventure options</div><div class="customize-grid"><label>Ship style <select id="shipSelect"><option value="scout">Scout · Starter</option><option value="interceptor">Interceptor · Unlock Level 4</option><option value="guardian">Guardian · Unlock Level 8</option></select></label><label>Laser color <select id="laserSelect"><option value="cyan">Cyan</option><option value="red">Red</option><option value="green">Green</option><option value="purple">Purple</option><option value="gold">Gold</option><option value="rainbow">Rainbow · Unlock Level 12</option></select></label><label>Music <select id="musicSelect"><option value="on">On</option><option value="off">Off</option></select></label><label>Effects <select id="effectsSelect"><option value="on">On</option><option value="off">Off</option></select></label></div><small>Sound begins after you press Start. Customize your ship and lasers without affecting your typing score.</small></section><div class="stats-rail"><div class="stat"><span>Level</span><strong id="levelNow">1 / 6</strong></div><div class="stat"><span>Points</span><strong id="score">0</strong></div><div class="stat"><span>Targets destroyed</span><strong id="collected">0 / 0</strong></div><div class="stat"><span>Station hits</span><strong id="missed">0</strong></div><div class="stat"><span>Accuracy · WPM</span><strong><span id="accuracy">100%</span> · <span id="wpm">0</span></strong></div></div>
-<div class="play-layout"><section class="battle card" id="battle"><div class="game-bar"><h2 id="riverNumber">Press Start River above</h2><div class="buttonbar"><button class="small-btn" id="pause" type="button">Pause</button><button class="small-btn" id="restart" type="button">Restart</button><button class="small-btn" id="back" type="button">River menu</button><button class="small-btn" id="finishRun" type="button" hidden>Finish Run</button><button class="small-btn" id="fullscreen" type="button" aria-label="Toggle fullscreen">Fullscreen ⛶</button></div></div>
-<div class="stage-frame" id="stageFrame"><div class="scene-side scene-left"><svg viewBox="0 0 180 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="riverbank" x2="0" y2="1"><stop stop-color="#84ae83"/><stop offset="1" stop-color="#235c4b"/></linearGradient></defs><rect width="180" height="700" fill="url(#riverbank)"/><path d="M0 20 85 0 150 62 170 130 110 190 180 280 140 360 180 480 102 550 180 670 180 700 0 700Z" fill="#466b42"/><path d="M0 0 55 40 0 100M0 240 60 315 0 410M0 520 80 610 0 700" fill="none" stroke="#93c17a" stroke-width="22" opacity=".4"/><g fill="#69836d" stroke="#3d504d" stroke-width="5"><ellipse cx="95" cy="135" rx="48" ry="30"/><ellipse cx="45" cy="465" rx="44" ry="28"/><ellipse cx="127" cy="605" rx="50" ry="34"/></g><g fill="#277b50"><circle cx="32" cy="200" r="36"/><circle cx="84" cy="276" r="40"/><circle cx="35" cy="378" r="30"/><circle cx="127" cy="405" r="44"/><circle cx="38" cy="650" r="30"/></g><path d="M180 240 Q98 252 65 300T0 332" stroke="#b6e5e7" stroke-width="24" fill="none" opacity=".7"/><path d="M180 240 Q98 252 65 300T0 332" stroke="#318da1" stroke-width="15" fill="none"/></svg></div><div class="arena" id="arena"><div id="objects"></div><div class="bank"><span class="arcade-ship" aria-label="Grizzly bear"><svg viewBox="0 0 138 104" role="img" aria-label="Grizzly bear"><defs><linearGradient id="hull" x2="0" y2="1"><stop stop-color="#9eefff"/><stop offset="1" stop-color="#3a64c9"/></linearGradient></defs><path d="M66 6 83 40l27 10 20 31-44-7-17 23-17-23-44 7 20-31 27-10Z" fill="url(#hull)" stroke="#d1fbff" stroke-width="4"/><path d="M69 13 81 64H57Z" fill="#133b8d" stroke="#9eeeff" stroke-width="2"/><ellipse cx="69" cy="47" rx="10" ry="17" fill="#55fcff"/><path d="M48 74 53 100 66 75M90 74 85 100 72 75" fill="#f6a2f9" opacity=".95"/><circle cx="15" cy="74" r="5" fill="#7fe8ff"/><circle cx="123" cy="74" r="5" fill="#7fe8ff"/></svg></span><span>Type a word to help the grizzly catch the food.</span></div>
-<div class="overlay" id="startScreen"><div class="eyebrow">Ready, typist?</div><h2>The river is ready</h2><p>Choose your grade and press Start River. Complete missions in order to unlock all twelve levels.</p><span class="pill">No account · No ads · Keyboard friendly</span></div>
-<div class="overlay" id="endScreen" hidden><div class="eyebrow">Round complete</div><h2 id="endTitle">Great work!</h2><p id="endDescription"></p><div class="results"><div><strong id="finalScore">0</strong><span>Points</span></div><div><strong id="finalAcc">100%</strong><span>Accuracy</span></div><div><strong id="finalWpm">0</strong><span>Net WPM</span></div></div><div class="actions"><button class="action-btn" type="button" id="retry">Try again</button><button class="action-btn" type="button" id="nextLevel">Next level →</button><button class="small-btn" type="button" id="homeEnd">River menu</button></div></div></div><div class="scene-side scene-right"><svg viewBox="0 0 180 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="riverbank" x2="0" y2="1"><stop stop-color="#84ae83"/><stop offset="1" stop-color="#235c4b"/></linearGradient></defs><rect width="180" height="700" fill="url(#riverbank)"/><path d="M0 20 85 0 150 62 170 130 110 190 180 280 140 360 180 480 102 550 180 670 180 700 0 700Z" fill="#466b42"/><path d="M0 0 55 40 0 100M0 240 60 315 0 410M0 520 80 610 0 700" fill="none" stroke="#93c17a" stroke-width="22" opacity=".4"/><g fill="#69836d" stroke="#3d504d" stroke-width="5"><ellipse cx="95" cy="135" rx="48" ry="30"/><ellipse cx="45" cy="465" rx="44" ry="28"/><ellipse cx="127" cy="605" rx="50" ry="34"/></g><g fill="#277b50"><circle cx="32" cy="200" r="36"/><circle cx="84" cy="276" r="40"/><circle cx="35" cy="378" r="30"/><circle cx="127" cy="405" r="44"/><circle cx="38" cy="650" r="30"/></g><path d="M180 240 Q98 252 65 300T0 332" stroke="#b6e5e7" stroke-width="24" fill="none" opacity=".7"/><path d="M180 240 Q98 252 65 300T0 332" stroke="#318da1" stroke-width="15" fill="none"/></svg></div></div>
-<div class="type-zone"><label for="typeInput">Type here</label><input id="typeInput" aria-label="Type approaching word" type="text" autocapitalize="none" spellcheck="false" autocomplete="off" autocorrect="off" placeholder="Watch for approaching words..." maxlength="35"></div><div class="progress"><div id="progressFill"></div></div><div class="status" id="status" role="status" aria-live="polite">Choose a level to begin.</div></section>
-<aside class="sidebar card"><h3>River vocabulary</h3><p>Each mission introduces new categories. Type any visible food word.</p><div class="bear-list" id="bearCards"></div><hr style="border-color:#4d6475;margin:20px 0"><h3>Personal best</h3><p><strong id="bestScore">0</strong> high score</p><p><strong id="bestLevel">0 / 6</strong> highest cleared</p><p><strong id="totalWords">0</strong> total words defended</p><p class="hint">Scores remain on this device and browser. This prototype is not a formal spelling assessment.</p></aside></div>
-</main><footer class="foot">Original browser-based game · Grizzly Rapids · Sample vocabulary supports spelling and academic language practice, not an official state-issued word list.</footer>
-<dialog id="helpDialog"><h2>How to play</h2><p>Type the word attached to a fish. The word is accepted as soon as its final letter is typed. Press Backspace to correct. In Arcade mode you have three lives. Relaxed mode is endless until you finish your run. Higher levels are faster and require more words.</p><p>Word categories unlock gradually as missions progress. There are no bears or category-switching controls in Grizzly Rapids.</p><p>Accuracy and speed are practice indicators. Words are teacher-curated by broad grade band, not an official list required by Washington state.</p><button class="action-btn" id="closeHelp">Got it</button></dialog>
-<script>const CONFIG={"mode":"river","banks":{"1-2":{"daily":["after","again","also","apple","around","ask","away","baby","back","ball","bath","bed","bell","best","big","bike","bird","black","blue","boat","book","box","bread","bring","brother","brown","cake","call","came","can","car","card","cat","catch","chair","clean","clock","coat","cold","cookie","corn","cow","cup","dad","dark","day","desk","dog","door","down","draw","dream","drink","early","eat","egg","eight","every","face","family","fast","feet","fire","five","flag","food","foot","four","friend","fun","game","garden","gift","girl","give","glad","glue","go","good","grape","green","hand","happy","hat","help","high","home","hop","hope","hot","house","jump","kind","king","kite","lamp","laugh","left","lemon","like","line","little","look","love","lunch","make","milk","mom","more","mouse","name","near","need","new","nice","night","nine","nose","open","orange","page","paint","paper","path","pen","pencil","pet","pink","pizza","place","play","pool","quick","quiet","read","ride","right","ring","room","rope","round","run","safe","said","salt","sand","save","school","seat","see","seven","ship","shoe","short","sing","sister","sit","six","sleep","slow","small","smart","smile","soft","song","soon","soup","star","stay","step","stop","story","sun","sweet","swim","table","tall","ten","thank","thin","thing","three","time","today","top","toy","two","under","up","use","walk","want","warm","wash","water","well","west","wet","white","wide","window","wish","wood","work","write","yard","yes","young","zero"],"nature":["acorn","animal","ant","bark","bat","beach","bear","bee","berry","bird","bloom","branch","brook","bug","bush","calf","cave","chick","claw","cloud","creek","crow","cub","deer","den","dirt","dove","duck","eagle","farm","fawn","feather","field","fin","finch","firefly","fish","flock","flower","fly","fox","frog","goat","goose","grass","grow","hill","hive","horse","insect","kitten","lake","lamb","leaf","lizard","maple","moon","moss","moth","mud","nest","oak","ocean","otter","owl","paw","pine","pond","rain","raincoat","river","rock","root","salmon","sand","seal","seed","shark","sheep","shell","snail","snake","snow","spider","squirrel","stick","stream","stump","tail","tiger","trail","tree","trout","twig","vine","whale","wild","wing","wolf","worm"],"world":["address","airport","alley","barn","beach","bridge","bus","cabin","camp","castle","city","coast","corner","country","county","crosswalk","dam","east","exit","farm","flag","forest","garden","gate","globe","highway","hill","home","hotel","house","hut","island","jungle","lake","land","lane","map","market","mile","mountain","north","ocean","office","park","path","pier","plain","plaza","pond","port","region","river","road","route","school","sea","shop","shore","sidewalk","south","state","station","store","street","tower","town","train","tunnel","valley","village","west","yard"],"science":["air","axis","balance","beam","bend","bone","bubble","bulb","burn","cell","circle","clear","cloud","cold","color","dark","data","day","drop","dust","earth","echo","energy","float","force","gas","gear","glass","glow","heat","hot","ice","iron","lava","lens","light","liquid","mass","metal","mix","moon","motion","motor","number","orbit","oxygen","pipe","plant","pull","push","rain","robot","roll","root","scale","seed","shadow","shape","shell","sink","soil","solid","sound","space","spin","spring","star","steam","stone","sun","switch","test","thick","thin","tool","vapor","warm","water","wave","weight","wet","wheel","wind","wire","zoom"]},"3-5":{"daily":["ability","accurate","achieve","active","adjust","adventure","announce","arrange","attempt","attention","average","balance","benefit","brave","brilliant","calendar","capture","careful","celebrate","central","challenge","character","collect","combine","compare","complete","concern","confident","create","curious","decision","describe","detail","develop","difference","direction","discover","discuss","distance","divide","effective","effort","explain","explore","familiar","favorite","focus","friendly","future","gather","generous","helpful","identify","imagine","improve","include","increase","independent","inspire","instruction","interesting","investigate","knowledge","language","library","listen","locate","material","measure","memory","message","method","mystery","notice","organize","original","patient","perform","picture","practice","predict","prepare","problem","progress","promise","protect","question","reason","receive","reflect","replace","request","respond","review","revise","schedule","search","similar","solution","specific","succeed","support","surprise","teamwork","thoughtful","together","tomorrow","transfer","unusual","useful","variety","visible","wonder"],"nature":["alpine","amphibian","aquatic","avalanche","basin","beaver","blossom","butterfly","canyon","carnivore","cedar","channel","climate","coast","conifer","coral","current","damselfly","drought","ecosystem","erosion","evergreen","fern","foothill","forest","glacier","grassland","grizzly","groundwater","habitat","hibernate","insect","island","lakebed","limestone","mammal","marsh","meadow","migration","mountain","mushroom","orchard","otter","oxygen","prairie","predator","prey","rainfall","recycle","reptile","reservoir","ridge","riverbank","rockslide","runoff","salmon","sandbar","seabird","seedling","shelter","shoreline","soil","springtime","stream","sunrise","tide","timber","treeline","turtle","valley","wetland","wildlife","woodpecker"],"world":["ancestor","border","canyon","capital","citizen","climate","colonial","community","compass","congress","continent","culture","delta","desert","district","eastern","economy","election","empire","explorer","factory","frontier","glacier","governor","harbor","hemisphere","highway","immigrant","industry","inland","journey","kingdom","landmark","language","latitude","location","longitude","marketplace","medieval","memorial","merchant","monument","mountain","nation","northwest","ocean","parliament","peninsula","pioneer","province","railroad","rainforest","republic","route","rural","settlement","southeast","state","suburb","survey","symbol","temple","territory","tourism","treaty","washington","western","wilderness"],"science":["adaptation","asteroid","battery","biology","carbon","charge","circuit","classify","climate","collision","comet","conductor","crystal","density","dissolve","ecosystem","electricity","electron","element","energy","evidence","experiment","friction","galaxy","gas","gravity","habitat","inertia","ingredient","inventor","launch","lens","magnet","matter","microscope","mineral","mixture","model","molecule","nucleus","orbit","organism","oxygen","particle","pattern","physics","planet","pulley","reflect","rotate","satellite","solar","spectrum","static","telescope","temperature","theory","tissue","transfer","velocity","volcano","volume","wavelength","weather"]},"6-8":{"daily":["abstract","accountability","acquire","adapt","adequate","adversity","advocate","alternative","ambition","analysis","approach","appropriate","articulate","assessment","assumption","bias","calculate","capacity","clarify","coherent","collaborate","communicate","community","compassion","complex","compromise","concentration","conclusion","consequence","consistent","construct","context","contribution","coordinate","credible","critical","debate","decline","definition","deliberate","demonstrate","determine","diversity","elaborate","empathy","emphasize","essential","ethical","evaluate","evidence","exception","expand","facilitate","factor","flexible","formulate","generate","genuine","implement","implication","inference","initiative","innovation","interpret","justify","logical","maintain","manipulate","motivation","objective","obstacle","optimistic","outcome","participate","persistence","perspective","phenomenon","priority","procedure","process","quality","recognize","recommend","reform","relevant","reliable","resolve","responsible","significant","stimulate","strategy","structure","sufficient","summarize","technique","transition","unique","validity","variation","vocabulary"],"nature":["abiotic","adaptation","alpine","amphibian","aquatic","arid","biodiversity","biome","camouflage","carbon","carnivore","climate","conifer","conservation","deciduous","decomposition","deforestation","dispersal","diversity","drought","ecology","ecosystem","erosion","estuary","fisheries","floodplain","freshwater","geology","groundwater","habitat","herbivore","hibernation","indigenous","invasive","irrigation","marine","meadow","microorganism","migration","nursery","nutrient","organism","oxygen","permeability","photosynthesis","pollinator","pollution","population","precipitation","predator","recycle","renewable","reservoir","riparian","runoff","salmonid","seasonal","sediment","species","streamflow","symbiosis","temperate","terrestrial","tributary","ultraviolet","vegetation","volcanic","watershed","weathering","wilderness","wildfire"],"world":["absolutism","agriculture","alliance","annexation","archaeology","artifact","atlas","bureaucracy","cartography","census","civic","civilization","colony","commerce","constitutional","culture","currency","democracy","dynasty","embargo","ethnography","expedition","federation","feudalism","fiscal","frontier","geography","globalization","government","heritage","history","immigration","indigenous","industrial","infrastructure","institution","international","jurisdiction","landmark","latitude","legislature","longitude","maritime","mercantilism","monarchy","nationalism","navigation","parliament","peninsula","political","population","province","referendum","resource","revolution","settlement","taxation","territory","trade","tradition","urbanization","watershed"],"science":["acceleration","acidity","algorithm","amplitude","anatomy","atmosphere","atomic","bacteria","biodiversity","buoyancy","catalyst","cell","chemical","climate","combustion","compound","condensation","conductivity","conservation","control","convection","data","diffusion","displacement","ecosystem","electrical","electron","element","enzyme","evaporation","experimental","frequency","friction","genetic","geology","gravitational","gravity","hypothesis","inertia","isotope","kinetic","laboratory","mass","mechanical","metabolism","molecule","momentum","neutron","nucleus","observation","oxidation","particle","periodic","photosynthesis","pressure","radiation","reactant","refraction","respiration","scientific","solubility","thermal","variable","velocity","viscosity","voltage"]},"9-10":{"daily":["accountability","adaptability","advocacy","allocation","ambiguity","ambivalent","analogy","analytical","anticipation","applicable","appreciation","argumentation","articulate","assertion","authoritative","autonomy","categorization","coherent","collaboration","compelling","comprehension","conceptual","consistency","contextualize","contradiction","conventional","correlation","credibility","criterion","critical","deduction","determination","differentiation","discourse","discrimination","efficiency","empathy","empirical","equitable","ethical","evaluation","feasibility","fundamental","generalization","hypothesis","impartial","implication","inference","innovative","integration","intellectual","intentional","interpretation","investigation","justification","legitimacy","linguistic","measurable","methodology","nuance","objective","originality","perspective","plausible","precision","preliminary","prioritization","proficiency","rational","reflection","regulation","relevance","resilience","rhetorical","sophisticated","strategic","sustainable","synthesis","theoretical","uncertainty","validity"],"nature":["adaptability","afforestation","amphibious","anthropogenic","aquaculture","atmospheric","biodiversity","biogeography","biotic","carbon","catchment","climatology","conservation","cycle","deciduous","desertification","ecological","ecotourism","endangered","environmental","erosion","estuarine","evolution","extinction","forestry","geomorphology","groundwater","habitat","hydrological","hydrology","interdependence","invasive","irrigation","keystone","landscape","marine","microbiome","microclimate","nitrogen","nutrient","paleoecology","phenology","photosynthetic","population","precipitation","resilience","restoration","riparian","salinity","sedimentation","succession","sustainability","terrestrial","trophic","volcanic","watershed"],"world":["abolitionism","absolutism","agricultural","anthropology","aristocracy","assimilation","authoritarian","bureaucracy","capitalism","chronology","citizenship","colonialism","constitutional","constitutionalism","cosmopolitan","democracy","demographic","diplomacy","diplomatic","economics","egalitarian","empire","enlightenment","federalism","geopolitics","globalization","governance","hegemony","historical","ideology","imperialism","indigenous","industrialization","infrastructure","jurisprudence","legislature","liberalism","migration","nationalism","oligarchy","parliamentary","philosophy","pluralism","propaganda","referendum","republican","revolution","sovereignty","suffrage","transnational","urbanization"],"science":["absorption","acceleration","acidification","activation","algorithm","amplitude","anabolism","antimatter","apoptosis","astronomy","atom","biodiversity","biophysics","catalyst","cellular","chromosome","cohesion","computation","conservation","density","diffraction","electrolysis","electromagnetic","enzyme","equilibrium","evolution","exothermic","fermentation","genetics","geologic","gravitation","hydrolysis","hypothesis","isotope","isotopic","mechanism","metabolism","mitochondria","nanotechnology","neural","oxidation","phenotype","polarity","polymer","probability","quantum","radioactive","reaction","relativity","respiration","semiconductor","solubility","spectroscopy","thermodynamic","thermodynamics","turbulence","wavelength"]},"11-12":{"daily":["abstraction","accountability","acumen","adjudication","ambiguity","anachronism","antithesis","axiomatic","conceptualization","congruence","connotation","consequential","contextualization","corroboration","counterargument","criticality","deliberation","denotation","dialectical","discernment","dissonance","empirical","epistemic","epistemology","equanimity","extrapolate","extrapolation","fallibility","hermeneutic","heuristic","impartiality","implication","incongruity","inference","intellectualize","interdisciplinary","interrelation","introspection","jurisprudence","juxtaposition","metacognition","metacognitive","methodology","multidisciplinary","objectivity","paradigm","paradoxical","persuasive","phenomenology","postulate","pragmatism","prerequisite","qualification","qualitative","quantitative","reciprocity","reductionism","relativism","salience","scrutiny","substantiation","synthesis","theoretical","validation","verisimilitude"],"nature":["acidification","afforestation","anadromous","anthropocene","anthropogenic","bioaccumulation","biodiversity","biogeochemical","bioindicator","biomass","bioregional","bioremediation","carbon","climatology","conservation","deforestation","desertification","ecological","ecotoxicology","environmental","eutrophication","evolutionary","geomorphology","geospatial","hydrodynamic","hydrosphere","intertidal","limnology","macroinvertebrate","metabolism","microplastic","nutrient","overfishing","paleoecology","permafrost","phenology","phytoplankton","restoration","riparian","salinization","sequestration","stratification","succession","sustainability","thermohaline","watershed","xenobiotic"],"world":["absolutism","acculturation","annexation","anthropology","authoritarianism","bicameralism","bureaucracy","colonialism","constitutional","constitutionalism","cosmopolitanism","decentralization","democratization","demography","devolution","diaspora","diplomacy","disenfranchisement","egalitarianism","ethnocentrism","federalism","geopolitical","globalization","historiography","imperialism","industrialization","institutionalism","interdependence","internationalism","interventionism","jurisprudence","legitimacy","mercantilism","neoliberalism","oligarchy","parliamentary","postcolonialism","protectionism","reformation","republicanism","socioeconomic","sovereignty","suffrage","supranationalism","transnationalism","urbanization"],"science":["abiogenesis","activation","adenosine","allosteric","amphoteric","anabolism","biocatalysis","biochemical","biochemistry","biophysics","catalysis","chromatography","cytoplasm","differentiation","electrochemistry","electromagnetic","entropy","enzymatic","epigenetic","equilibrium","gravimetric","homeostasis","hydrocarbon","hydrolysis","ionization","isotopic","kinetics","macromolecule","metamorphism","molecular","neurotransmitter","nucleic","oxidation","phosphorylation","polymerase","precipitation","quantum","redox","semiconductor","spectroscopy","stoichiometry","superconductivity","thermodynamics","thermoregulation","transcription"]}}};
-'use strict';
-const $=id=>document.getElementById(id);
-const GAME=CONFIG.mode;
-const isRiver=GAME==='river';
-const banks=CONFIG.banks;
-const bearNames=[{id:'daily',title:'Cedar',role:'Everyday words',color:'#f2b770',shade:'#855137',icon:'●'},{id:'nature',title:'Salmon',role:'Animals & nature',color:'#8ccf91',shade:'#487a4b',icon:'◆'},{id:'world',title:'Ranger',role:'Places & history',color:'#e0ba8e',shade:'#96703d',icon:'▲'},{id:'science',title:'Professor',role:'Science & technology',color:'#94bfed',shade:'#4c759d',icon:'✦'}];
-const storedKey='nacheshub_typing_arcade_'+GAME+'_v1';
-function getSaved(){try{return JSON.parse(localStorage.getItem(storedKey))||{}}catch(e){return {}}}
-let saved=getSaved();
-function persist(){try{localStorage.setItem(storedKey,JSON.stringify(saved))}catch(e){}}
-let state=null,raf=0,lastFrame=0,nextSpawn=0,activeTarget=null,lastTyped='',running=false,paused=false,failures=0;
-let stars='';
-const LEVELS=isRiver?[
- {name:'Creekside Beginnings',scene:'Creek',speed:27,spawn:4200,goal:7,cats:1},
- {name:'Pine Bend',scene:'Pine river',speed:34,spawn:3550,goal:9,cats:2},
- {name:'Salmon Crossing',scene:'Salmon run',speed:41,spawn:3200,goal:11,cats:3},
- {name:'Boulder Rapids',scene:'Rocky rapids',speed:49,spawn:2750,goal:13,cats:4},
- {name:'Mountain Run',scene:'High mountain stream',speed:57,spawn:2500,goal:15,cats:4},
- {name:'Stormwater Gorge',scene:'Storm river',speed:67,spawn:2250,goal:18,cats:4}]:[
- {name:'First Contact',scene:'Low orbit',speed:28,spawn:4100,goal:7,cats:2},
- {name:'Incoming Signals',scene:'Meteor field',speed:32,spawn:3700,goal:9,cats:2},
- {name:'Meteor Shower',scene:'Meteor shower',speed:36,spawn:3400,goal:10,cats:2},
- {name:'Double Trouble',scene:'Deep orbit',speed:40,spawn:3150,goal:11,cats:2},
- {name:'Asteroid Belt',scene:'Asteroid belt',speed:45,spawn:2950,goal:12,cats:3},
- {name:'Solar Storm',scene:'Solar storm',speed:49,spawn:2800,goal:13,cats:3},
- {name:'Alien Ambush',scene:'Alien ambush',speed:53,spawn:2650,goal:14,cats:3},
- {name:'Dark Nebula',scene:'Nebula',speed:57,spawn:2500,goal:15,cats:4},
- {name:'Galactic Siege',scene:'Galactic siege',speed:61,spawn:2400,goal:16,cats:4},
- {name:'Mothership',scene:'Mothership',speed:65,spawn:2350,goal:17,cats:4},
- {name:'Final Defense',scene:'Final defense',speed:69,spawn:2250,goal:18,cats:4},
- {name:'Last Stand',scene:'Final frontier',speed:73,spawn:2150,goal:20,cats:4}];
-const colorMap={daily:'#ffd180',nature:'#9aefb0',world:'#ffcd8c',science:'#90d9ff'};
-const catNames={daily:'Everyday',nature:'Nature',world:'Places',science:'Science'};
-function bandFor(grade){return grade<=2?'1-2':grade<=5?'3-5':grade<=8?'6-8':grade<=10?'9-10':'11-12'}
-function poolFor(grade,cat,level){let x=banks[bandFor(grade)][cat]||[];
- const minLength=Math.min(5,2+Math.floor((level-1)/3));
- const maxBase={1:4,2:6,3:7,4:9,5:11,6:12,7:14,8:16,9:18,10:20,11:25,12:28}[grade]||10;
- let arr=x.filter(w=>w.length>=minLength&&w.length<=maxBase+Math.floor((level-1)/2));
- if(arr.length<7)arr=x.filter(w=>w.length>=Math.min(4,minLength));
- if(!arr.length)arr=x;
- return arr;
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Grizzly Rapids V5 — Update Builder</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color-scheme:dark}
+body{background:radial-gradient(ellipse at 15% 0,#225b59,#071b2e 70%);color:#f1f9f6;min-height:100vh;margin:0;padding:24px}
+main{max-width:760px;margin:5vh auto;background:#132c3edc;border:1px solid #719b98;border-radius:22px;padding:clamp(20px,5vw,40px);box-shadow:0 25px 65px #020d13aa}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.09;margin:10px 0}p{color:#d0e5e1;line-height:1.6}.badge{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#8ee5c3}
+button,.file-choice{background:#f7cb7d;color:#13263b;border:0;border-radius:12px;font-weight:850;font-size:16px;cursor:pointer;padding:16px 22px;display:inline-block}
+button:hover,.file-choice:hover{filter:brightness(1.13)}button:disabled{opacity:.4;cursor:not-allowed}.secondary{background:#255565;color:#ecfffa;border:1px solid #6aa7b0}
+.steps{margin:20px 0;padding-left:22px;color:#e7f5eb}.steps li{margin:12px 0} .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;align-items:center}
+#status{padding:12px;border-left:4px solid #9ce5d2;background:#102734;border-radius:5px;margin-top:20px;white-space:pre-wrap}
+input[type=file]{display:none}small{color:#a6d1c5}.preview{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.preview span{border:1px solid #4f887c;border-radius:8px;padding:7px 10px;color:#b9e4d6;font-size:13px}
+</style></head><body><main><div class="badge">Naches Learning Hub · Safe additive update</div>
+<h1>🐻 Grizzly Rapids · V5</h1>
+<p>Build the updated <code>index.html</code> without replacing the working river game, saved scores, or expanded word bank. The builder reads the existing GitHub game and adds bear and wolf-pack rescues.</p>
+<div class="preview"><span>Tab · Bear Rescue</span><span>Enter · Wolf Pack</span><span>Audio &amp; animation</span><span>Preserves vocabulary and scores</span></div>
+<div class="actions"><button id="fetch">Build my updated index.html</button><label for="source" class="file-choice secondary">Or choose my current index.html</label><input id="source" type="file" accept=".html,text/html"/></div>
+<div role="status" id="status">Ready. Use the gold button to retrieve your current public Grizzly Rapids game. If the browser blocks retrieval, choose its existing index.html file instead.</div>
+<h2>Publish the update</h2>
+<ol class="steps"><li>Save a backup of your current <code>grizzly-rapids/index.html</code> on GitHub.</li><li>Click <b>Build my updated index.html</b> above. Your browser will download a new <code>index.html</code>.</li><li>Upload that file to the ROOT of your existing <b>grizzly-rapids</b> GitHub repository, replacing the old <code>index.html</code>. Commit your changes.</li><li>Reload the live game with <b>Ctrl+Shift+R</b>. No Learning Hub file changes are needed.</li></ol>
+<p><small>Builder does not request GitHub login, does not upload any files, and modifies the copy in your browser only. It fetches the public source from githubusercontent.com. If you previously changed the game and have a newer local index.html, use the file chooser to preserve it.</small></p>
+</main><script>
+const PATCH_B64 = "LyogR3JpenpseSBSYXBpZHMgVjUg4oCUIEJlYXIgUmVzY3VlICYgV29sZiBQYWNrIGV4dGVuc2lvbi4KICAgQWRkIEFGVEVSIHRoZSBleGlzdGluZyBnYW1lIHNjcmlwdDsgcHJlc2VydmVzIHRoZSBvcmlnaW5hbCB2b2NhYnVsYXJ5LCBnYW1lCiAgIHN0YXRlIG1hY2hpbmUsIGFjaGlldmVtZW50cywgc2NvcmluZyBrZXlzLCBhbmQgYXJ0d29yay4gKi8KKCgpID0+IHsKICAndXNlIHN0cmljdCc7CiAgaWYgKHdpbmRvdy5fX2dyaXp6bHlQb3dlcnVwc1Y1SW5zdGFsbGVkKSByZXR1cm47CiAgaWYgKHR5cGVvZiBpc1JpdmVyID09PSAndW5kZWZpbmVkJyB8fCAhaXNSaXZlciB8fCB0eXBlb2Ygc3RhcnRHYW1lICE9PSAnZnVuY3Rpb24nIHx8CiAgICAgIHR5cGVvZiByZW1vdmVUYXJnZXQgIT09ICdmdW5jdGlvbicgfHwgIWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcmVuYScpKSByZXR1cm47CiAgd2luZG93Ll9fZ3JpenpseVBvd2VydXBzVjVJbnN0YWxsZWQgPSB0cnVlOwoKICBjb25zdCBWRVJTSU9OID0gJzUuMCc7CiAgY29uc3QgQkVBUl9NQVggPSAzLCBXT0xWRVNfTUFYID0gMjsKICBsZXQgc3VwcGxpZXMgPSBudWxsOwogIGxldCBlZmZlY3RUaW1lcnMgPSBuZXcgU2V0KCk7CiAgbGV0IGVmZmVjdHMgPSBuZXcgU2V0KCk7CgogIGNvbnN0IGJlYXJTVkcgPSBgPHN2ZyB2aWV3Qm94PSIwIDAgMTUwIDkyIiBhcmlhLWhpZGRlbj0idHJ1ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxlbGxpcHNlIGN4PSI3MSIgY3k9IjgyIiByeD0iNTkiIHJ5PSI3IiBmaWxsPSIjMGEyNjM0IiBvcGFjaXR5PSIuMjgiLz4KICAgIDxwYXRoIGQ9Ik0xOCA1OVExMCAzNSAzMCAyMlE1MCA1IDEwMCAxNlExMjYgMTkgMTI5IDM4TDEzOSA0NyAxMzMgNjcgMTA5IDcwIDEwMyA4NCA4NiA4NCA4MyA2OCA1NCA2OCA0OSA4NCAzMyA4NCAzMCA2MloiIGZpbGw9IiM4NTU0MzgiIHN0cm9rZT0iIzUwMzUyNCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8Y2lyY2xlIGN4PSIxMTIiIGN5PSIyNSIgcj0iMTMiIGZpbGw9IiM4MzUxM2EiIHN0cm9rZT0iIzQ5MzUyOCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8Y2lyY2xlIGN4PSIxMTUiIGN5PSIyNSIgcj0iNiIgZmlsbD0iI2I5OTE2OSIvPgogICAgPHBhdGggZD0iTTk4IDI1UTEyNiAxMiAxMzUgMzhRMTQxIDUwIDEyOCA1N0wxMTQgNTQiIGZpbGw9IiNhYTc4NGQiIHN0cm9rZT0iIzUwMzUyNCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8ZWxsaXBzZSBjeD0iMTM2IiBjeT0iNDciIHJ4PSIxMyIgcnk9IjkiIGZpbGw9IiNkMGFlODYiLz48Y2lyY2xlIGN4PSIxNDMiIGN5PSI0MyIgcj0iNCIgZmlsbD0iIzM1MmEyNSIvPgogICAgPGNpcmNsZSBjeD0iMTIzIiBjeT0iMzQiIHI9IjMiIGZpbGw9IiMxZDJhMjYiLz48cGF0aCBkPSJNMTI4IDU1UTEzMiA2MiAxMzkgNTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzQ3MmQyNyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8cGF0aCBkPSJNMzYgNzF2MTJNNTIgNzB2MTNNOTAgNzB2MTNNMTA2IDY4djE1IiBzdHJva2U9IiM0OTM1MjgiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPC9zdmc+YDsKICBjb25zdCB3b2xmU1ZHID0gYDxzdmcgdmlld0JveD0iMCAwIDE0MiA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBhcmlhLWhpZGRlbj0idHJ1ZSI+CiAgICA8ZWxsaXBzZSBjeD0iNzIiIGN5PSI3MiIgcng9IjU1IiByeT0iNSIgZmlsbD0iIzA3MjgzNyIgb3BhY2l0eT0iLjI0Ii8+CiAgICA8cGF0aCBkPSJNMTYgMzdMMyAxOCA3IDQ5IDE3IDU2IDE4IDY3IDI5IDY3IDM0IDUzIDgwIDU2IDgyIDY5IDk0IDY5IDEwMCA1NCAxMTYgNDkgMTM0IDQwIDEyMiAzMCAxMjAgOSAxMDggMjIgOTggMTEgOTMgMjcgNjggMjggNDIgMjNaIiBmaWxsPSIjOThhYmIxIiBzdHJva2U9IiM0NjVjNjciIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPHBhdGggZD0iTTE0IDM1UTU1IDMxIDg1IDQwTDExNiAzNiAxMzAgNDAgMTE2IDQ4IDk0IDQ5IDUwIDQzIDI2IDUxWiIgZmlsbD0iIzYyN2Q4OCIvPgogICAgPHBhdGggZD0iTTEyMyAzOUwxNDAgNDIgMTI1IDQ3WiIgZmlsbD0iI2UwZDdjOCIvPjxjaXJjbGUgY3g9IjExNiIgY3k9IjMxIiByPSIzIiBmaWxsPSIjZjJkYzg4Ii8+CiAgICA8cGF0aCBkPSJNMjEgNjJMMTcgNzJNMzQgNjBMMzAgNzJNODYgNjNMODEgNzJNMTAxIDU3TDEwMiA3MSIgc3Ryb2tlPSIjNDI1OTY4IiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDwvc3ZnPmA7CgogIGNvbnN0IHN0eWxlID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc3R5bGUnKTsKICBzdHlsZS5pZCA9ICdncml6emx5LXY1LXN0eWxlJzsKICBzdHlsZS50ZXh0Q29udGVudCA9IGAKICAgIC5ncml6emx5LWFiaWxpdGllc3tkaXNwbGF5OmZsZXg7Z2FwOjEwcHg7ZmxleC13cmFwOndyYXA7YWxpZ24taXRlbXM6c3RyZXRjaDttYXJnaW46OXB4IDNweCAxMHB4fQogICAgLmdyaXp6bHktcG93ZXJ7ZmxleDoxIDEgMjEwcHg7bWluLXdpZHRoOjE1NXB4O3RleHQtYWxpZ246bGVmdDtkaXNwbGF5OmZsZXg7Z2FwOjEwcHg7YWxpZ24taXRlbXM6Y2VudGVyOwogICAgICBib3JkZXI6MnB4IHNvbGlkICM3NTllODQ7Ym9yZGVyLXJhZGl1czoxM3B4O2JhY2tncm91bmQ6bGluZWFyLWdyYWRpZW50KDEzMGRlZywjMjc0ZTRhLCMxNzNjNTIpOwogICAgICBwYWRkaW5nOjEwcHggMTJweDtjb2xvcjojZWVmN2VjO2N1cnNvcjpwb2ludGVyO3RyYW5zaXRpb246ZmlsdGVyIC4xNXMsdHJhbnNmb3JtIC4xNXN9CiAgICAuZ3JpenpseS1wb3dlcjpob3Zlcjpub3QoOmRpc2FibGVkKXtmaWx0ZXI6YnJpZ2h0bmVzcygxLjE4KTt0cmFuc2Zvcm06dHJhbnNsYXRlWSgtMXB4KX0KICAgIC5ncml6emx5LXBvd2VyOmRpc2FibGVke29wYWNpdHk6LjUyO2N1cnNvcjpub3QtYWxsb3dlZH0KICAgIC5ncml6emx5LXBvd2VyLWljb257Zm9udC1zaXplOjMwcHg7bGluZS1oZWlnaHQ6MX0KICAgIC5ncml6emx5LXBvd2VyIHN0cm9uZywuZ3JpenpseS1wb3dlciBzbWFsbHtkaXNwbGF5OmJsb2NrfQogICAgLmdyaXp6bHktcG93ZXIgc3Ryb25ne2ZvbnQtc2l6ZToxNHB4fS5ncml6emx5LXBvd2VyIHNtYWxse2ZvbnQtc2l6ZToxMnB4O2NvbG9yOiNkNGU3ZGN9CiAgICAuZ3JpenpseS1wb3dlci1jb3VudHttYXJnaW4tbGVmdDphdXRvO2ZvbnQtc2l6ZToyMXB4O2ZvbnQtd2VpZ2h0OjkwMDtjb2xvcjojZmZlMDllfQogICAgLmdyaXp6bHktcG93ZXItdGlwe2ZsZXg6MSAxIDEwMCU7Zm9udC1zaXplOjEycHg7Y29sb3I6I2M2ZTNkOTttYXJnaW46MCAycHh9CiAgICAuZ3JpenpseS1wb3dlci1hY3Rvcntwb3NpdGlvbjphYnNvbHV0ZTt6LWluZGV4OjExO3dpZHRoOjEzNXB4O2hlaWdodDo5NHB4O2xlZnQ6MDt0b3A6MDtwb2ludGVyLWV2ZW50czpub25lOwogICAgICBmaWx0ZXI6ZHJvcC1zaGFkb3coMCA4cHggNHB4ICMwODJiMzhhOCk7d2lsbC1jaGFuZ2U6dHJhbnNmb3JtfQogICAgLmdyaXp6bHktcG93ZXItYWN0b3Igc3Zne3dpZHRoOjEwMCU7aGVpZ2h0OjEwMCV9CiAgICAuZ3JpenpseS1wb3dlci1hY3Rvci53b2xme3dpZHRoOjExNXB4O2hlaWdodDo3NnB4O3otaW5kZXg6MTJ9CiAgICAuZ3JpenpseS1zcGxhc2h7cG9zaXRpb246YWJzb2x1dGU7ei1pbmRleDoxMztwb2ludGVyLWV2ZW50czpub25lO3RyYW5zZm9ybTp0cmFuc2xhdGUoLTUwJSwtNTAlKTtmb250LXNpemU6NDNweDsKICAgICAgZmlsdGVyOmRyb3Atc2hhZG93KDAgMXB4IDNweCAjMDczMTQ2KTthbmltYXRpb246Z3JpenpseS1zcGxhc2ggLjZzIGVhc2Utb3V0IGZvcndhcmRzfQogICAgLmdyaXp6bHktc3BsYXNoIHNwYW57ZGlzcGxheTpibG9jazt3aGl0ZS1zcGFjZTpub3dyYXA7Y29sb3I6I2ZmZjhjNjt0ZXh0LXNoYWRvdzowIDJweCA2cHggIzEyNGE0YjsKICAgICAgZm9udC13ZWlnaHQ6OTAwO2ZvbnQtc2l6ZToxM3B4O3Bvc2l0aW9uOmFic29sdXRlO3RvcDotMTlweDtsZWZ0OjUwJTt0cmFuc2Zvcm06dHJhbnNsYXRlWCgtNTAlKX0KICAgIC5ncml6emx5LXBhY2stYmFubmVye3Bvc2l0aW9uOmFic29sdXRlO2xlZnQ6NTAlO3RvcDozNyU7dHJhbnNmb3JtOnRyYW5zbGF0ZSgtNTAlLC01MCUpOwogICAgICB6LWluZGV4OjEyO2JhY2tncm91bmQ6IzE3M2I0MmQ5O2JvcmRlcjoycHggc29saWQgI2JkZWJkNztib3JkZXItcmFkaXVzOjEycHg7cGFkZGluZzo3cHggMTVweDsKICAgICAgZm9udC1zaXplOjIxcHg7Zm9udC13ZWlnaHQ6MTAwMDtsZXR0ZXItc3BhY2luZzouMDVlbTtjb2xvcjojZmZlNGE2O3BvaW50ZXItZXZlbnRzOm5vbmU7CiAgICAgIGFuaW1hdGlvbjpncml6emx5LWJhbm5lciAuNzhzIGVhc2Utb3V0IGJvdGg7d2hpdGUtc3BhY2U6bm93cmFwfQogICAgQGtleWZyYW1lcyBncml6emx5LXNwbGFzaHswJXtvcGFjaXR5OjA7c2NhbGU6LjV9MjIle29wYWNpdHk6MTtzY2FsZToxLjF9MTAwJXtvcGFjaXR5OjA7c2NhbGU6MS43fX0KICAgIEBrZXlmcmFtZXMgZ3JpenpseS1iYW5uZXJ7MCV7b3BhY2l0eTowO3NjYWxlOi42NX0yNSV7b3BhY2l0eToxO3NjYWxlOjEuMDZ9ODUle29wYWNpdHk6MX0xMDAle29wYWNpdHk6MDtzY2FsZToxLjE1fX0KICAgIC5yaXZlciAuYmFuayAuYXJjYWRlLXNoaXB7aGVpZ2h0Ojg1cHg7d2lkdGg6ODZweDtmbGV4Om5vbmU7ZGlzcGxheTpibG9jazthbmltYXRpb246bm9uZTtmaWx0ZXI6ZHJvcC1zaGFkb3coMCA0cHggNXB4ICMxODNhMjNhYSl9CiAgICAucml2ZXIgLmJhbmsgLmFyY2FkZS1zaGlwIHN2Z3toZWlnaHQ6ODVweDt3aWR0aDo4NnB4fQogICAgLnJpdmVyIC5jdXN0b21pemUtZ3JpZCBsYWJlbDpudGgtY2hpbGQoLW4rMil7ZGlzcGxheTpub25lfQogICAgLnJpdmVyIC5jdXN0b21pemUtZ3JpZHtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KDIsbWlubWF4KDE0NXB4LDFmcikpfQogICAgQG1lZGlhKG1heC13aWR0aDo1NTBweCl7LmdyaXp6bHktcG93ZXJ7ZmxleC1iYXNpczoxNTBweDtwYWRkaW5nOjhweH0uZ3JpenpseS1wb3dlci1pY29ue2ZvbnQtc2l6ZToyM3B4fX0KICAgIEBtZWRpYShwcmVmZXJzLXJlZHVjZWQtbW90aW9uOnJlZHVjZSl7LmdyaXp6bHktc3BsYXNoLC5ncml6emx5LXBhY2stYmFubmVye2FuaW1hdGlvbjpub25lO29wYWNpdHk6Ljl9fQogIGA7CiAgZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChzdHlsZSk7CgogIGNvbnN0IGJ1dHRvblJvdyA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpOwogIGJ1dHRvblJvdy5jbGFzc05hbWUgPSAnZ3JpenpseS1hYmlsaXRpZXMnOwogIGJ1dHRvblJvdy5zZXRBdHRyaWJ1dGUoJ2FyaWEtbGFiZWwnLCAnUml2ZXIgcG93ZXItdXBzJyk7CiAgYnV0dG9uUm93LmlubmVySFRNTCA9IGAKICAgIDxidXR0b24gY2xhc3M9ImdyaXp6bHktcG93ZXIiIGlkPSJncml6emx5QmVhclBvd2VyIiB0eXBlPSJidXR0b24iIHRpdGxlPSJUYWIg4oCUIGJlYXIgY2F0Y2hlcyBvbmUgc2VsZWN0ZWQgZmlzaCIgZGlzYWJsZWQ+CiAgICAgIDxzcGFuIGNsYXNzPSJncml6emx5LXBvd2VyLWljb24iIGFyaWEtaGlkZGVuPSJ0cnVlIj7wn5C7PC9zcGFuPjxzcGFuPjxzdHJvbmc+QmVhciBSZXNjdWUgwrcgVGFiPC9zdHJvbmc+PHNtYWxsPkNhdGNoIG9uZSBmaXNoPC9zbWFsbD48L3NwYW4+PHNwYW4gY2xhc3M9ImdyaXp6bHktcG93ZXItY291bnQiIGlkPSJncml6emx5QmVhckNvdW50Ij4wPC9zcGFuPgogICAgPC9idXR0b24+CiAgICA8YnV0dG9uIGNsYXNzPSJncml6emx5LXBvd2VyIiBpZD0iZ3JpenpseVdvbHZlc1Bvd2VyIiB0eXBlPSJidXR0b24iIHRpdGxlPSJFbnRlciDigJQgYSBwYWNrIG9mIHdvbHZlcyBjYXRjaGVzIGFsbCB2aXNpYmxlIGZpc2giIGRpc2FibGVkPgogICAgICA8c3BhbiBjbGFzcz0iZ3JpenpseS1wb3dlci1pY29uIiBhcmlhLWhpZGRlbj0idHJ1ZSI+8J+Qujwvc3Bhbj48c3Bhbj48c3Ryb25nPldvbGYgUGFjayDCtyBFbnRlcjwvc3Ryb25nPjxzbWFsbD5DbGVhciBhbGwgdmlzaWJsZSBmaXNoPC9zbWFsbD48L3NwYW4+PHNwYW4gY2xhc3M9ImdyaXp6bHktcG93ZXItY291bnQiIGlkPSJncml6emx5V29sdmVzQ291bnQiPjA8L3NwYW4+CiAgICA8L2J1dHRvbj4KICAgIDxwIGNsYXNzPSJncml6emx5LXBvd2VyLXRpcCIgaWQ9ImdyaXp6bHlQb3dlckhlbHAiPkVhcm4gb25lIEJlYXIgUmVzY3VlIGV2ZXJ5IDUgY29ycmVjdGx5IHR5cGVkIHdvcmRzIGFuZCBvbmUgV29sZiBQYWNrIGV2ZXJ5IDEyLiBQb3dlci11cCBjYXRjaGVzIGNvdW50IHRvd2FyZCB0aGUgcml2ZXIgZ29hbCBidXQgbm90IHR5cGluZyBXUE0gb3IgYWNjdXJhY3kuPC9wPmA7CiAgY29uc3Qgem9uZSA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy50eXBlLXpvbmUnKTsKICBpZiAoem9uZSkgem9uZS5pbnNlcnRBZGphY2VudEVsZW1lbnQoJ2JlZm9yZWJlZ2luJywgYnV0dG9uUm93KTsKCiAgY29uc3QgJHAgPSBpZCA9PiBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChpZCk7CiAgZnVuY3Rpb24gZnJlc2hSdW4oKSB7CiAgICBpZiAoIXN0YXRlIHx8ICFydW5uaW5nIHx8IHN0YXRlLmVuZGVkKSB7IHN1cHBsaWVzID0gbnVsbDsgdXBkYXRlQnV0dG9ucygpOyByZXR1cm47IH0KICAgIGNvbnN0IGx2bCA9IHN0YXRlLmxldmVsOwogICAgc3VwcGxpZXMgPSB7IHN0YXRlLCBiZWFyczogbHZsIDw9IDIgPyAxIDogMiwgd29sdmVzOiBsdmwgPD0gMiA/IDAgOiAxLAogICAgICB0eXBlZDogMCwgY2hhcnM6IHN0YXRlLmNvcnJlY3RDaGFycywgYnVzeTogZmFsc2UgfTsKICAgIHVwZGF0ZUJ1dHRvbnMoKTsKICB9CiAgZnVuY3Rpb24gY3VycmVudCgpIHsgcmV0dXJuIHN1cHBsaWVzICYmIHN1cHBsaWVzLnN0YXRlID09PSBzdGF0ZSAmJiBzdGF0ZSAmJiBydW5uaW5nICYmICFwYXVzZWQgJiYgIXN0YXRlLmVuZGVkOyB9CiAgZnVuY3Rpb24gdXBkYXRlQnV0dG9ucygpIHsKICAgIGNvbnN0IGVuYWJsZWQgPSAhIWN1cnJlbnQoKSAmJiBzdGF0ZS50YXJnZXRzLmxlbmd0aCA+IDAgJiYgIXN1cHBsaWVzLmJ1c3k7CiAgICAkcCgnZ3JpenpseUJlYXJDb3VudCcpLnRleHRDb250ZW50ID0gU3RyaW5nKHN1cHBsaWVzPy5iZWFycyA/PyAwKTsKICAgICRwKCdncml6emx5V29sdmVzQ291bnQnKS50ZXh0Q29udGVudCA9IFN0cmluZyhzdXBwbGllcz8ud29sdmVzID8/IDApOwogICAgJHAoJ2dyaXp6bHlCZWFyUG93ZXInKS5kaXNhYmxlZCA9ICFlbmFibGVkIHx8IHN1cHBsaWVzLmJlYXJzIDwgMTsKICAgICRwKCdncml6emx5V29sdmVzUG93ZXInKS5kaXNhYmxlZCA9ICFlbmFibGVkIHx8IHN1cHBsaWVzLndvbHZlcyA8IDE7CiAgICAkcCgnZ3JpenpseVdvbHZlc1Bvd2VyJykudGl0bGUgPSBzdXBwbGllcyAmJiBzdGF0ZSAmJiBzdGF0ZS5sZXZlbCA8PSAyID8KICAgICAgJ1dvbGYgUGFjayB1bmxvY2tzIGF0IFJpdmVyIDMnIDogJ0VudGVyIOKAlCBjYXRjaCBhbGwgdmlzaWJsZSBmaXNoJzsKICB9CiAgZnVuY3Rpb24gbGF0ZXIoZm4sIG1zKSB7CiAgICBjb25zdCBpZCA9IHNldFRpbWVvdXQoKCkgPT4geyBlZmZlY3RUaW1lcnMuZGVsZXRlKGlkKTsgZm4oKTsgfSwgbXMpOwogICAgZWZmZWN0VGltZXJzLmFkZChpZCk7IHJldHVybiBpZDsKICB9CiAgZnVuY3Rpb24gYWRkRngobm9kZSwgcGFyZW50ID0gJHAoJ2FyZW5hJykpIHsKICAgIGlmICghcGFyZW50KSByZXR1cm4gbnVsbDsKICAgIHBhcmVudC5hcHBlbmRDaGlsZChub2RlKTsgZWZmZWN0cy5hZGQobm9kZSk7CiAgICByZXR1cm4gbm9kZTsKICB9CiAgZnVuY3Rpb24gZXhwaXJlRngobm9kZSwgbXMpIHsgbGF0ZXIoKCkgPT4ge25vZGUucmVtb3ZlKCk7ZWZmZWN0cy5kZWxldGUobm9kZSk7fSwgbXMpOyB9CiAgZnVuY3Rpb24gc3RvcEVmZmVjdHMoKSB7CiAgICBmb3IgKGNvbnN0IGlkIG9mIGVmZmVjdFRpbWVycykgY2xlYXJUaW1lb3V0KGlkKTsKICAgIGVmZmVjdFRpbWVycy5jbGVhcigpOwogICAgZm9yIChjb25zdCBlbCBvZiBlZmZlY3RzKSBlbC5yZW1vdmUoKTsKICAgIGVmZmVjdHMuY2xlYXIoKTsKICAgIGlmIChzdXBwbGllcykgc3VwcGxpZXMuYnVzeSA9IGZhbHNlOwogIH0KICBmdW5jdGlvbiBhdWRpb0N1ZSh3aGljaCkgewogICAgaWYgKHR5cGVvZiBjb3NtZXRpY3MgIT09ICd1bmRlZmluZWQnICYmIGNvc21ldGljcy5lZmZlY3RzICE9PSAnb24nKSByZXR1cm47CiAgICBpZiAodHlwZW9mIHRvbmUgIT09ICdmdW5jdGlvbicpIHJldHVybjsKICAgIHRyeSB7CiAgICAgIGlmICh3aGljaCA9PT0gJ2JlYXInKSB7CiAgICAgICAgdG9uZSgxNjUsLjIwLCdzYXd0b290aCcsLjA1NSk7dG9uZSgxMjIsLjI2LCd0cmlhbmdsZScsLjA0OCwuMDcpOwogICAgICAgIHRvbmUoMzg1LC4wOSwnc2luZScsLjAzNCwuMzEpO3RvbmUoMjMwLC4xNSwndHJpYW5nbGUnLC4wMjgsLjM2KTsKICAgICAgfSBlbHNlIHsKICAgICAgICBbMjQwLDIwNSwxNzUsMTQ2XS5mb3JFYWNoKChmLGkpPT50b25lKGYsLjE3LCdzYXd0b290aCcsLjAzMSxpKi4xMCkpOwogICAgICAgIHRvbmUoNDMwLC4xMCwndHJpYW5nbGUnLC4wMzgsLjM3KTt0b25lKDI4MCwuMjEsJ3RyaWFuZ2xlJywuMDM4LC40NCk7CiAgICAgIH0KICAgIH0gY2F0Y2ggKF9lKSB7IC8qIEF1ZGlvIGlzIG9wdGlvbmFsLiAqLyB9CiAgfQogIGZ1bmN0aW9uIHNwbGFzaCh0LCB0ZXh0KSB7CiAgICBjb25zdCBub2RlID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7CiAgICBub2RlLmNsYXNzTmFtZSA9ICdncml6emx5LXNwbGFzaCc7CiAgICBub2RlLnN0eWxlLmxlZnQgPSBgJHt0LngqMTAwfSVgOwogICAgbm9kZS5zdHlsZS50b3AgPSBgJHt0LnkrMzJ9cHhgOwogICAgbm9kZS5pbm5lckhUTUwgPSBg8J+SpjxzcGFuPiR7dGV4dH08L3NwYW4+YDsKICAgIGFkZEZ4KG5vZGUpOyBleHBpcmVGeChub2RlLCA3MjApOwogIH0KICBmdW5jdGlvbiBhY3RvcihzdmcsIGtpbmQsIGZyYW1lcywgZHVyYXRpb24pIHsKICAgIGNvbnN0IG5vZGUgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsKICAgIG5vZGUuY2xhc3NOYW1lID0gJ2dyaXp6bHktcG93ZXItYWN0b3InICsgKGtpbmQgPT09ICd3b2xmJyA/ICcgd29sZicgOiAnJyk7CiAgICBub2RlLmlubmVySFRNTCA9IHN2ZzsKICAgIGFkZEZ4KG5vZGUpOwogICAgaWYgKG5vZGUuYW5pbWF0ZSAmJiAhd2luZG93Lm1hdGNoTWVkaWEoJyhwcmVmZXJzLXJlZHVjZWQtbW90aW9uOiByZWR1Y2UpJykubWF0Y2hlcykgewogICAgICBjb25zdCBtb3Rpb24gPSBub2RlLmFuaW1hdGUoZnJhbWVzLCB7ZHVyYXRpb24sIGVhc2luZzonY3ViaWMtYmV6aWVyKC4yNCwuNzIsLjIyLDEpJyxmaWxsOidmb3J3YXJkcyd9KTsKICAgICAgbW90aW9uLm9uZmluaXNoID0gKCkgPT4geyBub2RlLnJlbW92ZSgpOyBlZmZlY3RzLmRlbGV0ZShub2RlKTsgfTsKICAgICAgZXhwaXJlRngobm9kZSwgZHVyYXRpb24gKyAxNTApOwogICAgfSBlbHNlIHsKICAgICAgbm9kZS5zdHlsZS50cmFuc2Zvcm0gPSBmcmFtZXNbZnJhbWVzLmxlbmd0aC0xXS50cmFuc2Zvcm07CiAgICAgIGV4cGlyZUZ4KG5vZGUsIDYyMCk7CiAgICB9CiAgICByZXR1cm4gbm9kZTsKICB9CiAgZnVuY3Rpb24gY2F0Y2hUYXJnZXRzKHRhcmdldHMsIGtpbmQpIHsKICAgIGlmICghY3VycmVudCgpKSByZXR1cm4gMDsKICAgIGxldCB0YWtlbiA9IDA7CiAgICBmb3IgKGNvbnN0IHQgb2YgdGFyZ2V0cykgewogICAgICBpZiAoIXN0YXRlLnRhcmdldHMuaW5jbHVkZXModCkpIGNvbnRpbnVlOwogICAgICByZW1vdmVUYXJnZXQodCk7CiAgICAgICsrdGFrZW47CiAgICAgIHN0YXRlLmNhdWdodCArPSAxOyAvLyBSaXZlciBvYmplY3RpdmU7IG5vdCBjcmVkaXRlZCBhcyB0eXBlZCB3b3Jkcy9jaGFyYWN0ZXJzLgogICAgICBzdGF0ZS5zY29yZSArPSBraW5kID09PSAnYmVhcicgPyA0MCA6IDIyOwogICAgICBzcGxhc2godCwga2luZCA9PT0gJ2JlYXInID8gJ0JFQVIgQ0FUQ0ghJyA6ICdXT0xGIENBVENIIScpOwogICAgfQogICAgaWYgKHRha2VuID4gMCkgewogICAgICByZWZyZXNoSHVkKCk7CiAgICAgIGlmIChzdGF0ZS5jYXVnaHQgPj0gc3RhdGUuZ29hbCkgZW5kR2FtZSh0cnVlKTsKICAgIH0KICAgIHJldHVybiB0YWtlbjsKICB9CiAgZnVuY3Rpb24gcmVzY3VlQmVhcigpIHsKICAgIGlmICghY3VycmVudCgpIHx8IHN1cHBsaWVzLmJ1c3kgfHwgc3VwcGxpZXMuYmVhcnMgPCAxIHx8ICFzdGF0ZS50YXJnZXRzLmxlbmd0aCkgcmV0dXJuOwogICAgY29uc3QgdGFyZ2V0ID0gYWN0aXZlVGFyZ2V0ICYmIHN0YXRlLnRhcmdldHMuaW5jbHVkZXMoYWN0aXZlVGFyZ2V0KSA/IGFjdGl2ZVRhcmdldCA6CiAgICAgIFsuLi5zdGF0ZS50YXJnZXRzXS5zb3J0KChhLGIpID0+IGIueSAtIGEueSlbMF07CiAgICBpZiAoIXRhcmdldCkgcmV0dXJuOwogICAgc3VwcGxpZXMuYmVhcnMtLTsgc3VwcGxpZXMuYnVzeSA9IHRydWU7IHVwZGF0ZUJ1dHRvbnMoKTskcCgndHlwZUlucHV0JykuZm9jdXMoKTsKICAgIGNvbnN0IHJ1biA9IHN1cHBsaWVzLCBhcmVuYSA9ICRwKCdhcmVuYScpLCB4ID0gdGFyZ2V0LngqYXJlbmEuY2xpZW50V2lkdGggLSA3MywgeSA9IHRhcmdldC55IC0gMjM7CiAgICBjb25zdCBwcmV2aW91c1NwZWVkID0gdGFyZ2V0LnNwZWVkOwogICAgdGFyZ2V0LnNwZWVkID0gMDsgLy8gVGhlIGludGVuZGVkIGZpc2ggc3RheXMgaW4gcGxhY2UgZm9yIHRoZSBiZWFyIGFuaW1hdGlvbi4KICAgIGFjdG9yKGJlYXJTVkcsJ2JlYXInLFsKICAgICAge3RyYW5zZm9ybTpgdHJhbnNsYXRlKCR7LTE1NX1weCwke3krMTR9cHgpIHNjYWxlKC44NilgLG9wYWNpdHk6Ljl9LAogICAgICB7dHJhbnNmb3JtOmB0cmFuc2xhdGUoJHtNYXRoLm1heCgtMjAseC00MCl9cHgsJHt5LTh9cHgpIHNjYWxlKDEpYCxvcGFjaXR5OjEsb2Zmc2V0Oi43Mn0sCiAgICAgIHt0cmFuc2Zvcm06YHRyYW5zbGF0ZSgke3h9cHgsJHt5fXB4KSBzY2FsZSgxLjA3KWAsb3BhY2l0eToxfQogICAgXSwgNjMwKTsKICAgIGF1ZGlvQ3VlKCdiZWFyJyk7CiAgICBzdGF0dXMoJ0JlYXIgUmVzY3VlISBBIGdyaXp6bHkgaXMgY2hhcmdpbmcgaW50byB0aGUgcml2ZXIuJyk7CiAgICBsYXRlcigoKSA9PiB7CiAgICAgIGlmIChzdGF0ZSA9PT0gcnVuLnN0YXRlICYmIHJ1bm5pbmcgJiYgIXN0YXRlLmVuZGVkICYmICFwYXVzZWQpIHsKICAgICAgICBjYXRjaFRhcmdldHMoW3RhcmdldF0sICdiZWFyJyk7CiAgICAgICAgaWYgKHN0YXRlID09PSBydW4uc3RhdGUgJiYgIXN0YXRlLmVuZGVkKSBzdGF0dXMoJ0JlYXIgUmVzY3VlIGNhdWdodCBvbmUgZmlzaCEgS2VlcCB0eXBpbmcgdG8gZWFybiBhbm90aGVyLicpOwogICAgICB9CiAgICAgIGlmIChzdGF0ZSA9PT0gcnVuLnN0YXRlICYmIHN0YXRlLnRhcmdldHMuaW5jbHVkZXModGFyZ2V0KSkgdGFyZ2V0LnNwZWVkID0gcHJldmlvdXNTcGVlZDsKICAgICAgaWYgKHN1cHBsaWVzID09PSBydW4pIHsgc3VwcGxpZXMuYnVzeSA9IGZhbHNlOyB1cGRhdGVCdXR0b25zKCk7IH0KICAgIH0sIDU2MCk7CiAgfQogIGZ1bmN0aW9uIHdvbGZQYWNrKCkgewogICAgaWYgKCFjdXJyZW50KCkgfHwgc3VwcGxpZXMuYnVzeSB8fCBzdXBwbGllcy53b2x2ZXMgPCAxIHx8ICFzdGF0ZS50YXJnZXRzLmxlbmd0aCkgcmV0dXJuOwogICAgY29uc3QgdmljdGltcyA9IFsuLi5zdGF0ZS50YXJnZXRzXTsKICAgIHN1cHBsaWVzLndvbHZlcy0tOyBzdXBwbGllcy5idXN5ID0gdHJ1ZTsgdXBkYXRlQnV0dG9ucygpOyRwKCd0eXBlSW5wdXQnKS5mb2N1cygpOwogICAgY29uc3QgcnVuID0gc3VwcGxpZXMsIGFyZW5hID0gJHAoJ2FyZW5hJyksIHdpZHRoID0gYXJlbmEuY2xpZW50V2lkdGgsIGhlaWdodCA9IGFyZW5hLmNsaWVudEhlaWdodDsKICAgIGNvbnN0IHByZXZpb3VzU3BlZWRzID0gbmV3IE1hcCh2aWN0aW1zLm1hcCh0ID0+IFt0LHQuc3BlZWRdKSk7CiAgICBmb3IgKGNvbnN0IHQgb2YgdmljdGltcykgdC5zcGVlZCA9IDA7CiAgICBjb25zdCBiYW5uZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsKICAgIGJhbm5lci5jbGFzc05hbWUgPSAnZ3JpenpseS1wYWNrLWJhbm5lcic7IGJhbm5lci50ZXh0Q29udGVudCA9ICdXT0xGIFBBQ0shJzsKICAgIGFkZEZ4KGJhbm5lcik7IGV4cGlyZUZ4KGJhbm5lciwgOTAwKTsKICAgIGZvciAobGV0IGkgPSAwOyBpIDwgNjsgaSsrKSB7CiAgICAgIGNvbnN0IGZyb21MZWZ0ID0gaSAlIDIgPT09IDA7CiAgICAgIGNvbnN0IHkgPSBNYXRoLm1heCgyNSxNYXRoLm1pbihoZWlnaHQtMTUwLDkwKyhpKjg5KSUoTWF0aC5tYXgoMTgwLGhlaWdodC0xNTUpKSkpOwogICAgICBjb25zdCBzdGFydFggPSBmcm9tTGVmdCA/IC0xMzUgOiB3aWR0aCsxMzU7CiAgICAgIGNvbnN0IGVuZFggPSBmcm9tTGVmdCA/IHdpZHRoKzE0MCA6IC0xNDA7CiAgICAgIGFjdG9yKHdvbGZTVkcsICd3b2xmJywgWwogICAgICAgIHt0cmFuc2Zvcm06YHRyYW5zbGF0ZSgke3N0YXJ0WH1weCwke3l9cHgpIHNjYWxlWCgke2Zyb21MZWZ0PzE6LTF9KSBzY2FsZSguOSlgLCBvcGFjaXR5Oi44fSwKICAgICAgICB7dHJhbnNmb3JtOmB0cmFuc2xhdGUoJHsoc3RhcnRYK2VuZFgpLzJ9cHgsJHt5LTEwfXB4KSBzY2FsZVgoJHtmcm9tTGVmdD8xOi0xfSkgc2NhbGUoMS4wOClgLG9wYWNpdHk6MX0sCiAgICAgICAge3RyYW5zZm9ybTpgdHJhbnNsYXRlKCR7ZW5kWH1weCwke3l9cHgpIHNjYWxlWCgke2Zyb21MZWZ0PzE6LTF9KSBzY2FsZSguOSlgLG9wYWNpdHk6Ljg4fQogICAgICBdLDY5MCtpKjUwKTsKICAgIH0KICAgIGF1ZGlvQ3VlKCd3b2x2ZXMnKTsKICAgIHN0YXR1cyhgV29sZiBQYWNrISBXb2x2ZXMgYXJlIGNsZWFyaW5nICR7dmljdGltcy5sZW5ndGh9IGZpc2ggZnJvbSB0aGUgcml2ZXIhYCk7CiAgICBsYXRlcigoKSA9PiB7CiAgICAgIGlmIChzdGF0ZSA9PT0gcnVuLnN0YXRlICYmIHJ1bm5pbmcgJiYgIXN0YXRlLmVuZGVkICYmICFwYXVzZWQpIHsKICAgICAgICBjb25zdCBjb3VudCA9IGNhdGNoVGFyZ2V0cyh2aWN0aW1zLCAnd29sdmVzJyk7CiAgICAgICAgaWYgKHN0YXRlID09PSBydW4uc3RhdGUgJiYgIXN0YXRlLmVuZGVkKSBzdGF0dXMoYFdvbGYgUGFjayBjYXVnaHQgJHtjb3VudH0gZmlzaCEgS2VlcCB0eXBpbmcgdG8gZWFybiBhbm90aGVyLmApOwogICAgICB9CiAgICAgIGlmIChzdGF0ZSA9PT0gcnVuLnN0YXRlKSBmb3IgKGNvbnN0IFt0LHNwZWVkXSBvZiBwcmV2aW91c1NwZWVkcykgaWYgKHN0YXRlLnRhcmdldHMuaW5jbHVkZXModCkpIHQuc3BlZWQ9c3BlZWQ7CiAgICAgIGlmIChzdXBwbGllcyA9PT0gcnVuKSB7IHN1cHBsaWVzLmJ1c3kgPSBmYWxzZTsgdXBkYXRlQnV0dG9ucygpOyB9CiAgICB9LCA1OTApOwogIH0KCiAgLy8gQXR0YWNoIG9uY2UsIGFmdGVyIHRoZSBleGlzdGluZyBpbnB1dCBoYW5kbGVyLiBUaGUgZXhpc3RpbmcgZ2FtZSdzIGFjY2VwdGVkLXdvcmQKICAvLyBjb3VudGVyIHJpc2VzIG9ubHkgZm9yIGFjdHVhbCB0eXBpbmc7IGFzc2lzdHMgbmV2ZXIgaW5jcmVtZW50IGNvcnJlY3RDaGFycy4KICAkcCgndHlwZUlucHV0JykuYWRkRXZlbnRMaXN0ZW5lcignaW5wdXQnLCAoKSA9PiB7CiAgICBpZiAoIXN1cHBsaWVzIHx8IHN1cHBsaWVzLnN0YXRlICE9PSBzdGF0ZSB8fCAhc3RhdGUpIHJldHVybjsKICAgIGlmIChzdGF0ZS5jb3JyZWN0Q2hhcnMgPiBzdXBwbGllcy5jaGFycykgewogICAgICBzdXBwbGllcy50eXBlZCsrOwogICAgICBzdXBwbGllcy5jaGFycyA9IHN0YXRlLmNvcnJlY3RDaGFyczsKICAgICAgaWYgKHN1cHBsaWVzLnR5cGVkICUgNSA9PT0gMCkgc3VwcGxpZXMuYmVhcnMgPSBNYXRoLm1pbihCRUFSX01BWCwgc3VwcGxpZXMuYmVhcnMrMSk7CiAgICAgIGlmIChzdGF0ZS5sZXZlbCA+PSAzICYmIHN1cHBsaWVzLnR5cGVkICUgMTIgPT09IDApCiAgICAgICAgc3VwcGxpZXMud29sdmVzID0gTWF0aC5taW4oV09MVkVTX01BWCxzdXBwbGllcy53b2x2ZXMrMSk7CiAgICAgIGlmIChzdXBwbGllcy50eXBlZCAlIDUgPT09IDAgfHwgc3VwcGxpZXMudHlwZWQgJSAxMiA9PT0gMCkKICAgICAgICBzdGF0dXMoYFBvd2VyLXVwIGVhcm5lZCEgJHtzdXBwbGllcy5iZWFyc30gYmVhciByZXNjdWVzIGFuZCAke3N1cHBsaWVzLndvbHZlc30gd29sZiBwYWNrcyBhdmFpbGFibGUuYCk7CiAgICB9CiAgICB1cGRhdGVCdXR0b25zKCk7CiAgfSk7CiAgZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcigna2V5ZG93bicsIGUgPT4gewogICAgaWYgKCFjdXJyZW50KCkgfHwgZS5jdHJsS2V5IHx8IGUuYWx0S2V5IHx8IGUubWV0YUtleSB8fCBlLnNoaWZ0S2V5KSByZXR1cm47CiAgICAvLyBBbHdheXMgcHJldmVudCBicm93c2VyIFRhYiBmb2N1cyBqdW1wcyBhbmQgRW50ZXIgZm9ybSBzdWJtaXNzaW9uIGR1cmluZyBhIHJ1bi4KICAgIGlmIChlLmtleSA9PT0gJ1RhYicpIHtlLnByZXZlbnREZWZhdWx0KCk7ZS5zdG9wSW1tZWRpYXRlUHJvcGFnYXRpb24oKTtyZXNjdWVCZWFyKCk7fQogICAgZWxzZSBpZiAoZS5rZXkgPT09ICdFbnRlcicpIHtlLnByZXZlbnREZWZhdWx0KCk7ZS5zdG9wSW1tZWRpYXRlUHJvcGFnYXRpb24oKTt3b2xmUGFjaygpO30KICB9LCB0cnVlKTsKICAkcCgnZ3JpenpseUJlYXJQb3dlcicpLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgcmVzY3VlQmVhcik7CiAgJHAoJ2dyaXp6bHlXb2x2ZXNQb3dlcicpLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgd29sZlBhY2spOwogICRwKCdwYXVzZScpPy5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsIHVwZGF0ZUJ1dHRvbnMpOwoKICAvLyBXcmFwIHJhdGhlciB0aGFuIHJlcGxhY2UgZXhpc3RpbmcgZ2FtZXBsYXk7IG9yaWdpbmFsIGZ1bmN0aW9ucyByZXRhaW4gYWxsCiAgLy8gc2NvcmluZywgc2F2ZWQgcHJvZ3Jlc3MsIHZvY2FidWxhcnkgcm90YXRpb24sIGFuZCBsZXZlbCBsb2dpYy4KICBjb25zdCBvbGRTdGFydEdhbWUgPSBzdGFydEdhbWU7CiAgc3RhcnRHYW1lID0gZnVuY3Rpb24oLi4uYXJncykge3N0b3BFZmZlY3RzKCk7Y29uc3Qgcj1vbGRTdGFydEdhbWUoLi4uYXJncyk7ZnJlc2hSdW4oKTtyZXR1cm4gcjt9OwogIGNvbnN0IG9sZENsZWFyUGxheWZpZWxkID0gY2xlYXJQbGF5ZmllbGQ7CiAgY2xlYXJQbGF5ZmllbGQgPSBmdW5jdGlvbiguLi5hcmdzKSB7c3RvcEVmZmVjdHMoKTtzdXBwbGllcz1udWxsO2NvbnN0IHI9b2xkQ2xlYXJQbGF5ZmllbGQoLi4uYXJncyk7dXBkYXRlQnV0dG9ucygpO3JldHVybiByO307CiAgY29uc3Qgb2xkRW5kR2FtZSA9IGVuZEdhbWU7CiAgZW5kR2FtZSA9IGZ1bmN0aW9uKC4uLmFyZ3MpIHtjb25zdCByPW9sZEVuZEdhbWUoLi4uYXJncyk7c3RvcEVmZmVjdHMoKTt1cGRhdGVCdXR0b25zKCk7cmV0dXJuIHI7fTsKICBjb25zdCBvbGRUb2dnbGVQYXVzZSA9IHRvZ2dsZVBhdXNlOwogIHRvZ2dsZVBhdXNlID0gZnVuY3Rpb24oLi4uYXJncykge2NvbnN0IHI9b2xkVG9nZ2xlUGF1c2UoLi4uYXJncyk7dXBkYXRlQnV0dG9ucygpO3JldHVybiByO307CiAgY29uc3Qgb2xkU3Bhd24gPSBzcGF3bjsKICBzcGF3biA9IGZ1bmN0aW9uKC4uLmFyZ3MpIHtjb25zdCByPW9sZFNwYXduKC4uLmFyZ3MpO3VwZGF0ZUJ1dHRvbnMoKTtyZXR1cm4gcjt9OwoKICAvLyBGaXggbGVmdG92ZXIgU3BhY2UgVHlwZSBEZWZlbmRlciBsYWJlbHMgd2l0aG91dCBjaGFuZ2luZyBpdHMgc2F2ZSBkYXRhLgogIGNvbnN0IG1hcmsgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCdoZWFkZXIgLm1hcmsnKTsKICBpZiAobWFyaykgbWFyay50ZXh0Q29udGVudCA9ICfwn5C7JzsKICBjb25zdCBjdXN0b20gPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcuY3VzdG9taXplJyk7CiAgaWYgKGN1c3RvbSkgewogICAgY29uc3QgdGl0bGUgPSBjdXN0b20ucXVlcnlTZWxlY3RvcignLmV5ZWJyb3csaDIsaDMnKTsKICAgIGlmICh0aXRsZSkgdGl0bGUudGV4dENvbnRlbnQgPSAnUml2ZXIgc291bmQgc2V0dGluZ3MnOwogICAgY29uc3QgaGVscGVyID0gY3VzdG9tLnF1ZXJ5U2VsZWN0b3IoJ3NtYWxsJyk7CiAgICBpZiAoaGVscGVyKSBoZWxwZXIudGV4dENvbnRlbnQgPSAnQ2hvb3NlIHlvdXIgbXVzaWMgYW5kIHNvdW5kIGVmZmVjdHMuIEFsbCByaXZlciBhbmltYXRpb25zIHdvcmsgd2l0aCBzb3VuZCBvZmYuJzsKICB9CiAgY29uc3QgbGFiZWxTdGF0cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy5zdGF0cy1yYWlsIC5zdGF0ID4gc3BhbicpOwogIGlmIChsYWJlbFN0YXRzWzJdKSBsYWJlbFN0YXRzWzJdLnRleHRDb250ZW50PSdGaXNoIGNhdWdodCc7CiAgaWYgKGxhYmVsU3RhdHNbM10pIGxhYmVsU3RhdHNbM10udGV4dENvbnRlbnQ9J01pc3NlZCBmaXNoJzsKICBjb25zdCBzdGF0VG90YWwgPSAkcCgndG90YWxXb3JkcycpPy5wYXJlbnRFbGVtZW50OwogIGlmIChzdGF0VG90YWwpIHtmb3IoY29uc3Qgbm9kZSBvZiBzdGF0VG90YWwuY2hpbGROb2RlcykgaWYobm9kZS5ub2RlVHlwZT09PU5vZGUuVEVYVF9OT0RFICYmIC9kZWZlbmRlZC8udGVzdChub2RlLnRleHRDb250ZW50KSlub2RlLnRleHRDb250ZW50PScgdG90YWwgZmlzaCBjYXVnaHQnO30KICBjb25zdCBzdGFydE92ZXJsYXkgPSAkcCgnc3RhcnRTY3JlZW4nKT8ucXVlcnlTZWxlY3RvcigncCcpOwogIGlmKHN0YXJ0T3ZlcmxheSlzdGFydE92ZXJsYXkudGV4dENvbnRlbnQ9J0Nob29zZSB5b3VyIGdyYWRlIGFuZCBwcmVzcyBTdGFydCBSaXZlci4gQ29tcGxldGUgZWFjaCBvZiB0aGUgc2l4IHJpdmVycyB0byB1bmxvY2sgdGhlIG5leHQuJzsKICBjb25zdCBzaWRlVGl0bGUgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcuc2lkZWJhciBoMycpOwogIGlmIChzaWRlVGl0bGUpIHNpZGVUaXRsZS50ZXh0Q29udGVudCA9ICdZb3VyIHJpdmVyIGJlYXJzJzsKICBjb25zdCBoZWxwRGlhbG9nID0gJHAoJ2hlbHBEaWFsb2cnKTsKICBpZiAoaGVscERpYWxvZykgewogICAgZm9yIChjb25zdCBwIG9mIGhlbHBEaWFsb2cucXVlcnlTZWxlY3RvckFsbCgncCcpKSB7CiAgICAgIGlmICgvbm8gYmVhcnMgb3IgY2F0ZWdvcnktc3dpdGNoaW5nIGNvbnRyb2xzL2kudGVzdChwLnRleHRDb250ZW50KSkgewogICAgICAgIHAudGV4dENvbnRlbnQgPSAnRWFjaCByaXZlciB1bmxvY2tzIG1vcmUgYmVhciBjYXRlZ29yaWVzLiBDaG9vc2UgYmVhcnMgd2l0aCBTaGlmdCsx4oCTNCwgb3Igc2ltcGx5IHR5cGUgYW55IHZpc2libGUgZmlzaCB3b3JkLiBUYWIgY2FsbHMgYSBiZWFyIHRvIGNhdGNoIG9uZSBzZWxlY3RlZCBmaXNoOyBFbnRlciBjYWxscyB0aGUgd29sdmVzIHRvIGNhdGNoIGV2ZXJ5IHZpc2libGUgZmlzaC4gV29sZiBQYWNrcyB1bmxvY2sgaW4gUml2ZXIgMy4gQmVhciBSZXNjdWVzIHJlcGxlbmlzaCBldmVyeSA1IGNvcnJlY3RseSB0eXBlZCB3b3JkcywgYW5kIFdvbGYgUGFja3MgZXZlcnkgMTIuIEFzc2lzdHMgY291bnQgdG93YXJkIHRoZSByaXZlciBnb2FsIGJ1dCBkbyBub3QgaW5jcmVhc2UgeW91ciB0eXBpbmcgc3BlZWQgb3IgYWNjdXJhY3kuJzsKICAgICAgfQogICAgfQogIH0KICAvLyBSZXBsYWNlIHRoZSBhY2NpZGVudGFsIHNwYWNlc2hpcCBpbiB0aGUgcml2ZXJiYW5rIHdpdGggdGhlIGV4aXN0aW5nIGJlYXIgYXJ0d29yay4KICBjb25zdCBiYW5rQXJ0PWRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5yaXZlciAuYmFuayAuYXJjYWRlLXNoaXAnKTsKICBmdW5jdGlvbiByZWZyZXNoUml2ZXJiYW5rQmVhcigpewogICAgaWYoIWJhbmtBcnQgfHwgdHlwZW9mIGJlYXJBcnR3b3JrICE9PSAnZnVuY3Rpb24nKSByZXR1cm47CiAgICBjb25zdCBpPU1hdGgubWF4KDAsYmVhck5hbWVzLmZpbmRJbmRleChiPT5iLmlkPT09KHN0YXRlPy5jYXR8fCdkYWlseScpKSk7CiAgICBiYW5rQXJ0LmlubmVySFRNTD1iZWFyQXJ0d29yayhpKTsKICAgIGJhbmtBcnQuc2V0QXR0cmlidXRlKCdhcmlhLWxhYmVsJywgJ0dyaXp6bHkgYmVhcicpOwogIH0KICBjb25zdCBvbGRTaG93QmVhcnM9c2hvd0JlYXJzOwogIHNob3dCZWFycz1mdW5jdGlvbiguLi5hcmdzKXtjb25zdCByPW9sZFNob3dCZWFycyguLi5hcmdzKTtyZWZyZXNoUml2ZXJiYW5rQmVhcigpO3JldHVybiByO307CiAgcmVmcmVzaFJpdmVyYmFua0JlYXIoKTsKICBjb25zdCBvbGRMb2FkTGV2ZWxzPWxvYWRMZXZlbHM7CiAgbG9hZExldmVscz1mdW5jdGlvbiguLi5hcmdzKXtjb25zdCByPW9sZExvYWRMZXZlbHMoLi4uYXJncyk7Y29uc3QgZGVzY3JpcHRpb249JHAoJ2VudHJ5RGVzY3JpcHRpb24nKTtpZihkZXNjcmlwdGlvbilkZXNjcmlwdGlvbi50ZXh0Q29udGVudD1kZXNjcmlwdGlvbi50ZXh0Q29udGVudC5yZXBsYWNlQWxsKCdtaXNzaW9ucycsJ3JpdmVycycpLnJlcGxhY2VBbGwoJ21pc3Npb24nLCdyaXZlcicpO3JldHVybiByO307CiAgY29uc3Qgb3JpZ2luYWxFbmQ9IGVuZEdhbWU7CiAgZW5kR2FtZT1mdW5jdGlvbiguLi5hcmdzKXtjb25zdCByPW9yaWdpbmFsRW5kKC4uLmFyZ3MpO2lmKHN0YXRlPy5lbmRlZCAmJiBzdGF0ZS5tb2RlPT09J2FyY2FkZScgJiYgIWFyZ3NbMF0pe2NvbnN0IG1lc3NhZ2U9JHAoJ2VuZERlc2NyaXB0aW9uJyk7aWYobWVzc2FnZSltZXNzYWdlLnRleHRDb250ZW50PSdUcnkgdGhpcyByaXZlciBhZ2FpbiB0byB1bmxvY2sgdGhlIG5leHQgc3RyZWFtLic7fXJldHVybiByO307CiAgY29uc3QgZW50cnlEZXNjcmlwdGlvbiA9ICRwKCdlbnRyeURlc2NyaXB0aW9uJyk7CiAgaWYoZW50cnlEZXNjcmlwdGlvbillbnRyeURlc2NyaXB0aW9uLnRleHRDb250ZW50PWVudHJ5RGVzY3JpcHRpb24udGV4dENvbnRlbnQucmVwbGFjZUFsbCgnbWlzc2lvbnMnLCdyaXZlcnMnKS5yZXBsYWNlQWxsKCdtaXNzaW9uJywncml2ZXInKTsKICBjb25zdCB2ZXJzaW9uTm90ZSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ3NwYW4nKTsKICB2ZXJzaW9uTm90ZS5jbGFzc05hbWUgPSAnaGludCc7CiAgdmVyc2lvbk5vdGUudGV4dENvbnRlbnQgPSBgIMK3IFJpdmVyIHBvd2VyLXVwcyBWJHtWRVJTSU9OfWA7CiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvcignaGVhZGVyIC5leWVicm93Jyk/LmFwcGVuZENoaWxkKHZlcnNpb25Ob3RlKTsKICB1cGRhdGVCdXR0b25zKCk7Cn0pKCk7Cg==";
+const TARGET='https://raw.githubusercontent.com/jkramer-cloud/grizzly-rapids/main/index.html';
+const statusBox=document.getElementById('status');
+const show=(msg)=>statusBox.textContent=msg;
+function decode(){const bin=atob(PATCH_B64);return new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0)));}
+function patchGame(source){
+ if (source.includes('__grizzlyPowerupsV5Installed')) throw new Error('This file already contains the V5 power-up update. Use a clean existing index.html to avoid applying it twice.');
+ const markers=['const CONFIG=', 'function startGame(', 'function removeTarget(', 'function spawn(', 'function endGame(', 'const isRiver='];
+ const missing=markers.filter(x=>!source.includes(x));
+ if (missing.length) throw new Error('This source is not the expected Grizzly Rapids game (missing: '+missing.join(', ')+'). No file was changed.');
+ if (!source.includes('"mode":"river"') && !source.includes("mode:'river'")) throw new Error('This HTML is not in river mode. Please select the grizzly-rapids index.html, not the space game.');
+ if (!/<\/body>/i.test(source)) throw new Error('Could not find the end of the HTML document.');
+ const script=decode();
+ // Added after the original game initializes so it can wrap existing functions.
+ const updated=source.replace(/<\/body>/i,'<script id="grizzly-v5-powerups">'+script+'<\/script></body>');
+ if (!updated.includes('grizzly-v5-powerups')) throw new Error('The update could not be inserted.');
+ return updated;
 }
-function random(list){return list[Math.floor(Math.random()*list.length)]}
-function shuffleWords(items){const x=[...items];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
-const recentKey='nacheshub_typing_recent_'+GAME+'_v2';
-function loadRecent(){try{const p=JSON.parse(localStorage.getItem(recentKey));return p&&typeof p==='object'?p:{}}catch(e){return {}}}
-const recentWords=loadRecent();
-function rememberWord(grade,cat,word){const key=bandFor(grade)+'|'+cat;const a=recentWords[key]||[];recentWords[key]=[...a.filter(w=>w!==word),word].slice(-24);try{localStorage.setItem(recentKey,JSON.stringify(recentWords))}catch(e){}}
-function drawWord(cat){const key=bandFor(state.grade)+'|'+cat;const pool=[...new Set(poolFor(state.grade,cat,state.level))];const occupied=new Set(state.targets.map(t=>t.word));if(!state.bags[key])state.bags[key]=[];
- const queue=state.bags[key];let attempts=0;
- while(attempts++<3){
-  if(!queue.length){const recent=new Set(recentWords[key]||[]);const fresh=pool.filter(w=>!recent.has(w));const stale=pool.filter(w=>recent.has(w));queue.push(...shuffleWords(fresh),...shuffleWords(stale));}
-  const idx=queue.findIndex(w=>!occupied.has(w));if(idx!==-1){const [word]=queue.splice(idx,1);rememberWord(state.grade,cat,word);return word;}
-  if(queue.length>=pool.length)return null;
- }
- return null;
+function download(text){
+ const blob=new Blob([text],{type:'text/html;charset=utf-8'});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');a.href=url;a.download='index.html';document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),5000);
 }
-function getGrade(){return Number($('gradeSelect').value)||5}
-function activeCats(level){return bearNames.slice(0,LEVELS[level-1].cats).map(x=>x.id)}
-function bearArtwork(index=0){let n=bearNames[index];let glasses=index===3?`<rect x="40" y="48" width="21" height="15" rx="7" stroke="#293344" stroke-width="4" fill="none"/><rect x="65" y="48" width="21" height="15" rx="7" stroke="#293344" stroke-width="4" fill="none"/><path d="M61 55h4" stroke="#293344" stroke-width="4"/>`:'';
- const hat=index===2?`<path d="M25 39h73l-14-21H42Z" fill="#467a55" stroke="#273c3b" stroke-width="3"/><path d="M25 39h73" stroke="#d4cc79" stroke-width="6"/>`:'';
- const fish=index===1?`<path d="M27 79q14-9 28 0-14 10-28 0m0 0-8-8v16Z" fill="#77add0" stroke="#33495f" stroke-width="2"/>`:'';
- return `<svg viewBox="0 0 122 132" aria-hidden="true"><ellipse cx="60" cy="124" rx="42" ry="6" fill="#001c24" opacity=".17"/><ellipse cx="60" cy="87" rx="42" ry="36" fill="${n.shade}" stroke="#23353f" stroke-width="3"/><circle cx="34" cy="34" r="16" fill="${n.shade}" stroke="#23353f" stroke-width="3"/><circle cx="86" cy="34" r="16" fill="${n.shade}" stroke="#23353f" stroke-width="3"/><circle cx="60" cy="59" r="43" fill="${n.color}" stroke="#23353f" stroke-width="3"/><ellipse cx="60" cy="75" rx="24" ry="18" fill="#fff0d6"/><circle cx="48" cy="56" r="5" fill="#27333e"/><circle cx="76" cy="56" r="5" fill="#27333e"/><ellipse cx="62" cy="71" rx="7" ry="5" fill="#3e3f43"/><path d="M53 80q9 8 18 0" stroke="#513c36" stroke-width="3" fill="none" stroke-linecap="round"/>${glasses}${hat}${fish}</svg>`}
-
-
-
-
-// V4 gameplay modes and grade-level word challenges are independent of KeyQuest.
-const BEAR_BONUSES={daily:'Everyday words · +20% points',nature:'Nature words · current slows 20%',world:'Places · +30 points',science:'Science · 3 catches recover one life'};
-function configureModeUI(){
- const mode=$('modeSelect');if(!mode)return;
- $('finishRun').hidden=!(state&&running&&!state.ended&&state.mode==='relaxed');
- mode.disabled=Boolean(state&&running&&!state.ended);
+function update(source,sourceLabel){
+ try {const updated=patchGame(source);download(updated);
+ show('Success. Downloaded index.html ('+(updated.length/1024).toFixed(1)+' KB) built from '+sourceLabel+'.\nNext: replace only index.html in your existing grizzly-rapids repository.');}
+ catch(e){show('Could not create the update: '+e.message);}
 }
-function updateMissed(){
- if(!state)return;
- $('missed').textContent=state.mode==='arcade'?`${state.missed} / 3`:`${state.missed} · ∞`;
-}
-function pulseAt(target){
- if(isRiver||!target||!target.el||!$('arena'))return;
- const a=$('arena'), x0=a.clientWidth/2, y0=a.clientHeight-83, x1=target.x*a.clientWidth,y1=target.y+24;
- const dx=x1-x0,dy=y1-y0;
- const beam=document.createElement('div');beam.className='laser-beam';
- beam.style.cssText=`left:${x0}px;top:${y0}px;width:${Math.hypot(dx,dy)}px;transform:rotate(${Math.atan2(dy,dx)}rad);background:${laserColor()};box-shadow:0 0 9px 3px ${laserColor()},0 0 17px ${laserColor()}`;
- const flash=document.createElement('div');flash.className='impact-ring';flash.style.cssText=`left:${x1}px;top:${y1}px`;
- a.append(beam,flash);playSound('laser');
- beam.addEventListener('animationend',()=>beam.remove(),{once:true});
- flash.addEventListener('animationend',()=>flash.remove(),{once:true});
-}
-function applyCatchBonus(target,base){
- if(!isRiver)return base;
- if(target.cat==='daily')return Math.round(base*1.2);
- if(target.cat==='world')return base+30;
- if(target.cat==='science'){
- state.scienceCatches=(state.scienceCatches||0)+1;
- if(state.scienceCatches>=3){
- state.scienceCatches=0;
- if(state.mode==='arcade'&&state.missed>0){state.missed--;status('Professor recovered one missed-food allowance!');}
- }
- }
- return base;
-}
-function setFullscreenLabel(){
- $('fullscreen').textContent=document.fullscreenElement?'Exit fullscreen':'Fullscreen ⛶';
-}
-function toggleFullscreen(){
- if(document.fullscreenElement){document.exitFullscreen?.().catch(()=>status('Could not exit fullscreen.'));return;}
- const target=$('battle');
- if(!target.requestFullscreen){status('Fullscreen is not supported in this browser.');return;}
- target.requestFullscreen().then(()=>$('typeInput').focus()).catch(()=>status('Fullscreen was blocked by the browser.'));
-}
-function showBears(){
- const cats=activeCats(state?state.level:1);
- const holder=$('bearCards');
- if(!isRiver){
- const icons={daily:'Aa',nature:'✦',world:'◎',science:'⚛'};
- holder.innerHTML=bearNames.map(n=>`<div class="category-token ${cats.includes(n.id)?'':'locked'}"><span class="cat-icon" style="--cat:${colorMap[n.id]}">${icons[n.id]}</span><span><b>${catNames[n.id]}</b><small>${cats.includes(n.id)?'Words in this mission':'Unlocks in a later mission'}</small></span></div>`).join('');
- return;
- }
- holder.innerHTML=bearNames.map((n,i)=>`<button type="button" class="bear ${state&&state.cat===n.id?'active':''} ${!cats.includes(n.id)?'locked':''}" data-bear="${n.id}" ${!cats.includes(n.id)?'disabled':''} aria-pressed="${state&&state.cat===n.id?'true':'false'}"><span class="bear-art">${bearArtwork(i)}</span><span><b>${n.title}</b><small>${n.role}</small></span><kbd>${i+1}</kbd></button>`).join('');
- holder.querySelectorAll('[data-bear]').forEach(b=>b.addEventListener('click',()=>switchBear(b.dataset.bear)));
- updateActiveBearArt();
-}
-function updateActiveBearArt(){
- if(!isRiver)return;
- const spot=$('activeBearArt');
- if(spot){const current=bearNames.findIndex(b=>b.id===(state?.cat||'daily'));spot.innerHTML=bearArtwork(Math.max(0,current));}
-}
-function switchBear(id){
- if(!isRiver||!state||!running||paused||!activeCats(state.level).includes(id))return;
- state.cat=id;
- activeTarget=null;lastTyped='';$('typeInput').value='';$('typeInput').classList.remove('bad');
- showBears();$('typeInput').focus();
- status(`Now using ${bearNames.find(b=>b.id===id).title}. You can also type any visible food word and the correct bear will catch it.`);
-}
-function status(s){$('status').textContent=s}
-function refreshHud(){
- if(!state)return;
- $('score').textContent=state.score.toLocaleString();
- $('collected').textContent=state.caught+' / '+(state.mode==='relaxed'?'∞':state.goal);
- updateMissed();
- $('levelNow').textContent=state.level+' / '+LEVELS.length;
- $('progressFill').style.width=Math.min(100,100*state.caught/(state.mode==='relaxed'?LEVELS[state.level-1].goal:state.goal))+'%';
- $('accuracy').textContent=(state.attempts?Math.max(0,Math.round(100*(state.attempts-state.errors)/state.attempts)):100)+'%';
- $('wpm').textContent=Math.round((state.correctChars/5)/(Math.max(1,state.activeSec)/60));
-}
-function clearPlayfield(){
- cancelAnimationFrame(raf);raf=0;
- // Also remove stale targets and any temporarily animated hit effects.
- $('objects').replaceChildren();
- $('arena').querySelectorAll('.laser-beam,.impact-ring,.explosion').forEach(el=>el.remove());
- activeTarget=null;lastTyped='';
- $('typeInput').value='';$('typeInput').classList.remove('bad');
- $('endScreen').hidden=true;$('endScreen').classList.remove('active');
- $('pause').textContent='Pause';
- $('finishRun').hidden=true;
-}
-function startGame(level){
- level=Math.min(Math.max(1,level),maxUnlocked());
- clearPlayfield();
- const grade=getGrade(),l=LEVELS[level-1];
- if(!l)return;
- const mode=$('modeSelect').value;
- state={grade,level,mode,score:0,missed:0,caught:0,goal:mode==='relaxed'?Infinity:l.goal,cat:'daily',targets:[],attempts:0,errors:0,correctChars:0,activeSec:0,lastKeyAt:0,seen:new Set(),bags:{},categoryCounts:{},spawned:0,ended:false,scienceCatches:0};
- running=true;paused=false;
- $('typeInput').disabled=false;
- $('startScreen').hidden=true;
- $('arena').classList.toggle('fast',level>=4);
- $('riverNumber').textContent=l.name;
- $('arena').dataset.env=String(level);$('stageFrame').dataset.scene=String(level);configureModeUI();
- lastFrame=performance.now();nextSpawn=lastFrame+l.spawn;
- showBears();refreshHud();
- status(isRiver?'Type any visible food word to catch it. Choose bears with Shift+1–4 if you like.':'Type any visible enemy word to destroy it. No Space or Enter required.');
- spawn(); // A target appears immediately instead of requiring students to wait.
- raf=requestAnimationFrame(tick);
- $('typeInput').focus();startMusic();applyShip();
-}
-function positionTarget(t){if(t.el){t.el.style.left=(t.x*100)+'%';t.el.style.top=t.y+'px';}}
-function spawn(){
- if(!state||state.ended||state.spawned>=state.goal+3)return;
- const cats=activeCats(state.level);
- // Favor the least-used category, with a small random tie breaker.
- const min=Math.min(...cats.map(c=>state.categoryCounts[c]||0));
- const options=cats.filter(c=>(state.categoryCounts[c]||0)===min);
- const cat=random(options),word=drawWord(cat);
- if(!word)return;
- state.categoryCounts[cat]=(state.categoryCounts[cat]||0)+1;
- const x=.17+Math.random()*.66;
- const t={id:state.spawned+1,word,cat,x,y:2,speed:LEVELS[state.level-1].speed*(.86+Math.random()*.23)*(isRiver&&cat==='nature'?.8:1),el:null};
- const el=document.createElement('div');
- el.className='target';el.style.setProperty('--item',colorMap[cat]);
- el.innerHTML=`<span class="target-symbol">${isRiver?'🐟':'☄'}</span><strong>${word}</strong>`;
- el.setAttribute('aria-label',word);
- el.addEventListener('click',()=>{activeTarget=t;$('typeInput').focus();markTarget();});
- t.el=el;state.targets.push(t);$('objects').appendChild(el);positionTarget(t);state.spawned++;
-}
-function markTarget(){if(!state)return;for(const t of state.targets)t.el?.classList.toggle('selected',t===activeTarget);}
-function removeTarget(t){
- if(!state)return;
- const idx=state.targets.indexOf(t);
- if(idx>=0)state.targets.splice(idx,1);
- t.el?.remove();
- if(activeTarget===t){activeTarget=null;lastTyped='';$('typeInput').value='';$('typeInput').classList.remove('bad');}
-}
-function endGame(won){
- if(!state||state.ended)return;
- running=false;paused=false;state.ended=true;
- cancelAnimationFrame(raf);raf=0;
- $('typeInput').disabled=true;
- for(const t of [...state.targets])removeTarget(t);
- const duration=Math.max(1,state.activeSec),net=Math.round((state.correctChars/5)/(duration/60));
- const acc=state.attempts?Math.max(0,Math.round(100*(state.attempts-state.errors)/state.attempts)):100;
- const key=GAME+'|'+state.grade;
- const old=saved[key]||{bestScore:0,wins:0,totalWords:0,totalChars:0,topLevel:0};
- old.bestScore=Math.max(old.bestScore,state.score);old.totalWords+=state.caught;
- old.totalChars+=state.correctChars;old.wins+=won&&state.mode==='arcade'?1:0;
- old.topLevel=Math.max(old.topLevel,won&&state.mode==='arcade'?state.level:state.level-1);
- saved[key]=old;persist();
- stopMusic();playSound(won?'win':'fail');
- $('endTitle').textContent=state.mode==='relaxed'?'Practice run complete!':won?(isRiver?'Stream cleared!':'Mission complete!'):(isRiver?'River run ended':'Station breached');
- $('endDescription').textContent=state.mode==='relaxed'?'Your practice words and score have been recorded on this device.':won?'Mission cleared! The next stage is unlocked.':'Retry this mission to advance through the galaxy.';
- $('finalScore').textContent=state.score.toLocaleString();$('finalAcc').textContent=acc+'%';$('finalWpm').textContent=net;
- $('nextLevel').hidden=state.mode==='relaxed'||!won||state.level>=LEVELS.length;
- configureModeUI();
- $('endScreen').hidden=false;$('endScreen').classList.add('active');
- status(won?'Level complete!':'Keep practicing. Retry this mission.');
- refreshHud();refreshProfile();
-}
-function tick(now){
- if(!running||!state)return;
- const dt=Math.min(.07,(now-lastFrame)/1000);lastFrame=now;
- if(!paused){
- if(now>=nextSpawn&&state.spawned<state.goal+3){spawn();nextSpawn=now+LEVELS[state.level-1].spawn;}
- const bound=$('arena').clientHeight-92;
- for(const t of [...state.targets]){
- t.y+=t.speed*dt;positionTarget(t);
- if(t.y>bound){removeTarget(t);state.missed++;refreshHud();status(isRiver?'A fish swam away. Catch the next one!':'A meteor reached the station. Keep defending!');}
- }
- if(state.mode==='arcade'&&state.missed>=3){endGame(false);return;}
- if(state.caught>=state.goal){endGame(true);return;}
- if(state.mode==='arcade'&&state.spawned>=state.goal+3&&state.targets.length===0&&state.caught<state.goal){endGame(false);return;}
- }
- raf=requestAnimationFrame(tick);
-}
-function findMatch(text){
- if(!state||!text)return null;
- const exact=state.targets.filter(t=>t.word===text).sort((a,b)=>b.y-a.y);
- if(exact.length)return exact[0]; // Exact visible word always wins, even if another shares its prefix.
- const prefix=state.targets.filter(t=>t.word.startsWith(text)).sort((a,b)=>b.y-a.y);
- if(!prefix.length)return null;
- if(activeTarget&&prefix.includes(activeTarget))return activeTarget;
- if(isRiver){const chosen=prefix.find(t=>t.cat===state.cat);if(chosen)return chosen;}
- return prefix[0];
-}
-function onTyped(event){
- if(!state||!running||paused)return;
- const inp=$('typeInput');
- // All target words are one word: accidental spaces should never trap the player.
- const typed=inp.value.toLowerCase().replace(/\s+/g,'');
- if(inp.value!==typed)inp.value=typed;
- const now=performance.now();
- if(state.lastKeyAt&&now-state.lastKeyAt<1600)state.activeSec+=(now-state.lastKeyAt)/1000;
- state.lastKeyAt=now;
- if(!state.targets.length){inp.value='';lastTyped='';status('Watch for the next approaching word.');return;}
- const change=typed.length-lastTyped.length;
- if(change>0){state.attempts+=change;}
- // Recompute the target after EVERY keystroke. Never lock into a wrong choice.
- activeTarget=findMatch(typed);
- const valid=Boolean(typed&&activeTarget);
- inp.classList.toggle('bad',Boolean(typed&&!valid));
- if(change>0&&!valid)state.errors+=change;
- markTarget();
- if(valid&&change>0&&typed.startsWith(lastTyped)&&!isRiver)pulseAt(activeTarget);
- if(valid&&typed===activeTarget.word){
- const t=activeTarget;
- state.caught++;state.correctChars+=t.word.length;
- if(!isRiver){explosionAt(t);playSound('explode');}
- state.score+=applyCatchBonus(t,Math.max(50,100+state.level*15-Math.floor(t.y/16)));
- if(isRiver&&state.cat!==t.cat){state.cat=t.cat;showBears();}
- const burst=document.createElement('div');
- burst.className='burst';burst.textContent=isRiver?'★ Food collected!':'✦ Target destroyed!';
- burst.style.top=t.y+'px';burst.style.left=t.x*100+'%';$('objects').appendChild(burst);
- // Automatically disposed on a restart via clearPlayfield too.
- setTimeout(()=>burst.remove(),750);
- removeTarget(t);activeTarget=null;inp.value='';lastTyped='';inp.classList.remove('bad');
- status(isRiver?'Great catch! Your bear collected the food.':'Target destroyed! Keep defending.');
- refreshHud();
- if(state.caught>=state.goal)endGame(true);
- return;
- }
- if(!typed){status('Choose a word and type it to catch the target.');}
- else if(!valid){status('No visible word starts with that text. Press Backspace to correct.');}
- else if(isRiver){
- const catcher=bearNames.find(b=>b.id===activeTarget.cat)?.title||'Your bear';
- status(`Target: ${activeTarget.word} · ${catcher} can collect it. Finish the word!`);
- }else status(`Target locked: ${activeTarget.word}. Finish typing to destroy it!`);
- lastTyped=typed;
- refreshHud();
-}
-function refreshProfile(){const grade=getGrade();const rec=saved[GAME+'|'+grade]||{};
- $('bestScore').textContent=(rec.bestScore||0).toLocaleString();
- $('bestLevel').textContent=(rec.topLevel||0)+' / '+LEVELS.length;
- $('totalWords').textContent=(rec.totalWords||0).toLocaleString();
-}
-function maxUnlocked(){const rec=saved[GAME+'|'+getGrade()]||{};return Math.max(1,Math.min(LEVELS.length,(rec.topLevel||0)+1));}
-function loadLevels(){
- const next=maxUnlocked(),l=LEVELS[next-1];
- $('entryTitle').textContent=`Level ${next} · ${l.name}`;
- $('entryDescription').textContent=next===1?'Begin at Level 1. Each successful mission unlocks the next.':`You have cleared ${next-1} of ${LEVELS.length} missions. Continue your journey!`;
- $('startMission').textContent=`▶ ${next===1?'Start':'Continue'} Level ${next}`;
- $('missionTrack').innerHTML=LEVELS.map((v,i)=>`<span title="${v.name}" class="${i+1<next?'done':i+1===next?'current':''}">${i+1}</span>`).join('');
- refreshProfile();refreshCosmetics();
-}
-function backToLevels(){
- running=false;paused=false;clearPlayfield();stopMusic();
- $('startScreen').hidden=false;$('typeInput').disabled=true;
- state=null;$('riverNumber').textContent='Press Start River above';
- $('score').textContent='0';$('collected').textContent='0 / 0';$('missed').textContent='0 / 3';
- $('accuracy').textContent='100%';$('wpm').textContent='0';$('progressFill').style.width='0%';
- status('Press Start River to begin.');configureModeUI();showBears();loadLevels();
-}
-
-const COSKEY='nacheshub_space_cosmetics_v5';
-let cosmetics={ship:'scout',laser:'cyan',music:'on',effects:'on'};
-try{cosmetics={...cosmetics,...JSON.parse(localStorage.getItem(COSKEY)||'{}')}}catch(e){}
-const LASERS={cyan:'#61dfff',red:'#ff6868',green:'#69ff98',purple:'#ba86ff',gold:'#ffca64',rainbow:'rainbow'};
-function laserColor(){const c=LASERS[cosmetics.laser]||LASERS.cyan;return c==='rainbow'?`hsl(${Math.floor(performance.now()/7)%360} 100% 70%)`:c;}
-function refreshCosmetics(){const unlock=maxUnlocked();const sh=$('shipSelect');if(!sh)return;sh.options[1].disabled=unlock<4;sh.options[2].disabled=unlock<8;$('laserSelect').options[5].disabled=unlock<12;if((cosmetics.ship==='interceptor'&&unlock<4)||(cosmetics.ship==='guardian'&&unlock<8)){cosmetics.ship='scout';sh.value='scout'}if(cosmetics.laser==='rainbow'&&unlock<12){cosmetics.laser='cyan';$('laserSelect').value='cyan'}applyShip();}
-function applyShip(){const ship=document.querySelector('.arcade-ship');if(ship)ship.dataset.ship=cosmetics.ship;}
-function setupCosmetics(){for(const [id,key] of [['shipSelect','ship'],['laserSelect','laser'],['musicSelect','music'],['effectsSelect','effects']]){const el=$(id);el.value=cosmetics[key];el.addEventListener('change',()=>{cosmetics[key]=el.value;try{localStorage.setItem(COSKEY,JSON.stringify(cosmetics))}catch(e){};if(key==='ship')applyShip();if(key==='music'){stopMusic();if(cosmetics.music==='on'&&running&&!paused)startMusic();}})}refreshCosmetics();}
-let audioCtx=null,musicInterval=null,musicStep=0;
-function audio(){if(!audioCtx){try{audioCtx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(audioCtx?.state==='suspended')audioCtx.resume().catch(()=>{});return audioCtx;}
-function tone(freq,duration=0.08,type='sine',volume=.045,delay=0){const ctx=audio();if(!ctx)return;const t=ctx.currentTime+delay,o=ctx.createOscillator(),gain=ctx.createGain();o.type=type;o.frequency.setValueAtTime(Math.max(35,freq),t);gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,volume),t+.012);gain.gain.exponentialRampToValueAtTime(.0001,t+duration);o.connect(gain);gain.connect(ctx.destination);o.start(t);o.stop(t+duration+.025);}
-function playSound(kind){if(cosmetics.effects!=='on')return;if(kind==='laser'){tone(650,.06,'sawtooth',.018);tone(980,.04,'sine',.02,.025);}else if(kind==='explode'){tone(160,.2,'sawtooth',.065);tone(85,.34,'triangle',.06,.035);tone(500,.09,'square',.013);}else if(kind==='win'){[523,659,784,1046].forEach((f,i)=>tone(f,.18,'triangle',.06,i*.12));}else if(kind==='fail'){[330,240,170].forEach((f,i)=>tone(f,.2,'triangle',.04,i*.14));}}
-function startMusic(){if(cosmetics.music!=='on'||musicInterval||!running||paused)return;audio();const notes=[110,164.81,220,164.81,130.81,196,261.63,196];musicInterval=setInterval(()=>{if(!running||paused)return;const n=notes[musicStep%notes.length];tone(n,.19,'triangle',.014);if(musicStep%4===0)tone(n/2,.32,'sine',.012);musicStep++;},290);}
-function stopMusic(){if(musicInterval!==null){clearInterval(musicInterval);musicInterval=null;}}
-function explosionAt(t){const arena=$('arena');if(!arena)return;const el=document.createElement('div');el.className='explosion';el.style.left=(t.x*100)+'%';el.style.top=(t.y+24)+'px';arena.append(el);setTimeout(()=>el.remove(),540);}
-
-function setUp(){
- for(let g=1;g<=12;g++)$('gradeSelect').add(new Option('Grade '+g,String(g)));
- $('gradeSelect').value='5';
- $('gradeSelect').addEventListener('change',()=>{backToLevels();});
- $('startMission').addEventListener('click',()=>startGame(maxUnlocked()));
- setupCosmetics();
- $('typeInput').addEventListener('paste',e=>{e.preventDefault();status('Please type words using your keyboard rather than pasting.');});
- $('typeInput').addEventListener('input',onTyped);
- document.addEventListener('keydown',e=>{
- if(!running||paused)return;
- if(isRiver&&e.shiftKey&&/^Digit[1-4]$/.test(e.code)){
- switchBear(bearNames[Number(e.code.slice(-1))-1].id);e.preventDefault();return;
- }
- if(e.key==='Escape'){togglePause();e.preventDefault();return;}
- if(document.activeElement!==$('typeInput')&&e.key.length===1&&!e.altKey&&!e.ctrlKey&&!e.metaKey){$('typeInput').focus();}
- });
- $('pause').addEventListener('click',togglePause);
- $('fullscreen').addEventListener('click',toggleFullscreen);document.addEventListener('fullscreenchange',setFullscreenLabel);
- $('finishRun').addEventListener('click',()=>{if(state&&running&&state.mode==='relaxed')endGame(true);});
- $('modeSelect').addEventListener('change',backToLevels);
- $('restart').addEventListener('click',()=>{if(state)startGame(state.level);});
- $('back').addEventListener('click',backToLevels);
- $('retry').addEventListener('click',()=>{if(state)startGame(state.level);});
- $('nextLevel').addEventListener('click',()=>{if(state)startGame(Math.min(maxUnlocked(),state.level+1));});
- $('homeEnd').addEventListener('click',backToLevels);
- $('help').addEventListener('click',()=>$('helpDialog').showModal());
- $('closeHelp').addEventListener('click',()=>$('helpDialog').close());
- $('typeInput').disabled=true;configureModeUI();showBears();loadLevels();
-}
-function togglePause(){
- if(!running)return;
- paused=!paused;lastFrame=performance.now();
- $('pause').textContent=paused?'Resume':'Pause';
- $('typeInput').disabled=paused;
- status(paused?'Paused. Your round is safe.':'Resumed. Keep typing!');
- if(!paused){$('typeInput').focus();startMusic();}else stopMusic();
-}
-setUp();
-
-
-</script>
-<script>document.addEventListener('DOMContentLoaded',()=>{const ship=document.querySelector('.river .arcade-ship');if(ship)ship.innerHTML=bearArtwork(0);});</script></body></html>
+document.getElementById('fetch').addEventListener('click',async()=>{
+ const btn=document.getElementById('fetch');btn.disabled=true;
+ show('Reading your existing public Grizzly Rapids source…');
+ try{
+  const response=await fetch(TARGET+'?v='+Date.now(),{cache:'no-store'});
+  if(!response.ok) throw new Error('GitHub returned '+response.status);
+  const source=await response.text();update(source,'the current GitHub version');
+ }catch(e){show('Automatic retrieval did not work ('+e.message+'). Use “Or choose my current index.html” and select the existing file on your computer.');}
+ finally{btn.disabled=false;}
+});
+document.getElementById('source').addEventListener('change',async e=>{
+ const file=e.target.files[0];if(!file)return;
+ try{update(await file.text(),file.name)}catch(err){show('File read error: '+err.message)}
+});
+</script></body></html>
