@@ -60,7 +60,17 @@ a{color:#d4fafa}header,.shell,footer{max-width:1250px;margin:0 auto;padding:22px
 
 /* V5 mission flow, cosmetics and hit effects */
 .mission-entry{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:22px 26px;margin:18px 0}.mission-entry h2{margin:5px 0}.mission-entry p{margin:0;color:var(--muted)}.mission-start{background:#fbc878;color:#17253a;border:0;border-radius:13px;padding:17px 25px;font-weight:900;font-size:19px;cursor:pointer;box-shadow:0 5px 24px #ffd77b33}.mission-start:hover{filter:brightness(1.12)}.mission-track{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}.mission-track span{border:1px solid #53738b;border-radius:7px;min-width:30px;padding:4px 7px;text-align:center;font-size:12px;color:#c9d9e6}.mission-track span.done{background:#245d53;color:#d6fff6}.mission-track span.current{background:#e6b464;color:#0c2131;font-weight:900}.customize{padding:15px 20px;margin-bottom:12px}.customize-grid{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:12px;margin:8px 0}.customize-grid label{display:flex;flex-direction:column;font-size:13px;font-weight:700;gap:5px}.customize-grid select{width:100%;background:#163b59;color:#fff;border:1px solid #739bb6;border-radius:9px;padding:9px}.customize small{color:#c1d4e6}.explosion{position:absolute;z-index:15;pointer-events:none;width:90px;height:90px;transform:translate(-50%,-50%);border-radius:50%;animation:boom .5s ease-out forwards;background:radial-gradient(circle,#fff 0 8%,#fff9ad 9% 17%,#ffbc53 18% 33%,#fc6a4a66 34% 52%,transparent 64%);box-shadow:0 0 25px #ffc55baa}.explosion:after{content:'✦ ✧ ✦ ✧';position:absolute;inset:-12px;display:grid;place-items:center;color:#fff5a8;font-size:23px;letter-spacing:5px;animation:boomParticles .5s ease-out forwards}@keyframes boom{0%{opacity:1;scale:.3}55%{opacity:1;scale:1.5}100%{opacity:0;scale:2}}@keyframes boomParticles{to{transform:rotate(60deg) scale(1.9);opacity:0}}.space .arcade-ship[data-ship="interceptor"]{filter:drop-shadow(0 0 12px #ffb35b) hue-rotate(155deg);transform:scale(1.08)}.space .arcade-ship[data-ship="guardian"]{filter:drop-shadow(0 0 14px #ca91ff) hue-rotate(75deg);transform:scale(1.13)}@media(max-width:750px){.customize-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mission-entry{align-items:stretch}.mission-start{width:100%}}@media(max-width:440px){.customize-grid{grid-template-columns:1fr}}
-</style><style id="grizzly-v5-theme">.customize-grid.river-settings{grid-template-columns:repeat(2,minmax(0,1fr));max-width:550px}.river .customize-grid.river-settings label{display:flex!important}.hero-bear{width:85px;height:85px;display:grid;place-items:center}.hero-bear svg{height:88px;width:82px;filter:drop-shadow(0 5px 6px #06161c5c)}.river .bank{padding:4px 9px}.river .bank span:not(.hero-bear){max-width:190px;text-align:center;color:#e2f9e6}.scene-side{background:#517e5b}.river .arena .target{background:linear-gradient(145deg,#174857f0,#12334ded)}.river .target .target-symbol{filter:drop-shadow(0 2px 3px #1e5064)}.grizzly-abilities{margin-top:10px}.river .arena .overlay{background:#092e40ee}@media(max-width:550px){.customize-grid.river-settings{grid-template-columns:repeat(2,minmax(0,1fr))}}</style></head>
+</style><style id="grizzly-v5-theme">.customize-grid.river-settings{grid-template-columns:repeat(2,minmax(0,1fr));max-width:550px}.river .customize-grid.river-settings label{display:flex!important}.hero-bear{width:85px;height:85px;display:grid;place-items:center}.hero-bear svg{height:88px;width:82px;filter:drop-shadow(0 5px 6px #06161c5c)}.river .bank{padding:4px 9px}.river .bank span:not(.hero-bear){max-width:190px;text-align:center;color:#e2f9e6}.scene-side{background:#517e5b}.river .arena .target{background:linear-gradient(145deg,#174857f0,#12334ded)}.river .target .target-symbol{filter:drop-shadow(0 2px 3px #1e5064)}.grizzly-abilities{margin-top:10px}.river .arena .overlay{background:#092e40ee}@media(max-width:550px){.customize-grid.river-settings{grid-template-columns:repeat(2,minmax(0,1fr))}}</style><style id="grizzly-v5-1-letter-feedback">
+/* Each letter of the chosen fish's word responds to typing. Accessible colors
+   have a dark foreground and a bright background to remain readable in motion. */
+.river .arena .target strong .grizzly-letter{display:inline-block;min-width:.35em;border-radius:3px;padding:0 1px;transition:background-color .08s,color .08s}
+.river .arena .target strong .grizzly-letter.typed-correct,
+.river .arena .target.selected strong .grizzly-letter.typed-correct{background:#b8ffd0;color:#073d25!important;box-shadow:inset 0 -2px 0 #34bd72}
+.river .arena .target strong .grizzly-letter.typed-incorrect,
+.river .arena .target.selected strong .grizzly-letter.typed-incorrect{background:#ff9b9b;color:#4e0811!important;box-shadow:inset 0 -2px 0 #f04159}
+.river .arena .target.selected strong .grizzly-letter.typed-pending{color:#f7ffff!important}
+@media(prefers-reduced-motion:reduce){.river .arena .target strong .grizzly-letter{transition:none}}
+</style></head>
 <body class="river"><header><div><div class="eyebrow">Naches Learning Hub · Typing Arcade</div><h1>Grizzly Rapids</h1><p>Catch the fish. Help your bears. Master the keyboard.</p></div><div class="mark" aria-hidden="true">🐻</div></header>
 <main class="shell"><section class="hero card"><div><div class="eyebrow">A new way to practice keyboarding</div><h2>A new river. A new challenge. Another word mastered.</h2><p>Begin with familiar words and unlock science, nature, and place words on later rivers. Practice with vocabulary selected for your grade band, and watch each level grow in difficulty.</p><div class="switch"><label for="gradeSelect"><b>My grade</b></label><select id="gradeSelect" aria-label="Grade level"></select><span class="hint">Grades 1–12 · Teacher-curated practice lists</span></div></div><div class="hero-art" aria-hidden="true">🐻 <span aria-hidden="true">🐟 🌲</span></div></section>
 <section class="mission-entry card" id="missionEntry"><div><div class="eyebrow">Your next river</div><h2 id="entryTitle">Level 1 · Creekside Beginnings</h2><p id="entryDescription">Begin with Level 1. Catch enough fish to unlock all six rivers.</p><div class="mission-track" id="missionTrack" aria-label="River progress"></div></div><button type="button" id="startMission" class="mission-start">▶ Start Level 1</button><button class="small-btn" type="button" id="help">How to play</button></section><section id="levelGrid" hidden></section>
@@ -245,7 +255,7 @@ function startGame(level){
  $('arena').dataset.env=String(level);$('stageFrame').dataset.scene=String(level);configureModeUI();
  lastFrame=performance.now();nextSpawn=lastFrame+l.spawn;
  showBears();refreshHud();
- status(isRiver?'Type any visible food word to catch it. Choose bears with Shift+1–4 if you like.':'Type any visible enemy word to destroy it. No Space or Enter required.');
+ status(isRiver?'Type any visible fish word. Correct letters turn green and errors turn red. Backspace fixes mistakes. Choose bears with Shift+1–4.':'Type any visible enemy word to destroy it. No Space or Enter required.');
  spawn(); // A target appears immediately instead of requiring students to wait.
  raf=requestAnimationFrame(tick);
  $('typeInput').focus();startMusic();applyShip();
@@ -268,7 +278,32 @@ function spawn(){
  el.addEventListener('click',()=>{activeTarget=t;$('typeInput').focus();markTarget();});
  t.el=el;state.targets.push(t);$('objects').appendChild(el);positionTarget(t);state.spawned++;
 }
-function markTarget(){if(!state)return;for(const t of state.targets)t.el?.classList.toggle('selected',t===activeTarget);}
+// Color feedback appears on the fish itself, rather than only in the input box.
+// The fish always shows the correct spelling; the expected character turns red
+// where a student has entered a wrong character and returns to neutral on Backspace.
+function markTarget(){
+ if(!state)return;
+ const typed=$('typeInput').value.toLowerCase().replace(/\s+/g,'');
+ for(const t of state.targets){
+   if(!t.el)continue;
+   const selected=t===activeTarget;
+   t.el.classList.toggle('selected',selected);
+   const label=t.el.querySelector('strong');
+   if(!label)continue;
+   if(!selected||!typed){
+     if(label.textContent!==t.word||label.children.length)label.textContent=t.word;
+     continue;
+   }
+   const fragment=document.createDocumentFragment();
+   for(let i=0;i<t.word.length;i++){
+     const letter=document.createElement('span');
+     letter.className='grizzly-letter '+(i>=typed.length?'typed-pending':typed[i]===t.word[i]?'typed-correct':'typed-incorrect');
+     letter.textContent=t.word[i];
+     fragment.appendChild(letter);
+   }
+   label.replaceChildren(fragment);
+ }
+}
 function removeTarget(t){
  if(!state)return;
  const idx=state.targets.indexOf(t);
@@ -338,9 +373,15 @@ function onTyped(event){
  if(!state.targets.length){inp.value='';lastTyped='';status('Watch for the next approaching word.');return;}
  const change=typed.length-lastTyped.length;
  if(change>0){state.attempts+=change;}
- // Recompute the target after EVERY keystroke. Never lock into a wrong choice.
- activeTarget=findMatch(typed);
- const valid=Boolean(typed&&activeTarget);
+ // Match words as before. When a typo means no word matches, retain the
+ // previously highlighted fish so its expected letter can turn red.
+ const previousTarget=activeTarget;
+ const match=findMatch(typed);
+ activeTarget=match || (typed ? (
+   previousTarget&&state.targets.includes(previousTarget) ? previousTarget :
+   [...state.targets].sort((a,b)=>b.y-a.y)[0]
+ ) : null);
+ const valid=Boolean(typed&&match);
  inp.classList.toggle('bad',Boolean(typed&&!valid));
  if(change>0&&!valid)state.errors+=change;
  markTarget();
@@ -363,7 +404,7 @@ function onTyped(event){
  return;
  }
  if(!typed){status('Choose a word and type it to catch the target.');}
- else if(!valid){status('No visible word starts with that text. Press Backspace to correct.');}
+ else if(!valid){status('Red letter: incorrect key. Press Backspace to fix it. Green letters show the correct part.');}
  else if(isRiver){
  const catcher=bearNames.find(b=>b.id===activeTarget.cat)?.title||'Your bear';
  status(`Target: ${activeTarget.word} · ${catcher} can collect it. Finish the word!`);
